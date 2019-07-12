@@ -18,7 +18,8 @@ import CityList from "@/components/city/CityList.vue";
 export default {
   name: "home",
   components: {
-    CityList
+    CityList,
+    HelloWorld
   },
   created() {
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
