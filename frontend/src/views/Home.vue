@@ -1,12 +1,15 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
-    <img alt="cover" src="../assets/02-full.png" />
+    <header>
+      <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
+      <img class="cover" alt="cover" src="../assets/02-full.png" />
+      <img class="logo" alt="logo" src="../assets/logo.png" />
+      <HelloWorld msg="Welcome to uThere" />
+    </header>
 
-    <img class="logo" alt="logo" src="../assets/logo.png" />
-
-    <HelloWorld msg="Welcome to uThere" />
-    <CityList></CityList>
+    <div class="city">
+      <CityList></CityList>
+      </div>
   </div>
 </template>
 
@@ -30,9 +33,15 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
+// .home {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+
 img {
-  position: absolute;
+  // position: absolute;
   width: 100%;
   z-index: -1;
   left: 0;
@@ -44,7 +53,7 @@ img {
   overflow: hidden;
 }
 
-.logo {
+img.logo {
   height: 33px;
   width: 124px;
   padding: 14px 16px;
