@@ -24,16 +24,17 @@ export default {
 <style scoped>
 .city-preview {
   /* width: 23%; */
+  object-fit: contain;
   cursor: pointer;
   min-height: 270px;
   background-color: rgb(100, 173, 81);
-  border-radius: 9px;
-  flex-basis: 235px;
+  border-radius: 4px;
+  flex-basis: 200px;
   flex-grow: 1;
   margin: 17px 7px;
-  max-width: 245px;
+  max-width: 200px;
   box-shadow: 0 0 2px #969696;
-  position: relative;
+  /* position: relative; */
 }
 
 .city-preview:hover {
@@ -45,14 +46,17 @@ p {
 }
 
 img {
+  object-fit: cover;
   width: 100%;
-  border-top-left-radius: 9px;
-  border-top-right-radius: 9px;
+  height: 100%;
+  border-radius: 4px;
 }
 
 .info-panel {
   padding: 10px;
   text-align: left;
+  position: relative;
+  bottom: 50px;
 }
 
 .info-panel .name {
