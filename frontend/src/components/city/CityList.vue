@@ -1,6 +1,6 @@
 <template>
   <section class="city-list">
-    <CityPreview v-for="city in cities" :key="city._id" :city="city"></CityPreview>
+    <CityPreview v-for="(city, idx) in cities" :key="idx" :city="city"></CityPreview>
   </section>
 </template>
 

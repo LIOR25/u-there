@@ -116,7 +116,13 @@ const usersDB = [
 ];
 
 async function query(filterBy = {}) {
-  return Promise.resolve(usersDB);
+  if (filterBy['cityName']) {
+    return Promise.resolve(
+      usersDB.filter(user => {
+        return user.currCity === filterBy.cityName;
+      })
+    );
+  } else return Promise.resolve(usersDB);
   //   return await httpService.get('city');
 }
 
