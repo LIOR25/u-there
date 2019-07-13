@@ -3,6 +3,10 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import CityView from './views/CityView.vue'
+import Inbox from './views/Inbox.vue'
+import InboxList from './components/inbox/InboxList.vue'
+// import meetingList from './components/meetingList.vue'
+import Chat from './components/inbox/Chat.vue'
 
 Vue.use(Router)
 
@@ -24,6 +28,16 @@ export default new Router({
       path: '/city',
       name: 'city-view',
       component: CityView
-    }
+    },
+    {
+      path: '/inbox/:userId',
+      name: 'user-inbox',
+      component: Inbox,
+      children: [
+        { path: 'chats', component: InboxList, /* props: {filter: 'inbox'} */},
+        // { path: 'upcoming', component: meetingList, /*props: {filter: 'meetings'}*/}, preparation for meeting object.
+        { path: ':chatRoomId', component: Chat}
+    ]
+    },
   ]
 })
