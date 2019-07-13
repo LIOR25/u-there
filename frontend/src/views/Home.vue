@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <header class="home-header">
-      <HomeNav></HomeNav>
       <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
 
       <HelloWorld class="welcome" msg="Welcome to uThere" />
@@ -18,7 +17,7 @@
 
 <script>
 // @ is an alias to /src
-import HomeNav from "@/components/HomeNav.vue";
+import AppNav from "@/components/AppNav.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
 import CityList from "@/components/city/CityList.vue";
 import UserList from "@/components/user/UserList.vue";
@@ -26,7 +25,7 @@ import UserList from "@/components/user/UserList.vue";
 export default {
   name: "home",
   components: {
-    HomeNav,
+    AppNav,
     CityList,
     UserList,
     HelloWorld
@@ -55,6 +54,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   margin-left: 280px;
-  margin-top: 40px;
+  padding-top: 40px;
 }
 </style>
