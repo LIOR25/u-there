@@ -2,11 +2,11 @@
   <div class="mainContainer" >
     <!-- <h1>This is userDetails page</h1> -->
     <div class="detailsList" >
-        <h1>userName</h1>
-       img <img src="" alt="">
-        <h3>userCity</h3>
-        <h3>userActivities</h3>
-        <h3>userLang</h3>
+        <h1>{{user.firstName + " " + user.lastName }}</h1>
+      <img :src="user. img_url" alt="" class="userSmallImg">
+        <h3>{{user.currCity}}</h3>
+        <h3>{{user.Activities}}</h3>
+        <h3>{{user.languages}}</h3>
         <button>Contact me</button>
     </div>
 
@@ -31,6 +31,30 @@
 
 export default {
   name: 'userDetails',
+  data(){
+      return{
+             user: {
+            _id: null,
+            firstName: '',
+            lastName: '',
+            Activities: [],
+            img_url: '',
+            currCity: '',
+            languages: []
+
+          },
+      }
+  },
+   created() {
+      const userId = this.$route.params.userId;
+      this.$store.dispatch({type: 'loadUsers'})
+        .then (() => {
+        if (userId) this.user = JSON.parse(JSON.stringify(this.$store.getters.userById(userId)));
+        else this.$router.push('/user');
+      })
+      
+
+   },
   components: {
   }
 }
@@ -46,6 +70,7 @@ export default {
 .mainContainer{
     display: flex;
     justify-content: space-evenly;
+    padding-top: 155px;
     }
 
 .detailsList{
@@ -85,5 +110,11 @@ button{
           border-radius: 7px;
     box-shadow: 3px 3px 12px -1px #afa7a7;
 }
+
+.userSmallImg{
+    width: 50px;
+    height: 50px;
+}
+
 
 </style>

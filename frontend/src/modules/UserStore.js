@@ -15,7 +15,10 @@ export default {
   getters: {
     users(state) {
       return state.users;
-    }
+    },
+    userById: state => id => {
+      return state.users.find(user => user._id === id);
+    },
     // filterBy(state) {
     //     return state.filterBy
     // },
