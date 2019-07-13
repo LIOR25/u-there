@@ -22,7 +22,7 @@
 
 <script>
 export default {
-    name: "HomeNav"
+    name: "AppNav"
 };
 </script>
 
@@ -54,13 +54,13 @@ img.logo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  z-index: 4
 }
 
 ul {
   display: flex;
-  flex-direction: row;
-  // justify-content: flex-end;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   align-items: flex-end;
   list-style-type: none;
   margin: 0;
