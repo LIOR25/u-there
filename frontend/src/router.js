@@ -7,6 +7,7 @@ import Inbox from './views/Inbox.vue';
 import InboxList from './components/inbox/InboxList.vue';
 // import meetingList from './components/meetingList.vue'
 import Chat from './components/inbox/Chat.vue';
+import UserDetails from './views/UserDetails.vue';
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/city/:cityName',
       name: 'city-view',
       component: CityView
+    },
+    {
+      path: '/user/:userId',
+      name: 'user-details',
+      component: UserDetails
     },
     {
       path: '/inbox/:userId',
