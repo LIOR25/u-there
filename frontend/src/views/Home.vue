@@ -1,35 +1,39 @@
 <template>
   <div class="home">
-
     <header class="home-header">
-
       <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
 
       <HelloWorld class="welcome" msg="Welcome to uThere" />
     </header>
 
-    <div class="city">
+    <div class="citys">
       <CityList></CityList>
-      </div>
+    </div>
+    <div class="users">
+      <UserList></UserList>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import AppNav from "@/components/AppNav.vue"
+import AppNav from "@/components/AppNav.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
 import CityList from "@/components/city/CityList.vue";
+import UserList from "@/components/user/UserList.vue";
 
 export default {
   name: "home",
   components: {
     AppNav,
     CityList,
+    UserList,
     HelloWorld
   },
   created() {
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
     this.$store.dispatch("loadCities");
+    this.$store.dispatch("loadUsers");
     console.log(this.$store.state);
   }
 };
@@ -37,7 +41,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .home-header {
   position: relative;
   background-image: url("../assets/02-full.png");
@@ -53,5 +56,4 @@ export default {
   margin-left: 280px;
   padding-top: 40px;
 }
-
 </style>
