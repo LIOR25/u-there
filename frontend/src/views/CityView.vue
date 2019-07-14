@@ -4,8 +4,14 @@
       <h1>
         <span>{{cityName}}</span> City
       </h1>
-      <h2>Drink coffee with friends</h2>
-      <UserList></UserList>
+      <div class="default-activities" v-if="!fromSearchBox || !activity">
+        <h2>Drink coffee with friends</h2>
+        <UserList :usersToShow="coffeeUsers"></UserList>
+        <h2>Walk</h2>
+        <UserList :usersToShow="walkUsers"></UserList>
+        <h2>Run</h2>
+        <UserList :usersToShow="runUsers"></UserList>
+      </div>
     </div>
   </section>
 </template>
@@ -20,21 +26,43 @@ export default {
   },
   data() {
     return {
-      cityName: ""
+      cityName: "",
+      activity: "",
+      fromSearchBox: false
     };
+  },
+  computed: {
+    coffeeUsers() {
+      return this.$store.getters.users.filter(user => {
+        return user.activities.includes("Drink coffee with a friend");
+      });
+    },
+    walkUsers() {
+      return this.$store.getters.users.filter(user => {
+        return user.activities.includes("Walk");
+      });
+    },
+    runUsers() {
+      return this.$store.getters.users.filter(user => {
+        return user.activities.includes("Run");
+      });
+    }
   },
   created() {
     this.cityName = this.$route.params.cityName;
+
+    this.fromSearchBox = this.$route.query.fromSearchBox === "1" ? true : false;
+    this.activity = this.$route.query.activity;
+    console.log(this.activity);
 
     // this.$store.dispatch({
     //   type: "loadUsersByFilters",
     //   filterBy: { cityName: this.cityName }
     // });
     this.$store.dispatch({
-      type: "loadUsersByFilters",
+      type: "loadUsersByCity",
       filterBy: {
-        cityName: this.cityName,
-        activity: "Drink coffee with a friend"
+        cityName: this.cityName
       }
     });
   }

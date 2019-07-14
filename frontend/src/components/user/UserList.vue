@@ -1,6 +1,6 @@
 <template>
   <section class="user-list">
-    <UserPreview v-for="user in users" :key="user._id" :user="user"></UserPreview>
+    <UserPreview v-for="user in usersToShow" :key="user._id" :user="user"></UserPreview>
   </section>
 </template>
 
@@ -12,11 +12,12 @@ export default {
   components: {
     UserPreview
   },
-  computed: {
-    users() {
-      return this.$store.getters.users;
-    }
-  }
+  props: ["usersToShow"]
+  // computed: {
+  //   users() {
+  //     return this.$store.getters.users;
+  //   }
+  // }
 };
 </script>
 

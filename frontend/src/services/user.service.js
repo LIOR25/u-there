@@ -3,8 +3,7 @@
 export default {
   query,
   getById,
-  update,
-
+  update
 };
 
 const usersDB = [
@@ -130,6 +129,22 @@ const usersDB = [
     languages: ['en', 'it'],
     img_url:
       'http://www.studiosisa.nl/wp-content/uploads/2014/11/profile-img.jpg'
+  },
+  {
+    _id: 'u7',
+    userName: 'rachel@airy.com',
+    password: 'cryptedSomething',
+    firstName: 'Rachel',
+    lastName: 'Airy',
+    isAdmin: false,
+    activities: ['Eat', 'Drive', 'Walk', 'Dive'],
+    userChatRooms: [],
+    currCity: 'Rome',
+    reviews: [],
+    meetCount: 0,
+    languages: ['en', 'it'],
+    img_url:
+      'https://wuzzuf.s3.eu-west-1.amazonaws.com/files/upload_pic/thumb_6262fdbca8f8b79392697ca240fe3ac9.jpeg'
   }
 ];
 
@@ -137,21 +152,14 @@ async function query(filterBy = {}) {
   if (filterBy['cityName']) {
     return Promise.resolve(
       usersDB.filter(user => {
-        return (
-          user.currCity === filterBy.cityName &&
-          user.activities.includes(filterBy.activity)
-        );
+        return user.currCity === filterBy.cityName;
       })
     );
   } else return Promise.resolve(usersDB);
   //   return await httpService.get('city');
 }
 
-
-async function update(){
-  
-}
-
+async function update() {}
 
 //func code for backup only
 // async function query(filterBy = {}) {

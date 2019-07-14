@@ -15,9 +15,13 @@ export default {
   props: ["city"],
   methods: {
     goToDetails() {
-      // this.$router.push(`/toyApp/${this.toy._id}`);
       // this.$router.push(`/city/${this.city}`);
-      this.$router.push(`/city/${this.city.name}`);
+      // this.$router.push(`/city/${this.city.name}`);
+      this.$router.push({
+        path: `/city/${this.city.name}`,
+        // query: { activities: "Drink coffee with a friend,Walk,Run" }
+        query: { fromSearchBox: "0" }
+      });
     }
   }
 };
