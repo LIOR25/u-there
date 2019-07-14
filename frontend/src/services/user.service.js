@@ -2,7 +2,8 @@
 
 export default {
   query,
-  getById
+  getById,
+  update
 };
 
 const usersDB = [
@@ -157,6 +158,25 @@ async function query(filterBy = {}) {
   } else return Promise.resolve(usersDB);
   //   return await httpService.get('city');
 }
+
+async function update() {}
+
+//func code for backup only
+// async function query(filterBy = {}) {
+//   if (filterBy['cityName']) {
+//     return Promise.resolve(
+//       usersDB.filter(user => {
+//         return user.currCity === filterBy.cityName;
+//       })
+//     );
+//   } else return Promise.resolve(usersDB);
+//   //   return await httpService.get('city');
+// }
+//func code for backup only
+
+// async function getById(toyId) {
+//   return await httpService.get(`toy/${toyId}`);
+// }
 
 async function getById(userId) {
   return await usersDB.find(user => user._id === userId);

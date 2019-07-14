@@ -4,6 +4,10 @@
       <div class="overlay"></div>
       <div class="modal_content">
         <h2>Your message</h2>
+        <form action="/action_page.php">
+         choose when to meet: <input type="date" name="bday">
+       <input type="submit">
+      </form>
         <textarea rows="4" cols="50"></textarea>
         <button class="send" @click="send">Send</button>
         <button @click="hide" title="Close" class="close_modal">
