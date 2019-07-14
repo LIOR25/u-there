@@ -15,7 +15,7 @@
       <div class="searchBlockContainer"> 
         <div class="SearchInputContainer">
        <input v-model="filterBy.cityName"  class="SearchInput" type="text" placeholder="Where are you going?">
-      <input class="SearchInput" type="text" placeholder="Where would you like to do?">
+      <input class="SearchInput" type="text" placeholder="What would you like to do?">
    
        </div>
       </div>
