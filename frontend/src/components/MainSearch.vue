@@ -11,14 +11,15 @@
       >vue-cli documentation</a>. -->
     </p>
   <div class="searchBlock" >
-    <form class="searchBlockTop" action="">
+    <form class="searchBlockTop"  @submit.prevent="load">
       <div class="searchBlockContainer"> 
         <div class="SearchInputContainer">
-       <input class="SearchInput" type="text" placeholder="Where are you going?">
+       <input v-model="filterBy.cityName"  class="SearchInput" type="text" placeholder="Where are you going?">
       <input class="SearchInput" type="text" placeholder="Where would you like to do?">
+   
        </div>
       </div>
-<button type="submit" class="button">Search</button>
+<button class="button">Search</button>
     </form>
 
   </div>
@@ -34,7 +35,35 @@ export default {
   name: "MainSearch",
   props: {
     msg: String
-  }
+  },
+   data() {
+    return {
+      filterBy: {
+      cityName: '',
+     
+      }
+    }
+  },
+created(){
+// debugger
+
+},
+methods :{
+load() {
+  // console.log('im here' ,this.filterBy.cityName);
+  //   this.$store.dispatch({
+  //   type: "loadCitiesByFilters",
+  //     filterBy: { cityName: this.filterBy.cityName }
+      
+    // });
+
+          this.$router.push(`/city/${this.filterBy.cityName}`);
+
+}
+
+
+},
+
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

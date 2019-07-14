@@ -40,11 +40,26 @@ const citiesDB = [
 
 // const citiesDB = ['Tel Aviv', 'Paris', 'Barcelona', 'Milano', 'Rome'];
 
-async function query(filterBy = {}) {
-  return Promise.resolve(citiesDB);
+
+// orignal
+// async function query(filterBy = {}) {
+  // return Promise.resolve(citiesDB);
   //   return await httpService.get('city');
-}
+// }
 
 // async function getById(toyId) {
 //   return await httpService.get(`toy/${toyId}`);
 // }
+
+
+// new 
+async function query(filterBy = {}) {
+  if (filterBy['cityName']) {
+    return Promise.resolve(
+      citiesDB.filter(city => {
+        return city.name === filterBy.cityName;
+      })
+    );
+  } else return Promise.resolve(citiesDB);
+  //   return await httpService.get('city');
+}
