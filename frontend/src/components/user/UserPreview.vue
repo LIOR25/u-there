@@ -5,7 +5,7 @@
     <div class="info-panel">
       <p>{{user.firstName}}</p>
       <p>{{user.currCity}}</p>
-      <p>{{user.Activities}}</p>
+      <p>{{user.activities}}</p>
     </div>
   </section>
 </template>
