@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="MainSearch">
     <h1>{{ msg }}</h1>
     <p>
       Meet people who love the some activities as you all over the world!
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "MainSearch",
   props: {
     msg: String
   }

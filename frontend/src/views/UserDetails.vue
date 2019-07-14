@@ -7,7 +7,12 @@
         <h3>{{user.currCity}}</h3>
         <h3>{{user.Activities}}</h3>
         <h3>{{user.languages}}</h3>
-        <button>Contact me</button>
+
+           <modal ref="modal"></modal>
+
+        <button @click="openModal">Contact me</button>
+
+
     </div>
 
      <div class="detailsMain">
@@ -22,17 +27,27 @@
            <p>what we can do</p>
            <p>Reviews</p>
     </div>
+
+
+
   </div>
+
+
+  
 </template>
 
 
 <script>
 
+import modal from '../components/user/Modal.vue'
 
 export default {
+
+
   name: 'userDetails',
   data(){
       return{
+
              user: {
             _id: null,
             firstName: '',
@@ -55,7 +70,13 @@ export default {
       
 
    },
+methods:{
+  openModal(){
+    this.$refs.modal.show()
+  }
+},
   components: {
+    modal
   }
 }
 </script>
