@@ -1,9 +1,10 @@
 <template>
   <section class="city-preview" @click="goToDetails" v-if="city">
-    <!-- <img :src="city.img_url" /> -->
+    <img :src="city.img_url" />
 
     <div class="info-panel">
-      <p class="name">{{city}}</p>
+      <!-- <p class="name">{{city}}</p> -->
+      <p class="name">{{city.name}}</p>
     </div>
   </section>
 </template>
@@ -15,7 +16,8 @@ export default {
   methods: {
     goToDetails() {
       // this.$router.push(`/toyApp/${this.toy._id}`);
-      this.$router.push(`/city/${this.city}`);
+      // this.$router.push(`/city/${this.city}`);
+      this.$router.push(`/city/${this.city.name}`);
     }
   }
 };
