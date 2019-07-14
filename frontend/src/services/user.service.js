@@ -1,8 +1,8 @@
 // import httpService from './http.service.js'
 
 export default {
-  query
-  // getById,
+  query,
+  getById,
 };
 
 const usersDB = [
@@ -162,3 +162,6 @@ async function query(filterBy = {}) {
 //   return await httpService.get(`toy/${toyId}`);
 // }
 
+async function getById(userId) {
+  return await usersDB.find(user => user._id === userId);
+}
