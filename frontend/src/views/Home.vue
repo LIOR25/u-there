@@ -33,7 +33,7 @@ export default {
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
     this.$store.dispatch("loadCities");
     this.$store.dispatch("loadUsers");
-    console.log(this.$store.state);
+    // console.log(this.$store.state);
   }
 };
 </script>

@@ -3,6 +3,8 @@
 export default {
   query,
   getById,
+  update,
+
 };
 
 const usersDB = [
@@ -144,6 +146,12 @@ async function query(filterBy = {}) {
   } else return Promise.resolve(usersDB);
   //   return await httpService.get('city');
 }
+
+
+async function update(){
+  
+}
+
 
 //func code for backup only
 // async function query(filterBy = {}) {

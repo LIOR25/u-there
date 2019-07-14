@@ -2,7 +2,9 @@ import UserService from '../services/user.service.js';
 
 export default {
   state: {
-    users: []
+    users: [],
+    loggedInUser: 'u1'
+
     // filterBy: {
     //     name: "",
     //     inStockOnly: false,
@@ -26,7 +28,17 @@ export default {
   mutations: {
     setUsers(state, { users }) {
       state.users = users;
-    }
+    },
+    // updateUser(state, { updatedUser }) {
+    //   const idx = state.users.findIndex(user => user._id === updatedUser._id);
+    //   state.users.splice(idx, 1, updatedUser);
+    // },
+
+    updateUser(state, { updatedUser }) {
+      const idx = state.users.findIndex(user => loggedInUser === updatedUser._id);
+      state.users.splice(idx, 1, updatedUser);
+    },
+
     //   removeToy(state, { toyId }) {
     //       let idx = state.toys.findIndex(toy => toy._id === toyId)
     //       state.toys.splice(idx, 1)
@@ -49,8 +61,14 @@ export default {
     async loadUsersByFilters(context, { filterBy }) {
       let users = await UserService.query(filterBy);
       context.commit({ type: 'setUsers', users });
-    }
-    // removeToy(context, { toyId }) {
+    },
+
+ updateUser(context, { user }) {
+      return UserService.update(user).then((updatedUser) => {
+        context.commit({ type: 'updateUser', updatedUser });
+        return updatedUser;
+      });
+    },    // removeToy(context, { toyId }) {
     //     context.commit({ type: 'removeToy', toyId })
     // },
     // setFilterAndSearch(context, { filterBy }) {

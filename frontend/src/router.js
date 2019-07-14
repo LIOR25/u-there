@@ -8,6 +8,7 @@ import InboxList from './components/inbox/InboxList.vue';
 // import meetingList from './components/meetingList.vue'
 import Chat from './components/inbox/Chat.vue';
 import UserDetails from './views/UserDetails.vue';
+import EditUser from './views/EditUser.vue';
 
 Vue.use(Router);
 
@@ -29,6 +30,13 @@ export default new Router({
       path: '/city/:cityName',
       name: 'city-view',
       component: CityView
+    },
+    {
+      path: '/user/edit/:userId?',
+      // path: '/user/edit/:u1',
+
+      name: 'edit-user',
+      component: EditUser
     },
     {
       path: '/user/:userId',
