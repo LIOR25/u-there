@@ -112,6 +112,22 @@ const usersDB = [
     languages: ['en', 'it'],
     img_url:
       'https://powerviewltd.com/wp-content/uploads/2018/03/profile-img-1.jpg'
+  },
+  {
+    _id: 'u6',
+    userName: 'ash@air.com',
+    password: 'cryptedSomething',
+    firstName: 'Ash',
+    lastName: 'Air',
+    isAdmin: false,
+    Activities: ['Run', 'Drink coffee with a friend', 'Walk', 'Dive'],
+    userChatRooms: [],
+    currCity: 'Rome',
+    reviews: [],
+    meetCount: 0,
+    languages: ['en', 'it'],
+    img_url:
+      'http://www.studiosisa.nl/wp-content/uploads/2014/11/profile-img.jpg'
   }
 ];
 
