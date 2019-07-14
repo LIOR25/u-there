@@ -1,14 +1,15 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-import CityView from './views/CityView.vue'
-import Inbox from './views/Inbox.vue'
-import InboxList from './components/inbox/InboxList.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import About from './views/About.vue';
+import CityView from './views/CityView.vue';
+import Inbox from './views/Inbox.vue';
+import InboxList from './components/inbox/InboxList.vue';
 // import meetingList from './components/meetingList.vue'
-import Chat from './components/inbox/Chat.vue'
+import Chat from './components/inbox/Chat.vue';
+import UserDetails from './views/UserDetails.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -25,19 +26,24 @@ export default new Router({
       component: About
     },
     {
-      path: '/city',
+      path: '/city/:cityName',
       name: 'city-view',
       component: CityView
+    },
+    {
+      path: '/user/:userId',
+      name: 'user-details',
+      component: UserDetails
     },
     {
       path: '/inbox/:userId',
       name: 'user-inbox',
       component: Inbox,
       children: [
-        { path: 'chats', component: InboxList, /* props: {filter: 'inbox'} */},
+        { path: 'chats', component: InboxList /* props: {filter: 'inbox'} */ },
         // { path: 'upcoming', component: meetingList, /*props: {filter: 'meetings'}*/}, preparation for meeting object.
-        { path: ':chatRoomId', component: Chat}
-    ]
-    },
+        { path: ':chatRoomId', component: Chat }
+      ]
+    }
   ]
-})
+});

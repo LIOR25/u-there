@@ -3,7 +3,7 @@
     <header class="home-header">
       <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
 
-      <HelloWorld class="welcome" msg="Welcome to uThere" />
+      <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
 
     <div class="cities">
@@ -17,7 +17,8 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import AppNav from "@/components/AppNav.vue";
+import MainSearch from "@/components/MainSearch.vue";
 import CityList from "@/components/city/CityList.vue";
 import UserList from "@/components/user/UserList.vue";
 
@@ -26,7 +27,7 @@ export default {
   components: {
     CityList,
     UserList,
-    HelloWorld
+    MainSearch
   },
   created() {
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");

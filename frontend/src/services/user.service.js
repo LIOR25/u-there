@@ -13,7 +13,7 @@ const usersDB = [
     firstName: 'Orly',
     lastName: 'Amdadi',
     isAdmin: true,
-    Activities: ['Chess', 'go to the Opera', 'skydiving'],
+    activities: ['Chess', 'go to the Opera', 'skydiving'],
     userChatRooms: ['room1', 'room2'],
     currCity: 'Milano',
     reviews: [
@@ -38,7 +38,7 @@ const usersDB = [
     firstName: 'Or',
     lastName: 'Amd',
     isAdmin: false,
-    Activities: ['Chess', 'eat at the beach', 'skydiving'],
+    activities: ['Chess', 'eat at the beach', 'skydiving'],
     userChatRooms: ['room1'],
     currCity: 'Tel Aviv',
     reviews: [
@@ -63,7 +63,7 @@ const usersDB = [
     firstName: 'Ar',
     lastName: 'Amder',
     isAdmin: false,
-    Activities: ['Run', 'Eat', 'Skydiving'],
+    activities: ['Run', 'Eat', 'Skydiving'],
     userChatRooms: ['room2'],
     currCity: 'Barcelona',
     reviews: [
@@ -88,9 +88,9 @@ const usersDB = [
     firstName: 'Air',
     lastName: 'Amderi',
     isAdmin: false,
-    Activities: ['Run', 'Sleep', 'Skydiving'],
+    activities: ['Run', 'Sleep', 'Skydiving'],
     userChatRooms: [],
-    currCity: 'Barcelona',
+    currCity: 'Paris',
     reviews: [],
     meetCount: 0,
     languages: ['en', 'es'],
@@ -104,7 +104,7 @@ const usersDB = [
     firstName: 'Aira',
     lastName: 'Amderia',
     isAdmin: false,
-    Activities: ['Run', 'Bing', 'Fly', 'Rest'],
+    activities: ['Run', 'Bing', 'Fly', 'Rest'],
     userChatRooms: [],
     currCity: 'Rome',
     reviews: [],
@@ -112,14 +112,53 @@ const usersDB = [
     languages: ['en', 'it'],
     img_url:
       'https://powerviewltd.com/wp-content/uploads/2018/03/profile-img-1.jpg'
+  },
+  {
+    _id: 'u6',
+    userName: 'ash@air.com',
+    password: 'cryptedSomething',
+    firstName: 'Ash',
+    lastName: 'Air',
+    isAdmin: false,
+    activities: ['Run', 'Drink coffee with a friend', 'Walk', 'Dive'],
+    userChatRooms: [],
+    currCity: 'Rome',
+    reviews: [],
+    meetCount: 0,
+    languages: ['en', 'it'],
+    img_url:
+      'http://www.studiosisa.nl/wp-content/uploads/2014/11/profile-img.jpg'
   }
 ];
 
 async function query(filterBy = {}) {
-  return Promise.resolve(usersDB);
+  if (filterBy['cityName']) {
+    return Promise.resolve(
+      usersDB.filter(user => {
+        return (
+          user.currCity === filterBy.cityName &&
+          user.activities.includes(filterBy.activity)
+        );
+      })
+    );
+  } else return Promise.resolve(usersDB);
   //   return await httpService.get('city');
 }
+
+//func code for backup only
+// async function query(filterBy = {}) {
+//   if (filterBy['cityName']) {
+//     return Promise.resolve(
+//       usersDB.filter(user => {
+//         return user.currCity === filterBy.cityName;
+//       })
+//     );
+//   } else return Promise.resolve(usersDB);
+//   //   return await httpService.get('city');
+// }
+//func code for backup only
 
 // async function getById(toyId) {
 //   return await httpService.get(`toy/${toyId}`);
 // }
+

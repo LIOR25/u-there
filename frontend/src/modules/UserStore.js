@@ -15,7 +15,10 @@ export default {
   getters: {
     users(state) {
       return state.users;
-    }
+    },
+    userById: state => id => {
+      return state.users.find(user => user._id === id);
+    },
     // filterBy(state) {
     //     return state.filterBy
     // },
@@ -42,6 +45,10 @@ export default {
       UserService.query().then(users =>
         context.commit({ type: 'setUsers', users })
       );
+    },
+    async loadUsersByFilters(context, { filterBy }) {
+      let users = await UserService.query(filterBy);
+      context.commit({ type: 'setUsers', users });
     }
     // removeToy(context, { toyId }) {
     //     context.commit({ type: 'removeToy', toyId })
