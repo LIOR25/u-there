@@ -90,7 +90,7 @@ const usersDB = [
     isAdmin: false,
     Activities: ['Run', 'Sleep', 'Skydiving'],
     userChatRooms: [],
-    currCity: 'Barcelona',
+    currCity: 'Paris',
     reviews: [],
     meetCount: 0,
     languages: ['en', 'es'],

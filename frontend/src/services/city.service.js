@@ -38,7 +38,7 @@ export default {
 //   }
 // ];
 
-const citiesDB = ['Tel Aviv', 'Paris', 'Barcelona', 'Milano', 'Italy'];
+const citiesDB = ['Tel Aviv', 'Paris', 'Barcelona', 'Milano', 'Rome'];
 
 async function query(filterBy = {}) {
   return Promise.resolve(citiesDB);
