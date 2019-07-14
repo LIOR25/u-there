@@ -35,9 +35,11 @@ export default {
     // },
 
     updateUser(state, { updatedUser }) {
-      const idx = state.users.findIndex(user => loggedInUser === updatedUser._id);
+      const idx = state.users.findIndex(
+        user => loggedInUser === updatedUser._id
+      );
       state.users.splice(idx, 1, updatedUser);
-    },
+    }
 
     //   removeToy(state, { toyId }) {
     //       let idx = state.toys.findIndex(toy => toy._id === toyId)
@@ -68,25 +70,24 @@ export default {
     //   context.commit({ type: 'setUsers', users });
     // }
     // removeToy(context, { toyId }) {
-    },
+  },
 
- updateUser(context, { user }) {
-      return UserService.update(user).then((updatedUser) => {
-        context.commit({ type: 'updateUser', updatedUser });
-        return updatedUser;
-      });
-    },    // removeToy(context, { toyId }) {
-    //     context.commit({ type: 'removeToy', toyId })
-    // },
-    // setFilterAndSearch(context, { filterBy }) {
-    //     context.commit({ type: 'setFilterBy', filterBy })
-    //     ToyService.query(context.state.filterBy)
-    //         .then(toys => context.commit({ type: 'setToys', toys }))
-    // },
-    // changePage(context, { diff }) {
-    //     context.commit({ type: 'changePage', diff })
-    //     ToyService.query(context.state.filterBy)
-    //         .then(toys => context.commit({ type: 'setToys', toys }))
-    // }
-  }
+  updateUser(context, { user }) {
+    return UserService.update(user).then(updatedUser => {
+      context.commit({ type: 'updateUser', updatedUser });
+      return updatedUser;
+    });
+  } // removeToy(context, { toyId }) {
+  //     context.commit({ type: 'removeToy', toyId })
+  // },
+  // setFilterAndSearch(context, { filterBy }) {
+  //     context.commit({ type: 'setFilterBy', filterBy })
+  //     ToyService.query(context.state.filterBy)
+  //         .then(toys => context.commit({ type: 'setToys', toys }))
+  // },
+  // changePage(context, { diff }) {
+  //     context.commit({ type: 'changePage', diff })
+  //     ToyService.query(context.state.filterBy)
+  //         .then(toys => context.commit({ type: 'setToys', toys }))
+  // }
 };
