@@ -6,7 +6,7 @@
       <HelloWorld class="welcome" msg="Welcome to uThere" />
     </header>
 
-    <div class="citys">
+    <div class="cities">
       <CityList></CityList>
     </div>
     <div class="users">
@@ -17,7 +17,6 @@
 
 <script>
 // @ is an alias to /src
-import AppNav from "@/components/AppNav.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
 import CityList from "@/components/city/CityList.vue";
 import UserList from "@/components/user/UserList.vue";
@@ -25,7 +24,6 @@ import UserList from "@/components/user/UserList.vue";
 export default {
   name: "home",
   components: {
-    AppNav,
     CityList,
     UserList,
     HelloWorld

@@ -1,7 +1,7 @@
 <template>
     <section>
         <ul>
-            <li><router-link to="/chats">All Messages</router-link></li>
+            <li><router-link exact to="/inbox/:userId/chats">All Messages</router-link></li>
             <li>Upcoming</li>
         </ul>
     </section>
