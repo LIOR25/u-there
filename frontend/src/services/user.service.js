@@ -13,7 +13,7 @@ const usersDB = [
     firstName: 'Orly',
     lastName: 'Amdadi',
     isAdmin: true,
-    Activities: ['Chess', 'go to the Opera', 'skydiving'],
+    activities: ['Chess', 'go to the Opera', 'skydiving'],
     userChatRooms: ['room1', 'room2'],
     currCity: 'Milano',
     reviews: [
@@ -38,7 +38,7 @@ const usersDB = [
     firstName: 'Or',
     lastName: 'Amd',
     isAdmin: false,
-    Activities: ['Chess', 'eat at the beach', 'skydiving'],
+    activities: ['Chess', 'eat at the beach', 'skydiving'],
     userChatRooms: ['room1'],
     currCity: 'Tel Aviv',
     reviews: [
@@ -63,7 +63,7 @@ const usersDB = [
     firstName: 'Ar',
     lastName: 'Amder',
     isAdmin: false,
-    Activities: ['Run', 'Eat', 'Skydiving'],
+    activities: ['Run', 'Eat', 'Skydiving'],
     userChatRooms: ['room2'],
     currCity: 'Barcelona',
     reviews: [
@@ -88,7 +88,7 @@ const usersDB = [
     firstName: 'Air',
     lastName: 'Amderi',
     isAdmin: false,
-    Activities: ['Run', 'Sleep', 'Skydiving'],
+    activities: ['Run', 'Sleep', 'Skydiving'],
     userChatRooms: [],
     currCity: 'Paris',
     reviews: [],
@@ -104,7 +104,7 @@ const usersDB = [
     firstName: 'Aira',
     lastName: 'Amderia',
     isAdmin: false,
-    Activities: ['Run', 'Bing', 'Fly', 'Rest'],
+    activities: ['Run', 'Bing', 'Fly', 'Rest'],
     userChatRooms: [],
     currCity: 'Rome',
     reviews: [],
@@ -120,7 +120,7 @@ const usersDB = [
     firstName: 'Ash',
     lastName: 'Air',
     isAdmin: false,
-    Activities: ['Run', 'Drink coffee with a friend', 'Walk', 'Dive'],
+    activities: ['Run', 'Drink coffee with a friend', 'Walk', 'Dive'],
     userChatRooms: [],
     currCity: 'Rome',
     reviews: [],
@@ -135,12 +135,28 @@ async function query(filterBy = {}) {
   if (filterBy['cityName']) {
     return Promise.resolve(
       usersDB.filter(user => {
-        return user.currCity === filterBy.cityName;
+        return (
+          user.currCity === filterBy.cityName &&
+          user.activities.includes(filterBy.activity)
+        );
       })
     );
   } else return Promise.resolve(usersDB);
   //   return await httpService.get('city');
 }
+
+//func code for backup only
+// async function query(filterBy = {}) {
+//   if (filterBy['cityName']) {
+//     return Promise.resolve(
+//       usersDB.filter(user => {
+//         return user.currCity === filterBy.cityName;
+//       })
+//     );
+//   } else return Promise.resolve(usersDB);
+//   //   return await httpService.get('city');
+// }
+//func code for backup only
 
 // async function getById(toyId) {
 //   return await httpService.get(`toy/${toyId}`);

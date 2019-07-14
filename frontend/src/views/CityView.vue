@@ -4,6 +4,7 @@
       <h1>
         <span>{{cityName}}</span> City
       </h1>
+      <h2>Drink coffee with friends</h2>
       <UserList></UserList>
     </div>
   </section>
@@ -25,9 +26,16 @@ export default {
   created() {
     this.cityName = this.$route.params.cityName;
 
+    // this.$store.dispatch({
+    //   type: "loadUsersByFilters",
+    //   filterBy: { cityName: this.cityName }
+    // });
     this.$store.dispatch({
       type: "loadUsersByFilters",
-      filterBy: { cityName: this.cityName }
+      filterBy: {
+        cityName: this.cityName,
+        activity: "Drink coffee with a friend"
+      }
     });
   }
 };
@@ -36,5 +44,9 @@ export default {
 <style lang="scss" scoped>
 .main-container {
   padding-top: 50px;
+}
+
+h2 {
+  text-align: center;
 }
 </style>
