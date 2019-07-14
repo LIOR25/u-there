@@ -10,7 +10,7 @@
       <CityList></CityList>
     </div>
     <div class="users">
-      <UserList></UserList>
+      <UserList :usersToShow="allUsers"></UserList>
     </div>
   </div>
 </template>
@@ -28,6 +28,11 @@ export default {
     CityList,
     UserList,
     MainSearch
+  },
+  computed: {
+    allUsers() {
+      return this.$store.getters.users;
+    }
   },
   created() {
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");

@@ -18,7 +18,7 @@ export default {
     },
     userById: state => id => {
       return state.users.find(user => user._id === id);
-    },
+    }
     // filterBy(state) {
     //     return state.filterBy
     // },
@@ -46,10 +46,15 @@ export default {
         context.commit({ type: 'setUsers', users })
       );
     },
-    async loadUsersByFilters(context, { filterBy }) {
+    async loadUsersByCity(context, { filterBy }) {
       let users = await UserService.query(filterBy);
       context.commit({ type: 'setUsers', users });
     }
+
+    // async loadUsersByFilters(context, { filterBy }) {
+    //   let users = await UserService.query(filterBy);
+    //   context.commit({ type: 'setUsers', users });
+    // }
     // removeToy(context, { toyId }) {
     //     context.commit({ type: 'removeToy', toyId })
     // },
