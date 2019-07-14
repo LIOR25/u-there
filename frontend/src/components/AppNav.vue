@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <img class="logo" alt="logo" src="../assets/logo.png" />
+    <img class="logo" @click="moveHome" alt="logo" src="../assets/logo.png" />
     <ul>
       <!-- <img class= "logo" alt="logo" src="assets/logo.png"> -->
       <li>
@@ -29,7 +29,17 @@
 
 <script>
 export default {
-    name: "AppNav"
+    name: "AppNav",
+      methods: {
+moveHome(){
+
+this.$router.push('/');
+
+}
+
+      }
+ 
+
 };
 </script>
 
@@ -55,6 +65,7 @@ img.logo {
   padding-left: 14px;;
   padding-top: 16px;
   // display: inline-block;
+  cursor: pointer;
 }
 
 .nav {
