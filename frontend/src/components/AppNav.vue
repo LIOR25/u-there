@@ -7,7 +7,7 @@
         <a href="#contact">Contact</a>
       </li>
       <li>
-        <router-link to="/about">About</router-link>
+        <router-link to="/signup">Sign up</router-link>
       </li>
        <li>
         <router-link to="/user/edit/u1">User Profile</router-link>
