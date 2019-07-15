@@ -162,6 +162,9 @@ async function query(filterBy = {}) {
 //   return await httpService.get(`toy/${toyId}`);
 // }
 
-async function getById(userId) {
-  return await usersDB.find(user => user._id === userId);
+async function getById(userId) {  
+  const user = usersDB.find(user => user._id === userId);
+  // console.log(user);
+  
+  return user;
 }
