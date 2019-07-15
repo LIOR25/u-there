@@ -21,7 +21,6 @@ const users =  await HttpService.ajax('api/user')
   return users
   }catch (err) {
     res.status(401).send({ error: err })
-
   }
 }
 
