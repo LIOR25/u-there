@@ -5,6 +5,8 @@
     <div class="info-panel">
       <!-- <p class="name">{{city}}</p> -->
       <p class="name">{{city.name}}</p>
+            <p >{{city._id}}</p>
+
     </div>
   </section>
 </template>
