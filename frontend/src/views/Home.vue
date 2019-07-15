@@ -6,11 +6,12 @@
       <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
 
+    <div class="users">
+      <UserList :usersToShow="allUsers"></UserList>
+    </div>
+
     <div class="cities">
       <CityList></CityList>
-    </div>
-    <div class="users">
-      <UserList></UserList>
     </div>
   </div>
 </template>
@@ -29,11 +30,16 @@ export default {
     UserList,
     MainSearch
   },
+  computed: {
+    allUsers() {
+      return this.$store.getters.users;
+    }
+  },
   created() {
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
     this.$store.dispatch("loadCities");
     this.$store.dispatch("loadUsers");
-    console.log(this.$store.state);
+    // console.log(this.$store.state);
   }
 };
 </script>

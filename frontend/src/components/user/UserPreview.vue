@@ -3,9 +3,11 @@
     <img :src="user.img_url" />
 
     <div class="info-panel">
-      <p>{{user.firstName}}</p>
-      <p>{{user.currCity}}</p>
-      <p>{{user.activities}}</p>
+      <p>Name: {{user.firstName}}</p>
+      <p>City: {{user.currCity}}</p>
+      <p>Rank: {{user.rank}}</p>
+      <p>Meet Count: {{user.meetCount}}</p>
+      <p>Activities: {{user.activities}}</p>
     </div>
   </section>
 </template>
@@ -35,8 +37,10 @@ export default {
   flex-grow: 1;
   margin: 17px 7px;
   max-width: 200px;
+  max-height: 200px;
   box-shadow: 0 0 2px #969696;
   /* position: relative; */
+  margin-bottom: 200px;
 }
 
 .user-preview:hover {
@@ -58,7 +62,8 @@ img {
   padding: 10px;
   text-align: left;
   position: relative;
-  bottom: 50px;
+  /* bottom: 50px; */
+  bottom: 20px;
 
   /* ehud changed */
 
