@@ -47,11 +47,11 @@ export default {
 
 <style lang="scss" scoped>
 .home-header {
-  position: relative;
+  background-position: top;
   background-image: url("../assets/02-full.png");
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 700px;
+  height: 90vh;
 }
 
 .welcome {

@@ -12,7 +12,7 @@ async function query(userId) {
         chatRooms = await defaultChatRooms;
         return chatRooms;
     } else {
-        chatRooms = await defaultChatRooms.filter(chatRoom => {chatRoom.userIds.includes(userId)})
+        chatRooms = await defaultChatRooms.filter(chatRoom => chatRoom.usersIds.includes(userId))
         return chatRooms;
     }
 }
@@ -22,7 +22,7 @@ async function getByIds(userId) {
     return chatRoom;
 }
 
-async function getById(chatId) {
+async function getById(chatId) {    
     const chatRoom = await chatRooms.find(chat => chat._id === chatId)
     return chatRoom;
 }
@@ -109,6 +109,27 @@ const defaultChatRooms = [
               sentAt: 1563021549563,
               addedBy: "u5",
               isRead: true
+           }
+        ]
+    },
+    {
+        "_id": "u1006",
+        "usersIds": ["u2","u3"],
+        "msgs": [
+           {  "_id": "msg234",
+              "txt": "Okay",
+              "type": "txt",
+              "sentAt": 1563021898186,
+              "addedBy": "u2",
+              "isRead": true
+           },
+           {  "_id": "msg233",
+              "txt": "How about this date?",
+              "type": "dateReq",
+              "reqDetails": {"suggested": "Jul 25th 2019, 4:00 pm", "responseState": "pending"},
+              "sentAt": 1563021549563,
+              "addedBy": "u3",
+              "isRead": true
            }
         ]
     }

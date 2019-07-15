@@ -22,6 +22,9 @@
       <li>
         <router-link to="/">Home</router-link>
       </li>
+      <!-- <li>
+        <router-link to="/inbox/:userId/chats">Inbox</router-link>
+      </li> -->
       <!-- <li>Welcome Guest!</li> -->
       <!-- <li><router-link to="/">Sign In</router-link></li> -->
       <!-- <li>Sign In</li> -->
