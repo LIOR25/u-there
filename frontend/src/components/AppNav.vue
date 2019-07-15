@@ -9,12 +9,15 @@
       <li>
         <router-link to="/signup">Sign up</router-link>
       </li>
-       <li>
+
+      <li>
+        <button>Login</button>
+      </li>
+
+      <li>
         <router-link to="/user/edit/u1">User Profile</router-link>
 
-     
-         <!-- <router-link to="'/user/edit/'+user._id">User Profile</router-link> -->
-
+        <!-- <router-link to="'/user/edit/'+user._id">User Profile</router-link> -->
       </li>
       <li>
         <router-link to="/">Home</router-link>
@@ -29,23 +32,16 @@
 
 <script>
 export default {
-    name: "AppNav",
-      methods: {
-moveHome(){
-
-this.$router.push('/');
-
-}
-
-      }
- 
-
+  name: "AppNav",
+  methods: {
+    moveHome() {
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-
-
 // img {
 //   // position: absolute;
 //   width: 100%;
@@ -62,7 +58,7 @@ this.$router.push('/');
 img.logo {
   height: 33px;
   width: 124px;
-  padding-left: 14px;;
+  padding-left: 14px;
   padding-top: 16px;
   // display: inline-block;
   cursor: pointer;
@@ -72,7 +68,7 @@ img.logo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  z-index: 4
+  z-index: 4;
 }
 
 ul {
@@ -117,6 +113,4 @@ li a {
 // .active {
 //   // background-color: #4CAF50;
 // }
-
-
 </style>

@@ -39,6 +39,7 @@ export default {
   flex-grow: 1;
   margin: 17px 7px;
   max-width: 200px;
+  max-height: 200px;
   box-shadow: 0 0 2px #969696;
   /* position: relative; */
 }
@@ -62,7 +63,8 @@ img {
   padding: 10px;
   text-align: left;
   position: relative;
-  bottom: 50px;
+  /* bottom: 50px; */
+  bottom: 20px;
 }
 
 .info-panel .name {

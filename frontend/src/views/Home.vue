@@ -6,11 +6,12 @@
       <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
 
-    <div class="cities">
-      <CityList></CityList>
-    </div>
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
+    </div>
+
+    <div class="cities">
+      <CityList></CityList>
     </div>
   </div>
 </template>

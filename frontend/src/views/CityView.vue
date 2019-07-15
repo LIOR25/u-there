@@ -12,6 +12,15 @@
         <h2>Run</h2>
         <UserList :usersToShow="runUsers"></UserList>
       </div>
+      <div class="when-chosen-activity" v-else>
+        <h2>{{activity}}</h2>
+        <UserList :usersToShow="activityUsers"></UserList>
+
+        <h2>Dive</h2>
+        <UserList :usersToShow="diveUsers"></UserList>
+        <h2>Fly</h2>
+        <UserList :usersToShow="flyUsers"></UserList>
+      </div>
     </div>
   </section>
 </template>
@@ -33,18 +42,28 @@ export default {
   },
   computed: {
     coffeeUsers() {
-      return this.$store.getters.users.filter(user => {
-        return user.activities.includes("Drink coffee with a friend");
-      });
+      return this.filterUsersByActivity("Drink coffee with a friend");
     },
     walkUsers() {
-      return this.$store.getters.users.filter(user => {
-        return user.activities.includes("Walk");
-      });
+      return this.filterUsersByActivity("Walk");
     },
     runUsers() {
+      return this.filterUsersByActivity("Run");
+    },
+    activityUsers() {
+      return this.filterUsersByActivity(this.activity);
+    },
+    diveUsers() {
+      return this.filterUsersByActivity("Dive");
+    },
+    flyUsers() {
+      return this.filterUsersByActivity("Fly");
+    }
+  },
+  methods: {
+    filterUsersByActivity(activity) {
       return this.$store.getters.users.filter(user => {
-        return user.activities.includes("Run");
+        return user.activities.includes(activity);
       });
     }
   },
@@ -53,7 +72,6 @@ export default {
 
     this.fromSearchBox = this.$route.query.fromSearchBox === "1" ? true : false;
     this.activity = this.$route.query.activity;
-    console.log(this.activity);
 
     // this.$store.dispatch({
     //   type: "loadUsersByFilters",
