@@ -16,14 +16,15 @@ export default {
 
 // const BASE_URL = 'user/';
 
-async function query(req, res) {
-  try {
-    const users = await HttpService.ajax('api/user');
-    return users;
-  } catch (err) {
-    res.status(401).send({ error: err });
-  }
-}
+//check if to use
+// async function query(req, res) {
+//   try {
+//     const users = await HttpService.ajax('api/user');
+//     return users;
+//   } catch (err) {
+//     res.status(401).send({ error: err });
+//   }
+// }
 
 async function add(userToAdd) {
   // let res = await httpService.post(`user`, userToAdd)
@@ -49,6 +50,28 @@ async function add(userToAdd) {
 }
 
 async function update() {}
+// from yaron
+// query: `${BASE_URL}${_getQueryString(filterBy)}`
+
+async function query(filterBy) {
+  const users = await HttpService.ajax('api/user');
+  return users;
+}
+
+async function getById(userId) {
+  const user = await HttpService.ajax(`api/user/${userId}`);
+  return user;
+}
+
+// async function query(req, res) {
+//   try{
+// const users =  await HttpService.ajax('api/user')
+//   return users
+//   }catch (err) {
+//     res.status(401).send({ error: err })
+//   }
+// }
+
 // from yaron
 
 function login(userCred) {
@@ -257,21 +280,11 @@ function logout() {
 //   return await httpService.get(`toy/${toyId}`);
 // }
 
-async function getById(userId) {
-  return await usersDB.find(user => user._id === userId);
-}
+//check if to remove
+// async function getById(userId) {
+//   return await usersDB.find(user => user._id === userId);
+// }
 
-//temp for now
-function makeId(length = 5) {
-  var txt = '';
-  var possible =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  for (var i = 0; i < length; i++) {
-    txt += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return txt;
-}
 // async function getById(userId) {
 //   return await usersDB.find(user => user._id === userId);
 // }
