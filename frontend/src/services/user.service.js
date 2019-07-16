@@ -3,6 +3,7 @@
 export default {
   query,
   getById,
+  add,
   update
 };
 
@@ -173,6 +174,29 @@ async function query(filterBy = {}) {
   //   return await httpService.get('city');
 }
 
+async function add(userToAdd) {
+  // let res = await httpService.post(`user`, userToAdd)
+  // return res.ops[0]
+  console.log(usersDB);
+  userToAdd._id = makeId();
+  userToAdd.isAdmin = false;
+  userToAdd.activities = [userToAdd.activity];
+  delete userToAdd.activity;
+  userToAdd.userChatRooms = [];
+  userToAdd.rank = 0;
+  userToAdd.reviews = [];
+  userToAdd.meetCount = 0;
+  userToAdd.replies = '';
+  userToAdd.languages = [userToAdd.language];
+  delete userToAdd.language;
+  userToAdd.img_url = 'https://www.researchinn.com/uploads/default_user.png';
+  console.log(userToAdd);
+  usersDB.unshift(userToAdd);
+  console.log(usersDB);
+
+  return userToAdd;
+}
+
 async function update() {}
 
 //func code for backup only
@@ -194,4 +218,16 @@ async function update() {}
 
 async function getById(userId) {
   return await usersDB.find(user => user._id === userId);
+}
+
+//temp for now
+function makeId(length = 5) {
+  var txt = '';
+  var possible =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (var i = 0; i < length; i++) {
+    txt += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return txt;
 }

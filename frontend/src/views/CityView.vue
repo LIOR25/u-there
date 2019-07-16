@@ -4,7 +4,8 @@
       <h1>
         <span>{{cityName}}</span> City
       </h1>
-      <div class="default-activities" v-if="!fromSearchBox || !activity">
+      <!-- <div class="default-activities" v-if="!fromSearchBox || !activity"> -->
+      <div class="default-activities" v-if="!activity">
         <h2>Drink coffee with friends</h2>
         <UserList :usersToShow="coffeeUsers"></UserList>
         <h2>Walk</h2>
@@ -71,6 +72,7 @@ export default {
     this.cityName = this.$route.params.cityName;
 
     this.fromSearchBox = this.$route.query.fromSearchBox === "1" ? true : false;
+
     this.activity = this.$route.query.activity;
 
     // this.$store.dispatch({

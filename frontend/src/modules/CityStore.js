@@ -44,10 +44,8 @@ export default {
       );
     },
     async loadCitiesByFilters(context, { filterBy }) {
-      
       let cities = await CityService.query(filterBy);
-      
-      console.log('here store  ',cities);
+
       context.commit({ type: 'setCities', cities });
     }
     // removeToy(context, { toyId }) {

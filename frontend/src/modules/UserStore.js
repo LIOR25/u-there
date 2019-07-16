@@ -33,26 +33,16 @@ export default {
     //   const idx = state.users.findIndex(user => user._id === updatedUser._id);
     //   state.users.splice(idx, 1, updatedUser);
     // },
-
+    addUser(state, { addedUser }) {
+      state.users.unshift(addedUser);
+      console.log(state.users);
+    },
     updateUser(state, { updatedUser }) {
       const idx = state.users.findIndex(
         user => loggedInUser === updatedUser._id
       );
       state.users.splice(idx, 1, updatedUser);
     }
-
-    //   removeToy(state, { toyId }) {
-    //       let idx = state.toys.findIndex(toy => toy._id === toyId)
-    //       state.toys.splice(idx, 1)
-    //   },
-    //   setFilterBy(state, { filterBy }) {
-    //       state.filterBy = { ...filterBy }
-    //       // console.log('state.filterBy',state.filterBy);
-    //   },
-    //   changePage(state, {diff}) {
-    //       state.filterBy.currPage = state.filterBy.currPage + diff
-    //       console.log(state.filterBy.currPage);
-    //   },
   },
   actions: {
     loadUsers(context) {
@@ -63,31 +53,27 @@ export default {
     async loadUsersByCity(context, { filterBy }) {
       let users = await UserService.query(filterBy);
       context.commit({ type: 'setUsers', users });
+    },
+    // async addUser(context, { user }) {
+    //   let addedUser = await UserService.add(user);
+    //   context.commit({ type: 'addUser', addedUser });
+    //   console.log(addedUser);
+    //   console.log(state.users);
+    // },
+    addUser(context, { user }) {
+      //test
+      // UserService.query
+      //
+
+      UserService.add(user).then(addedUser => {
+        context.commit({ type: 'addUser', addedUser });
+      });
+    },
+    updateUser(context, { user }) {
+      return UserService.update(user).then(updatedUser => {
+        context.commit({ type: 'updateUser', updatedUser });
+        return updatedUser;
+      });
     }
-
-    // async loadUsersByFilters(context, { filterBy }) {
-    //   let users = await UserService.query(filterBy);
-    //   context.commit({ type: 'setUsers', users });
-    // }
-    // removeToy(context, { toyId }) {
-  },
-
-  updateUser(context, { user }) {
-    return UserService.update(user).then(updatedUser => {
-      context.commit({ type: 'updateUser', updatedUser });
-      return updatedUser;
-    });
-  } // removeToy(context, { toyId }) {
-  //     context.commit({ type: 'removeToy', toyId })
-  // },
-  // setFilterAndSearch(context, { filterBy }) {
-  //     context.commit({ type: 'setFilterBy', filterBy })
-  //     ToyService.query(context.state.filterBy)
-  //         .then(toys => context.commit({ type: 'setToys', toys }))
-  // },
-  // changePage(context, { diff }) {
-  //     context.commit({ type: 'changePage', diff })
-  //     ToyService.query(context.state.filterBy)
-  //         .then(toys => context.commit({ type: 'setToys', toys }))
-  // }
+  }
 };

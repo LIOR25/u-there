@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Signup from './views/Signup.vue';
+import Signin from './views/Signin.vue';
 import CityView from './views/CityView.vue';
 import Inbox from './views/Inbox.vue';
 import InboxList from './components/inbox/InboxList.vue';
@@ -22,9 +22,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/signup',
-      name: 'signup',
-      component: Signup
+      path: '/signin',
+      name: 'signin',
+      component: Signin
     },
     {
       path: '/city/:cityName',
