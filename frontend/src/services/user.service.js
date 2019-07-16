@@ -2,7 +2,7 @@ import HttpService from './HttpService'
 
 export default {
   query,
-  // getById,
+  getById,
   // update
 
   login,
@@ -14,15 +14,26 @@ export default {
 
 // const BASE_URL = 'user/';
 
+// query: `${BASE_URL}${_getQueryString(filterBy)}`
 
-async function query(req, res) {
-  try{
-const users =  await HttpService.ajax('api/user')
-  return users
-  }catch (err) {
-    res.status(401).send({ error: err })
-  }
+async function query(filterBy) {
+  const users = await HttpService.ajax('api/user');
+  return users;
 }
+
+async function getById(userId) {
+  const user = await HttpService.ajax(`api/user/${userId}`);  
+  return user;
+}
+
+// async function query(req, res) {
+//   try{
+// const users =  await HttpService.ajax('api/user')
+//   return users
+//   }catch (err) {
+//     res.status(401).send({ error: err })
+//   }
+// }
 
 // from yaron 
 
@@ -254,8 +265,4 @@ function logout() {
 
 // async function getById(toyId) {
 //   return await httpService.get(`toy/${toyId}`);
-// }
-
-// async function getById(userId) {
-//   return await usersDB.find(user => user._id === userId);
 // }

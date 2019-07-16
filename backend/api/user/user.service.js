@@ -32,14 +32,24 @@ async function query(filterBy = {}) {
     }
 }
 
-
-async function getById(userId) {
+async function getById(userId) {    
     const collection = await dbService.getCollection('user')
     try {
-        const user = await collection.findOne({ "_id": ObjectId(userId) })
+        const user = await collection.findOne({"_id":ObjectId(userId) })        
         return user
     } catch (err) {
         console.log(`ERROR: while finding user ${userId}`)
         throw err;
     }
 }
+
+// async function getById(toyId) {
+//     const collection = await dbService.getCollection('toy');
+//     try {
+//         const toy = await collection.findOne({"_id":ObjectId(toyId)})
+//         return toy;
+//     } catch (err) {
+//         console.log(`ERROR: cannot find toy ${toyId}`)
+//         throw err;
+//     }
+// }

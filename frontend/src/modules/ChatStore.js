@@ -4,7 +4,7 @@ import userService from '../services/user.service.js'
 export default {
     state: {
         userChats: [],
-        loggedInUserId: 'u1',
+        loggedInUserId: '5d2da4841b871768838cbf76',
         chatsWith: [],
         chatRoom: {},
         chatWith: {},
@@ -56,20 +56,17 @@ export default {
         // }
     },
     actions: {
-        loadUserChatRooms(context) {
+        async loadUserChatRooms(context) {
             const loggedUserId = context.state.loggedInUserId
-            chatRoomsService.query(loggedUserId).then(userChats => {
-                context.commit({ type: 'setUserChats', userChats });
-                // console.log(userChats);
-                var usersExceptMeIds = userChats.map(chat => chat.usersIds.filter(id => loggedUserId !== id));
-                var usersExceptMe = [];
-                usersExceptMeIds.forEach((id) => {
-                    var user = userService.getById(id[0]).then(user => {
-                        usersExceptMe.push(user);
-                    })
-                })
-                context.commit({ type: 'setUserChatsWith', usersExceptMe })
-            });
+            const userChats = await chatRoomsService.query(loggedUserId)
+            context.commit({ type: 'setUserChats', userChats });
+            var usersExceptMeIds = userChats.map(chat => chat.usersIds.filter(id => loggedUserId !== id));
+            var usersExceptMe = [];
+            await usersExceptMeIds.forEach(async(id) => {
+                const user = await userService.getById(id[0])                
+                usersExceptMe.push(user);  
+            })
+            context.commit({ type: 'setUserChatsWith', usersExceptMe })
         },
         // loadLoggedInUser(context) {
         //     const loggedUserId = context.state.loggedInUserId
