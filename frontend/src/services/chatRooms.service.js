@@ -1,7 +1,6 @@
 
 export default {
     query,
-    getByIds,
     getById
 }
 
@@ -17,11 +16,6 @@ async function query(userId) {
     }
 }
 
-async function getByIds(userId) {
-    const chatRoom = await chatRooms.find(chat => {chat.userIds.includes(userId)}); //
-    return chatRoom;
-}
-
 async function getById(chatId) {    
     const chatRoom = await chatRooms.find(chat => chat._id === chatId)
     return chatRoom;
@@ -30,7 +24,7 @@ async function getById(chatId) {
 const defaultChatRooms = [
     {
         _id: "u1001",
-        usersIds: ["u1","u2"],
+        usersIds: ["5d2da4841b871768838cbf76","5d2da4841b871768838cbf77"],
         msgs: [
            {  _id: "msg234",
               txt: "Okay",
@@ -51,7 +45,7 @@ const defaultChatRooms = [
     },
     {
         _id: "u1002",
-        usersIds: ["u1","u3"],
+        usersIds: ["5d2da4841b871768838cbf76","5d2da4841b871768838cbf78"],
         msgs: [
            {  _id: "msg234",
               txt: "Okay",
@@ -72,7 +66,7 @@ const defaultChatRooms = [
     },
     {
         _id: "u1003",
-        usersIds: ["u1","u4"],
+        usersIds: ["5d2da4841b871768838cbf76","5d2da4841b871768838cbf79"],
         msgs: [
            {  _id: "msg234",
               txt: "Okay",
@@ -93,7 +87,7 @@ const defaultChatRooms = [
     },
     {
         _id: "u1004",
-        usersIds: ["u1","u5"],
+        usersIds: ["5d2da4841b871768838cbf76","5d2da4841b871768838cbf7a"],
         msgs: [
            {  _id: "msg234",
               txt: "Okay",
@@ -114,7 +108,7 @@ const defaultChatRooms = [
     },
     {
         "_id": "u1006",
-        "usersIds": ["u2","u3"],
+        "usersIds": ["5d2da4841b871768838cbf7b","5d2da4841b871768838cbf7c"],
         "msgs": [
            {  "_id": "msg234",
               "txt": "Okay",

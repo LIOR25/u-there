@@ -7,11 +7,7 @@
         <a href="#contact">Contact</a>
       </li> -->
       <li>
-        <router-link to="/signup">Sign up</router-link>
-      </li>
-
-      <li>
-        <button>Login</button>
+        <router-link to="/signin">Sign in</router-link>
       </li>
 
       <li>

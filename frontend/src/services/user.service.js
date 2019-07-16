@@ -1,71 +1,99 @@
-import HttpService from './HttpService'
+import HttpService from './HttpService';
 
 export default {
   query,
+  getById,
+  // add,
+  update,
   // getById,
   // update
 
   login,
   logout,
-  signup,
+  signup
   // getUsers
 };
 
-
 // const BASE_URL = 'user/';
 
+//check if to use
+// async function query(req, res) {
+//   try {
+//     const users = await HttpService.ajax('api/user');
+//     return users;
+//   } catch (err) {
+//     res.status(401).send({ error: err });
+//   }
+// }
 
-async function query(req, res) {
-  try{
-const users =  await HttpService.ajax('api/user')
-  return users
-  }catch (err) {
-    res.status(401).send({ error: err })
-  }
+//old - only for backup. Ehud
+// async function add(userToAdd) {
+//   console.log(usersDB);
+//   userToAdd._id = makeId();
+//   userToAdd.isAdmin = false;
+//   userToAdd.activities = [userToAdd.activity];
+//   delete userToAdd.activity;
+//   userToAdd.userChatRooms = [];
+//   userToAdd.rank = 0;
+//   userToAdd.reviews = [];
+//   userToAdd.meetCount = 0;
+//   userToAdd.replies = '';
+//   userToAdd.languages = [userToAdd.language];
+//   delete userToAdd.language;
+//   userToAdd.img_url = 'https://www.researchinn.com/uploads/default_user.png';
+//   console.log(userToAdd);
+//   usersDB.unshift(userToAdd);
+//   console.log(usersDB);
+
+//   return userToAdd;
+// }
+
+async function update() {}
+// from yaron
+// query: `${BASE_URL}${_getQueryString(filterBy)}`
+
+async function query(filterBy) {
+  const users = await HttpService.ajax('api/user');
+  return users;
 }
 
-// from yaron 
+async function getById(userId) {
+  const user = await HttpService.ajax(`api/user/${userId}`);
+  return user;
+}
+
+// async function query(req, res) {
+//   try{
+// const users =  await HttpService.ajax('api/user')
+//   return users
+//   }catch (err) {
+//     res.status(401).send({ error: err })
+//   }
+// }
+
+// from yaron
 
 function login(userCred) {
-  HttpService.ajax('api/auth/login', 'post', userCred)
-    .then(res => console.log(res))
+  HttpService.ajax('api/auth/login', 'post', userCred).then(res =>
+    console.log(res)
+  );
 }
-function signup(userCred) {
-  HttpService.ajax('api/auth/signup', 'post', userCred)
-    .then(res => console.log(res))
+async function signup(userCred) {
+  console.log(userCred);
+
+  return await HttpService.ajax('api/auth/signup', 'post', userCred);
+  // HttpService.ajax('api/auth/signup', 'post', userCred).then(res =>
+  //   console.log(res)
+  // );
 }
 function logout() {
-  HttpService.ajax('api/auth/logout', 'post')
-    .then(res => console.log(res))
+  HttpService.ajax('api/auth/logout', 'post').then(res => console.log(res));
 }
 
 // function getUsers() {
 //   HttpService.ajax('api/user')
 //     .then(res => console.log(res))
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const usersDB = [
 //   {
@@ -223,8 +251,6 @@ function logout() {
 //   }
 // ];
 
-
-
 // async function query(filterBy = {}) {
 //   if (filterBy['cityName']) {
 //     return Promise.resolve(
@@ -234,7 +260,7 @@ function logout() {
 //     );
 //   } else return Promise.resolve(usersDB);
 
-  //   return await httpService.get('city');
+//   return await httpService.get('city');
 // }
 
 // async function update() {}
@@ -254,6 +280,11 @@ function logout() {
 
 // async function getById(toyId) {
 //   return await httpService.get(`toy/${toyId}`);
+// }
+
+//check if to remove
+// async function getById(userId) {
+//   return await usersDB.find(user => user._id === userId);
 // }
 
 // async function getById(userId) {
