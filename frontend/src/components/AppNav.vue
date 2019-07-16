@@ -3,9 +3,9 @@
     <img class="logo" @click="moveHome" alt="logo" src="../assets/logo.png" />
     <ul>
       <!-- <img class= "logo" alt="logo" src="assets/logo.png"> -->
-      <li>
+      <!-- <li>
         <a href="#contact">Contact</a>
-      </li>
+      </li> -->
       <li>
         <router-link to="/signup">Sign up</router-link>
       </li>
@@ -104,6 +104,8 @@ li {
 li a {
   // display: block;
   color: black;
+    // color: white;
+
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

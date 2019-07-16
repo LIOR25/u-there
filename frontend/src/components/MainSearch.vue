@@ -24,7 +24,7 @@
               v-model="filterBy.activity"
               class="SearchInput"
               type="text"
-              placeholder="Where would you like to do?"
+              placeholder="What would you like to do?"
             />
           </div>
         </div>
@@ -91,6 +91,10 @@ a {
   background: #fff;
   width: 100%;
   padding: 2rem 0 0;
+}
+p{
+    color: white;
+
 }
 
 .SearchBlockTop {

@@ -6,7 +6,7 @@
       <img :src="user. img_url" alt="" class="userSmallImg">
         <h3>{{user.currCity}}</h3>
         <h3>{{user.Activities}}</h3>
-        <h3>{{user.languages}}</h3>
+        <h3>{{user.languages[0]}}</h3>
                 <!-- <h3>{{user._id}}</h3> -->
 
 
@@ -97,11 +97,30 @@ methods:{
     }
 
 .detailsList{
-  flex-direction: column;
+  // flex-direction: column;
+
+  //     border: 1px solid #2a6171;
+  //         border-radius: 7px;
+  //   box-shadow: 3px 3px 12px -1px #afa7a7;
+
+ flex-direction: column;
 
       border: 1px solid #2a6171;
           border-radius: 7px;
     box-shadow: 3px 3px 12px -1px #afa7a7;
+     object-fit: contain;
+  cursor: pointer;
+  min-height: 270px;
+  // background-color: rgb(100, 173, 81);
+  border-radius: 4px;
+  flex-basis: 200px;
+  flex-grow: 1;
+  margin: 17px 7px;
+  max-width: 400px;
+  max-height: 600px;
+  box-shadow: 0 0 2px #969696;
+  /* position: relative; */
+  margin-bottom: 200px;
 }
 button{
     cursor: pointer;
@@ -127,11 +146,31 @@ button{
 }
 
 .detailsMain{
-     flex-direction: column;
+    //  flex-direction: column;
+
+    //   border: 1px solid #2a6171;
+    //       border-radius: 7px;
+    // box-shadow: 3px 3px 12px -1px #afa7a7;
+
+   flex-direction: column;
 
       border: 1px solid #2a6171;
           border-radius: 7px;
     box-shadow: 3px 3px 12px -1px #afa7a7;
+      /* width: 23%; */
+  object-fit: contain;
+  cursor: pointer;
+  min-height: 270px;
+  // background-color: rgb(100, 173, 81);
+  border-radius: 4px;
+  flex-basis: 200px;
+  flex-grow: 1;
+  margin: 17px 7px;
+  max-width: 400px;
+  max-height: 600px;
+  box-shadow: 0 0 2px #969696;
+  /* position: relative; */
+  margin-bottom: 200px;
 }
 
 .userSmallImg{
