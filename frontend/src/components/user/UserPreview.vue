@@ -3,6 +3,8 @@
     <img :src="user.img_url" />
 
     <div class="info-panel">
+            <!-- <p>ID: {{user._id}}</p> -->
+
       <p>Name: {{user.firstName}}</p>
       <p>City: {{user.currCity}}</p>
       <p>Rank: {{user.rank}}</p>

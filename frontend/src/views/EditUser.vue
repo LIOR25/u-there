@@ -44,7 +44,7 @@ export default {
   created(){
   // const userId = this.$route.params.userId;
     const userId = this.$store.state.loggedInUser;
-    console.log(userId);
+    // console.log(userId);
     
 
       this.$store.dispatch({type: 'loadUsers'})

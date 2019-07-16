@@ -7,6 +7,8 @@
         <h3>{{user.currCity}}</h3>
         <h3>{{user.Activities}}</h3>
         <h3>{{user.languages}}</h3>
+                <h3>{{user._id}}</h3>
+
 
            <modal ref="modal"></modal>
 
