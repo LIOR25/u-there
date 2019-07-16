@@ -1,7 +1,6 @@
 
 export default {
     query,
-    getByIds,
     getById
 }
 
@@ -15,11 +14,6 @@ async function query(userId) {
         chatRooms = await defaultChatRooms.filter(chatRoom => chatRoom.usersIds.includes(userId))
         return chatRooms;
     }
-}
-
-async function getByIds(userId) {
-    const chatRoom = await chatRooms.find(chat => {chat.userIds.includes(userId)}); //
-    return chatRoom;
 }
 
 async function getById(chatId) {    

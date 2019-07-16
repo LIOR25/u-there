@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       chatPrms: null,
-      loggedInUserId: 'u1'
+      loggedInUserId: '5d2dc3b3ad1118a7f8aed36c'
     };
   },
   methods: {

@@ -8,6 +8,7 @@ export default {
         chatsWith: [],
         chatRoom: {},
         chatWith: {},
+        msgs: []
         // loggedInUser: {} // temp for chats
         //filterBy:
     },
@@ -30,6 +31,9 @@ export default {
         chatWith(state) {
             return state.chatWith;
         },
+        msgs(state) {
+            return state.chatRoom.msgs
+        }
         // loggedInUser(state) {
         //     return state.loggedInUser;
         // }
@@ -50,6 +54,9 @@ export default {
         },
         addChat(state, { addedChatRoom }) {
             state.userChats.unshift(addedChatRoom);
+        },
+        addMsg(state, {addedMsg}) {
+
         },
         // setLoggedInUser(state, { loggedInUser }) {
         //     state.loggedInUser = loggedInUser;
