@@ -3,7 +3,7 @@ import HttpService from './HttpService';
 export default {
   query,
   getById,
-  add,
+  // add,
   update,
   // getById,
   // update
@@ -26,28 +26,27 @@ export default {
 //   }
 // }
 
-async function add(userToAdd) {
-  // let res = await httpService.post(`user`, userToAdd)
-  // return res.ops[0]
-  console.log(usersDB);
-  userToAdd._id = makeId();
-  userToAdd.isAdmin = false;
-  userToAdd.activities = [userToAdd.activity];
-  delete userToAdd.activity;
-  userToAdd.userChatRooms = [];
-  userToAdd.rank = 0;
-  userToAdd.reviews = [];
-  userToAdd.meetCount = 0;
-  userToAdd.replies = '';
-  userToAdd.languages = [userToAdd.language];
-  delete userToAdd.language;
-  userToAdd.img_url = 'https://www.researchinn.com/uploads/default_user.png';
-  console.log(userToAdd);
-  usersDB.unshift(userToAdd);
-  console.log(usersDB);
+//old - only for backup. Ehud
+// async function add(userToAdd) {
+//   console.log(usersDB);
+//   userToAdd._id = makeId();
+//   userToAdd.isAdmin = false;
+//   userToAdd.activities = [userToAdd.activity];
+//   delete userToAdd.activity;
+//   userToAdd.userChatRooms = [];
+//   userToAdd.rank = 0;
+//   userToAdd.reviews = [];
+//   userToAdd.meetCount = 0;
+//   userToAdd.replies = '';
+//   userToAdd.languages = [userToAdd.language];
+//   delete userToAdd.language;
+//   userToAdd.img_url = 'https://www.researchinn.com/uploads/default_user.png';
+//   console.log(userToAdd);
+//   usersDB.unshift(userToAdd);
+//   console.log(usersDB);
 
-  return userToAdd;
-}
+//   return userToAdd;
+// }
 
 async function update() {}
 // from yaron
@@ -79,10 +78,13 @@ function login(userCred) {
     console.log(res)
   );
 }
-function signup(userCred) {
-  HttpService.ajax('api/auth/signup', 'post', userCred).then(res =>
-    console.log(res)
-  );
+async function signup(userCred) {
+  console.log(userCred);
+
+  return await HttpService.ajax('api/auth/signup', 'post', userCred);
+  // HttpService.ajax('api/auth/signup', 'post', userCred).then(res =>
+  //   console.log(res)
+  // );
 }
 function logout() {
   HttpService.ajax('api/auth/logout', 'post').then(res => console.log(res));

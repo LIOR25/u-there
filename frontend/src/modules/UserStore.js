@@ -35,7 +35,6 @@ export default {
     // },
     addUser(state, { addedUser }) {
       state.users.unshift(addedUser);
-      console.log(state.users);
     },
     updateUser(state, { updatedUser }) {
       const idx = state.users.findIndex(
@@ -64,8 +63,11 @@ export default {
       //test
       // UserService.query
       //
+      console.log(user);
 
-      UserService.add(user).then(addedUser => {
+      UserService.signup(user).then(addedUser => {
+        console.log('userstore 69');
+
         context.commit({ type: 'addUser', addedUser });
       });
     },

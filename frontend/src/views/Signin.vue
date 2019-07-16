@@ -67,9 +67,15 @@ export default {
       } else {
         await this.$store.dispatch({ type: "addUser", user: this.user });
 
+        // console.log(this.user.activity);
+        // const activity = this.user.activity
+        //   ? this.user.activity
+        //   : this.user.activities[0];
+        // console.log(activity);
+
         this.$router.push({
           path: `/city/${this.user.currCity}`,
-          query: { fromSearchBox: "0", activity: this.user.activities[0] }
+          query: { fromSearchBox: "0", activity: this.user.activity }
         });
       }
     },
