@@ -7,14 +7,14 @@
         <a href="#contact">Contact</a>
       </li> -->
       <li>
-        <router-link to="/signin">Sign in</router-link>
-      </li>
-
-      <li>
         <router-link to="/user/edit/u1">User Profile</router-link>
 
         <!-- <router-link to="'/user/edit/'+user._id">User Profile</router-link> -->
       </li>
+      <li>
+        <router-link to="/signin">Sign in</router-link>
+      </li>
+
       <li>
         <router-link to="/">Home</router-link>
       </li>
