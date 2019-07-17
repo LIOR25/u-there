@@ -47,11 +47,25 @@ export default {
 
 <style lang="scss" scoped>
 .home-header {
-  background-position: top;
-  background-image: url("../assets/02-full.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 90vh;
+  // background-position: top;
+  // background-image: url("../assets/02-full.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // height: 90vh;
+
+
+   height: calc(100vh - 110px);
+        background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../assets/02-full.png");
+        background-color: black;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 50px;
 }
 
 .welcome {
@@ -60,5 +74,6 @@ export default {
   justify-content: center;
   margin-left: 280px;
   padding-top: 40px;
+  color: white;
 }
 </style>
