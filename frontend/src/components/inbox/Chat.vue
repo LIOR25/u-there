@@ -3,8 +3,8 @@
     <ul>
       <li v-for="msg in chatRoom.msgs" :key="msg._id">{{msg.txt}}</li>
     </ul>
-    <form class="send" @submit.prevent="addMsg(addedMsg)">
-      <input v-model="addedMsg.txt" :addedMsg="setType('txt')" type="text" placeholder="Write something..." name id />
+    <form class="send" @submit.prevent="addMsg(newMsg)">
+      <input v-model="newMsg.txt" :newMsg="setType('txt')" type="text" placeholder="Write something..." name id />
       <button type="submit">Send</button>
     </form>
   </section>
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       chatPrms: null,
-      addedMsg: {
+      newMsg: {
         _id: null,
         addedBy: null, //will always be logged in user
         txt: null,
@@ -28,13 +28,14 @@ export default {
     };
   },
   methods: {
-    addMsg(addedMsg) {
-      addedMsg.sentAt = Date.now()      
+    addMsg(newMsg) {
+      newMsg.sentAt = Date.now()
+      let addedMsg = {...newMsg}      
       this.$store.dispatch("addMsg", { addedMsg });
-      addedMsg.txt = null;
+      newMsg.txt = null;
     },
     setType(val) {
-      this.addedMsg.type = val;
+      this.newMsg.type = val;
     }
   },
   computed: {

@@ -1,6 +1,6 @@
 <template>
 <div v-if="userWith&&chat">
-    <img :src="`${userWith.img_url}`" alt="user-img">
+    <img class="prev" :src="`${userWith.img_url}`" alt="user-img">
     {{userWith.firstName}} {{userWith.lastName}}
 </div>
 </template>
