@@ -3,10 +3,10 @@
     <header class="home-header">
       <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
 
-      <MainSearch class="welcome" msg="Welcome to uThere" />
+      <MainSearch class="welcome"  msg="Welcome to uThere" />
     </header>
-	<!-- <button @click="myFunction()">Click Me</button> -->
-
+    <!-- <button @click="myFunction()">Click Me</button> -->
+<h2>welcome you are in {{cityName}}</h2>
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>
@@ -31,31 +31,31 @@ export default {
 
   data() {
     return {
-       error: '',
-	  lat:'',
-    lon:''
+      error: "",
+      lat: "",
+      lng: "",
+      cityName: ''
     };
   },
 
+  methods: {
+  
+    async showPosition(position) {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      // console.log("geo", this.lat, this.lng);
 
- methods:{
-    myFunction: function () {		
-	 if(navigator.geolocation){
-	 navigator.geolocation.getCurrentPosition(this.showPosition);
-	 }else{
-	 this.error = "Geolocation is not supported."; 
-		 
-	 }
-    },
-	showPosition:function (position) {	
-	const lat =	this.lat = position.coords.latitude;
-   const lon =  this.lon = position.coords.longitude;
-    console.log("geo",	this.lat,  this.lon);
-    
-	}
-	},
+     const cityName = await this.$store.dispatch({
+        type: "getCityByCord",
+        lat: this.lat,
+        lng: this.lng
+      });
 
-
+this.cityName = cityName
+      console.log('type',cityName);
+      
+    }
+  },
 
   components: {
     CityList,
@@ -73,7 +73,15 @@ export default {
     this.$store.dispatch("loadUsers");
     // console.log(this.$store.state);
 
-      // geolocation.getPosition();
+    // geolocation.getPosition();
+
+  
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      } else {
+        this.error = "Geolocation is not supported.";
+      }
+    
   }
 };
 </script>
@@ -87,19 +95,18 @@ export default {
   // background-size: cover;
   // height: 90vh;
 
-
-   height: calc(100vh - 110px);
-        background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../assets/02-full.png");
-        background-color: black;
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-left: 20px;
-        padding-right: 20px;
-        margin-bottom: 50px;
+  height: calc(100vh - 110px);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../assets/02-full.png");
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 50px;
 }
 
 .welcome {
