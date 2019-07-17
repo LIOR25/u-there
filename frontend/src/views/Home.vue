@@ -5,6 +5,7 @@
 
       <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
+	<!-- <button @click="myFunction()">Click Me</button> -->
 
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
@@ -23,8 +24,39 @@ import MainSearch from "@/components/MainSearch.vue";
 import CityList from "@/components/city/CityList.vue";
 import UserList from "@/components/user/UserList.vue";
 
+// import geolocation from '@/services/geolocation.service.js'
+
 export default {
   name: "home",
+
+  data() {
+    return {
+       error: '',
+	  lat:'',
+    lon:''
+    };
+  },
+
+
+ methods:{
+    myFunction: function () {		
+	 if(navigator.geolocation){
+	 navigator.geolocation.getCurrentPosition(this.showPosition);
+	 }else{
+	 this.error = "Geolocation is not supported."; 
+		 
+	 }
+    },
+	showPosition:function (position) {	
+	const lat =	this.lat = position.coords.latitude;
+   const lon =  this.lon = position.coords.longitude;
+    console.log("geo",	this.lat,  this.lon);
+    
+	}
+	},
+
+
+
   components: {
     CityList,
     UserList,
@@ -40,6 +72,8 @@ export default {
     this.$store.dispatch("loadCities");
     this.$store.dispatch("loadUsers");
     // console.log(this.$store.state);
+
+      // geolocation.getPosition();
   }
 };
 </script>
