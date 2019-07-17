@@ -1,6 +1,6 @@
 <template>
 <div v-if="userWith&&chat">
-    <img class="prev" :src="`${userWith.img_url}`" alt="user-img">
+    <img class="chat-img" :src="`${userWith.img_url}`" alt="user-img">
     {{userWith.firstName}} {{userWith.lastName}}
 </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style>
-img {
+.chat-img {
     height: 30px;
     border-radius: 50%
 }
