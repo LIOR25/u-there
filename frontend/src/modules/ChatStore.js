@@ -55,7 +55,7 @@ export default {
         addChat(state, { addedChatRoom }) {
             state.userChats.unshift(addedChatRoom);
         },
-        addMsg(state, {addedMsg}) {
+        addedMsg(state, {addedMsg}) {
 
         },
         // setLoggedInUser(state, { loggedInUser }) {
@@ -95,7 +95,13 @@ export default {
                     })
                     context.commit({ type: 'changeChatWith', otherPerson });
                 }))
+        },
+        addMsg(context, {addedMsg}) {
+            const newMsg = addedMsg;
+            console.log(newMsg);
+            
         }
+
 
         // createChatRoom(context) {
         //     chatRoomsService.add(this.state.loggedInUser, this.state.chatWith._id).then(addedChatRoom => {
