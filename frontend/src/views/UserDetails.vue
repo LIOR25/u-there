@@ -5,7 +5,7 @@
       <h1>{{user.firstName + " " + user.lastName}}</h1>
       <img :src="user. img_url" alt class="userSmallImg" />
       <h3>from: {{user.currCity}}</h3>
-      <h3>like to:  {{user.activities[0]}}</h3>
+      <h3>like to: {{user.activities[0]}}</h3>
       <h3>languages: {{user.languages[0]}}</h3>
       <!-- <h3>{{user._id}}</h3> -->
 
@@ -26,13 +26,15 @@
         ad harum corporis.
       </p>
       <p>what we can do together:</p>
-      <p>Reviews:</p>
-      <!-- <p>{{user.reviews}}</p> -->
-      <p>{{user.reviews[0].title}}</p>
-      <p>{{user.reviews[0].txt}}</p>
-      <p>addedBy :{{user.reviews[0].addedBy}}</p>
-      <p>createdAt :{{user.reviews[0].createdAt}}</p>
-      <p>rating: {{user.reviews[0].rating}}</p>
+      <div v-if="user.reviews.length">
+        <p>Reviews:</p>
+        <!-- <p>{{user.reviews}}</p> -->
+        <p>{{user.reviews[0].title}}</p>
+        <p>{{user.reviews[0].txt}}</p>
+        <p>addedBy :{{user.reviews[0].addedBy}}</p>
+        <p>createdAt :{{user.reviews[0].createdAt}}</p>
+        <p>rating: {{user.reviews[0].rating}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +51,8 @@ export default {
         _id: null,
         firstName: "",
         lastName: "",
-        Activities: [],
+        activities: [],
+        reviews: [],
         img_url: "",
         currCity: "",
         languages: []
