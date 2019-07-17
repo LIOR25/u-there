@@ -55,8 +55,8 @@ export default {
         addChat(state, { addedChatRoom }) {
             state.userChats.unshift(addedChatRoom);
         },
-        addMsg(state, {addedMsg}) {
-
+        addMsg(state, { addedMsg }) {
+            state.msgs.push(addedMsg)
         },
         // setLoggedInUser(state, { loggedInUser }) {
         //     state.loggedInUser = loggedInUser;
@@ -69,9 +69,9 @@ export default {
             context.commit({ type: 'setUserChats', userChats });
             var usersExceptMeIds = userChats.map(chat => chat.usersIds.filter(id => loggedUserId !== id));
             var usersExceptMe = [];
-            await usersExceptMeIds.forEach(async(id) => {
-                const user = await userService.getById(id[0])                
-                usersExceptMe.push(user);  
+            await usersExceptMeIds.forEach(async (id) => {
+                const user = await userService.getById(id[0])
+                usersExceptMe.push(user);
             })
             context.commit({ type: 'setUserChatsWith', usersExceptMe })
         },
@@ -95,7 +95,14 @@ export default {
                     })
                     context.commit({ type: 'changeChatWith', otherPerson });
                 }))
-        }
+        },
+        addMsg(context, { addedMsg }) {
+            chatRoomsService.addMsg(addedMsg, context.state.chatRoom._id).then(newMsg => {
+                context.commit({type: "addMsg", addedMsg})
+                return newMsg;
+            })
+        },
+
 
         // createChatRoom(context) {
         //     chatRoomsService.add(this.state.loggedInUser, this.state.chatWith._id).then(addedChatRoom => {

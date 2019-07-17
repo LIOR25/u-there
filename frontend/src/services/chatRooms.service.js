@@ -1,7 +1,9 @@
 
 export default {
     query,
-    getById
+    getById,
+    addMsg,
+    add
 }
 
 var chatRooms;
@@ -19,6 +21,33 @@ async function query(userId) {
 async function getById(chatId) {    
     const chatRoom = await chatRooms.find(chat => chat._id === chatId)
     return chatRoom;
+}
+
+async function addMsg(addedMsg, chatId) {
+   addedMsg._id = makeId();
+   let updatedChatroom = await getById(chatId);
+   updatedChatroom.msgs.push(addedMsg);
+   return updatedChatroom;
+}
+
+function makeId(length=5) {
+   var text = '';
+   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+   for (var i = 0; i < length; i++)
+       text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+   return text;
+}
+
+async function add(usersIds, msg) {
+   var newChat = {
+      _id: makeId(),
+      usersIds: usersIds,
+      msgs: [msg]
+   }
+   chatRooms.push(newChat)
+   return newChat;
 }
 
 const defaultChatRooms = [

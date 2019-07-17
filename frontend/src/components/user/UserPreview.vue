@@ -9,7 +9,9 @@
       <p>City: {{user.currCity}}</p>
       <p>Rank: {{user.rank}}</p>
       <p>Meet Count: {{user.meetCount}}</p>
-      <p>Activities: {{user.activities}}</p>
+      <p>Activities: {{user.activities[0]}}</p>
+      <p>Replies: {{user.replies}}</p>
+
     </div>
   </section>
 </template>
@@ -73,6 +75,11 @@ img {
   font-weight: 500;
   font-weight: 700;
   font-size: 21px;
+
+
+ 
+
+
 }
 
 /* .info-panel .name {

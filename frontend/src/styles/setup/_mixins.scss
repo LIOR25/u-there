@@ -1,0 +1,6 @@
+
+
+@mixin wrapper($max-width: 700px) {
+    margin: 0 auto;
+    max-width: $max-width;
+}

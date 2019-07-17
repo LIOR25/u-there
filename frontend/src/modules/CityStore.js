@@ -1,4 +1,6 @@
 import CityService from '../services/city.service.js';
+import GoogleMapService from '../services/GoogleMap.service.js'
+
 
 export default {
   state: {
@@ -47,6 +49,16 @@ export default {
       let cities = await CityService.query(filterBy);
 
       context.commit({ type: 'setCities', cities });
+    },
+
+
+    async getCityByCord(context, {lat, lng}){
+      console.log(lat, lng);
+      let cityFromCord = await GoogleMapService.getReverseGeocode(lat, lng);
+      console.log('cityFromCord',cityFromCord);
+      return cityFromCord
+
+
     }
     // removeToy(context, { toyId }) {
     //     context.commit({ type: 'removeToy', toyId })

@@ -19,6 +19,10 @@
         <!-- <router-link to="'/user/edit/'+user._id">User Profile</router-link> -->
       </li>
       <li>
+        <router-link to="/signin">Sign in</router-link>
+      </li>
+
+      <li>
         <router-link to="/">Home</router-link>
       </li>
       <li>
@@ -120,6 +124,8 @@ li {
 li a {
   // display: block;
   color: black;
+  // color: white;
+
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

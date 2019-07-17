@@ -70,7 +70,7 @@ async function getById(userId) {
 
 // async function query(req, res) {
 //   try{
-// const users =  await HttpService.ajax('api/user')
+// const users = await HttpService.ajax('api/user')
 //   return users
 //   }catch (err) {
 //     res.status(401).send({ error: err })
