@@ -1,9 +1,13 @@
 const chatroomService = require('./chatroom.service')
 
-
 const getChatrooms = async (req, res) => {
-    const userChats = await chatroomService.query(loggedInUser)
-    res.send(userChats)
+    const userId = req.query;
+    const chatrooms = await chatroomService.query(userId)
+    if (chatrooms) {
+        return res.json(chatrooms);
+    } else {
+        return res.status(500).send('Could Not Find Chatrooms');
+    }
 }
 
 async function getChatroom(req, res) {
@@ -11,6 +15,23 @@ async function getChatroom(req, res) {
     res.send(chatRoom)
 }
 
+async function addChatroom(req, res) {
+    const chatRoom = req.body;
+    const chatRoomWithId = await chatroomService.add(chatRoom)
+    if (chatRoomWithId) return res.json(chatRoomWithId);
+    else res.status(500).send('Could Not Add Chat');
+}
+
+async function addMsg(req, res) {
+    const newMsg = req.body;
+    // {
+    //     newMsg,
+    //     _id
+    // }
+    const updatedChat = await chatroomService.addMsg(newMsg);
+    if (updatedChat) return res.json(updatedChat);
+    else res.status(500).send('Could not add msg')
+}
 
 // async function deleteUser(req, res) {
 //     await userService.remove(req.params.id)
@@ -20,7 +41,8 @@ async function getChatroom(req, res) {
 module.exports = {
     getChatroom,
     getChatrooms,
-    // deleteUser
+    addChatroom,
+    addMsg
 }
 
 

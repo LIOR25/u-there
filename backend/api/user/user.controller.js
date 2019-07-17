@@ -10,7 +10,6 @@ async function getUser(req, res) {
     res.send(user)
 }
 
-
 async function deleteUser(req, res) {
     await userService.remove(req.params.id)
     res.send({})

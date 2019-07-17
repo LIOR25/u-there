@@ -11,6 +11,7 @@ const http = require('http').createServer(app);
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const cityRoutes = require('./api/city/city.routes')
+const chatRoutes = require('./api/chatroom/chatroom.routes')
 
 const logger = require('./services/logger.service')
 
@@ -39,6 +40,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/city', cityRoutes)
+app.use('/api/chatroom', chatRoutes)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')));
