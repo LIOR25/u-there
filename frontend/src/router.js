@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Signin from './views/Signin.vue';
+// import Signin from './views/Signin.vue';
 import CityView from './views/CityView.vue';
 import Inbox from './views/Inbox.vue';
 import InboxList from './components/inbox/InboxList.vue';
@@ -9,6 +9,7 @@ import InboxList from './components/inbox/InboxList.vue';
 import Chat from './components/inbox/Chat.vue';
 import UserDetails from './views/UserDetails.vue';
 import EditUser from './views/EditUser.vue';
+import LoginOrSign from './views/LoginOrSign.vue';
 
 Vue.use(Router);
 
@@ -21,10 +22,16 @@ export default new Router({
       name: 'home',
       component: Home
     },
+    // {
+    //   path: '/signin',
+    //   name: 'signin',
+    //   // component: Signin
+    //   component: Test
+    // },
     {
       path: '/signin',
-      name: 'signin',
-      component: Signin
+      name: 'login-or-sign',
+      component: LoginOrSign
     },
     {
       path: '/city/:cityName',

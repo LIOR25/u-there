@@ -3,24 +3,31 @@
     <img class="logo" @click="moveHome" alt="logo" src="../assets/logo.png" />
     <ul>
       <!-- <img class= "logo" alt="logo" src="assets/logo.png"> -->
-      <!-- <li>
-        <a href="#contact">Contact</a>
-      </li> -->
       <li>
-        <router-link to="/user/edit/u1">User Profile</router-link>
+        <button @click="doLogout" v-if="isLoggedUser">Logout</button>
+      </li>
+      <li>
+        <a href="#contact">Contact</a>
+      </li>
+      <li>
+        <router-link to="/signin" v-if="!isLoggedUser">Sign in</router-link>
+      </li>
+
+      <li>
+        <router-link to="/user/edit/u1" v-if="isLoggedUser">User Profile</router-link>
 
         <!-- <router-link to="'/user/edit/'+user._id">User Profile</router-link> -->
       </li>
       <li>
-        <router-link to="/signin">Sign in</router-link>
-      </li>
-
-      <li>
         <router-link to="/">Home</router-link>
       </li>
+      <li>
+        <h4 v-if="isLoggedUser">Wellcome {{isLoggedUser.firstName}}</h4>
+      </li>
+
       <!-- <li>
         <router-link to="/inbox/:userId/chats">Inbox</router-link>
-      </li> -->
+      </li>-->
       <!-- <li>Welcome Guest!</li> -->
       <!-- <li><router-link to="/">Sign In</router-link></li> -->
       <!-- <li>Sign In</li> -->
@@ -32,8 +39,18 @@
 <script>
 export default {
   name: "AppNav",
+  computed: {
+    isLoggedUser() {
+      return this.$store.getters.loggedUser;
+    }
+  },
   methods: {
     moveHome() {
+      this.$router.push("/");
+    },
+    doLogout() {
+      this.$store.dispatch({ type: "logout" });
+
       this.$router.push("/");
     }
   }
@@ -90,6 +107,9 @@ li {
   // color:black;
   // text-align: center;
   // padding: 14px 16px;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 
@@ -100,7 +120,7 @@ li {
 li a {
   // display: block;
   color: black;
-    // color: white;
+  // color: white;
 
   text-align: center;
   padding: 14px 16px;

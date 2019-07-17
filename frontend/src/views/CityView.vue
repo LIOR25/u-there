@@ -43,6 +43,7 @@ export default {
   },
   computed: {
     coffeeUsers() {
+      console.log(this.$store.getters.users);
       return this.filterUsersByActivity("Drink coffee with a friend");
     },
     walkUsers() {
