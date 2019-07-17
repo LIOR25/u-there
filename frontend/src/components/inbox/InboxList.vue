@@ -47,6 +47,7 @@ export default {
   },
   created() {
     this.$store.dispatch("loadUserChatRooms");
+    // this.$store.dispatch('')
     // console.log(this.$store.state);
   },
   components: {

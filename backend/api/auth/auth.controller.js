@@ -12,6 +12,15 @@ async function login(req, res) {
   }
 }
 
+// async function isLoggedIn(req, res) {
+//   try {
+//     const user = req.session.user
+//     return res.json(user);
+//   } catch(err) {
+//     res.status(401).send({ error: err})
+//   }
+// }
+
 // async function signup(req, res) {
 //   try {
 //     const { email, password, username } = req.body;
