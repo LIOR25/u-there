@@ -1,24 +1,24 @@
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/'
-    : '//localhost:3000/'
-
+const BASE_URL =
+  process.env.NODE_ENV === 'production' ? '/' : '//localhost:3000/';
 
 import Axios from 'axios';
 var axios = Axios.create({
-    withCredentials: true
+  withCredentials: true
 });
 
+async function ajax(endpoint, method = 'get', data = null, params = null) {
+  //   if (data) var { params } = data;
+  //   console.log(' in ajax', params);
 
-async function ajax(endpoint, method = 'get', data = null) {
-    const res = await axios({
-        url: `${BASE_URL}${endpoint}`,
-        method,
-        data
-    })
-    return res.data;
+  const res = await axios({
+    url: `${BASE_URL}${endpoint}`,
+    method,
+    data,
+    params
+  });
+  return res.data;
 }
-
 
 export default {
-    ajax
-}
+  ajax
+};

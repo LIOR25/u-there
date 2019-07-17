@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = {
   query,
   getById,
-  // getByEmail,
+  getByEmail,
   // remove,
   // update,
   add
@@ -18,6 +18,10 @@ async function query(filterBy = {}) {
   // if (filterBy.minBalance) {
   //     criteria.balance = { $gte: filterBy.minBalance }
   // }
+
+  if (filterBy.cityName) {
+    criteria.currCity = filterBy.cityName;
+  }
 
   const collection = await dbService.getCollection('user');
   try {
@@ -50,6 +54,21 @@ async function getById(userId) {
 //         throw err;
 //     }
 // }
+
+async function getByEmail(email) {
+  console.log('email', email);
+
+  const collection = await dbService.getCollection('user');
+  try {
+    const user = await collection.findOne({ email });
+    console.log(user);
+
+    return user;
+  } catch (err) {
+    console.log(`ERROR: while finding user ${email}`);
+    throw err;
+  }
+}
 
 async function add(user) {
   console.log('before mongo', user);

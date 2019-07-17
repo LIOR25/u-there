@@ -3,7 +3,7 @@ import UserService from '../services/user.service.js';
 export default {
   state: {
     users: [],
-    loggedInUser: 'u1'
+    loggedUser: null
 
     // filterBy: {
     //     name: "",
@@ -20,6 +20,11 @@ export default {
     },
     userById: state => id => {
       return state.users.find(user => user._id === id);
+    },
+    loggedUser(state) {
+      console.log(state.loggedUser);
+
+      return state.loggedUser;
     }
     // filterBy(state) {
     //     return state.filterBy
@@ -28,6 +33,7 @@ export default {
   mutations: {
     setUsers(state, { users }) {
       state.users = users;
+      console.log(state.users);
     },
     // updateUser(state, { updatedUser }) {
     //   const idx = state.users.findIndex(user => user._id === updatedUser._id);
@@ -35,13 +41,21 @@ export default {
     // },
     addUser(state, { addedUser }) {
       state.users.unshift(addedUser);
+      console.log(state.users);
     },
-    updateUser(state, { updatedUser }) {
-      const idx = state.users.findIndex(
-        user => loggedInUser === updatedUser._id
-      );
-      state.users.splice(idx, 1, updatedUser);
+    updateLoggedInUser(state, { loggedInUser }) {
+      state.loggedUser = loggedInUser;
+    },
+    updateLoggedInUserId(state, { loggedInUser }) {
+      state.loggedInUserId = loggedInUser._id;
+      console.log(state.loggedInUserId);
     }
+    // updateUser(state, { updatedUser }) {
+    //   const idx = state.users.findIndex(
+    //     user => loggedInUser === updatedUser._id
+    //   );
+    //   state.users.splice(idx, 1, updatedUser);
+    // }
   },
   actions: {
     loadUsers(context) {
@@ -51,6 +65,8 @@ export default {
     },
     async loadUsersByCity(context, { filterBy }) {
       let users = await UserService.query(filterBy);
+      console.log(users);
+
       context.commit({ type: 'setUsers', users });
     },
     // async addUser(context, { user }) {
@@ -59,23 +75,50 @@ export default {
     //   console.log(addedUser);
     //   console.log(state.users);
     // },
-    addUser(context, { user }) {
-      //test
-      // UserService.query
-      //
-      console.log(user);
-
-      UserService.signup(user).then(addedUser => {
-        console.log('userstore 69');
-
-        context.commit({ type: 'addUser', addedUser });
-      });
-    },
+    // addUser(context, { user }) {
+    //   UserService.signup(user).then(addedUser => {
+    //     context.commit({ type: 'addUser', addedUser });
+    //     //login user right here after signup
+    //     // context.commit({ type: 'updateLoggedInUser', addedUser });
+    //   });
+    // },
     updateUser(context, { user }) {
       return UserService.update(user).then(updatedUser => {
         context.commit({ type: 'updateUser', updatedUser });
         return updatedUser;
       });
+    },
+    async login(context, { userCred }) {
+      const loggedInUser = await UserService.login(userCred);
+      console.log(loggedInUser);
+
+      context.commit({ type: 'updateLoggedInUser', loggedInUser });
+
+      context.commit({ type: 'updateLoggedInUserId', loggedInUser });
+
+      return loggedInUser;
+    },
+    async signup(context, { userCred }) {
+      const addedUser = await UserService.signup(userCred);
+      console.log(addedUser);
+
+      //added commit to store and logged in user.
+      //and id to the chat store
+
+      context.commit({ type: 'addUser', addedUser });
+
+      //login user right here after signup
+      context.commit({ type: 'updateLoggedInUser', loggedInUser: addedUser });
+
+      //here update for chat loged user id
+      context.commit({ type: 'updateLoggedInUserId', loggedInUser: addedUser });
+
+      return addedUser;
+    },
+    logout(context) {
+      UserService.logout();
+
+      context.commit({ type: 'updateLoggedInUser', loggedInUser: null });
     }
   }
 };

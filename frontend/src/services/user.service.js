@@ -52,8 +52,14 @@ async function update() {}
 // from yaron
 // query: `${BASE_URL}${_getQueryString(filterBy)}`
 
-async function query(filterBy) {
-  const users = await HttpService.ajax('api/user');
+// async function query(filterBy) {
+//   const users = await HttpService.ajax('api/user');
+//   return users;
+// }
+async function query(filterBy = {}) {
+  console.log(filterBy);
+
+  const users = await HttpService.ajax('api/user', 'get', null, filterBy);
   return users;
 }
 
@@ -73,11 +79,16 @@ async function getById(userId) {
 
 // from yaron
 
-function login(userCred) {
-  HttpService.ajax('api/auth/login', 'post', userCred).then(res =>
-    console.log(res)
-  );
+async function login(userCred) {
+  return await HttpService.ajax('api/auth/login', 'post', userCred);
 }
+
+// function login(userCred) {
+//   HttpService.ajax('api/auth/login', 'post', userCred).then(res =>
+//     console.log(res)
+//   );
+// }
+
 async function signup(userCred) {
   console.log(userCred);
 

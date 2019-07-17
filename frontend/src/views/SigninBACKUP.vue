@@ -63,6 +63,7 @@ export default {
   methods: {
     async signinUp() {
       if (this.isSignin) {
+        this.doLogin();
         this.$router.push("/city/putusercityhere");
       } else {
         await this.$store.dispatch({ type: "addUser", user: this.user });
@@ -72,7 +73,6 @@ export default {
         //   ? this.user.activity
         //   : this.user.activities[0];
         // console.log(activity);
-
         this.$router.push({
           path: `/city/${this.user.currCity}`,
           query: { fromSearchBox: "0", activity: this.user.activity }
@@ -81,6 +81,12 @@ export default {
     },
     toggleSignup() {
       this.isSignin = !this.isSignin;
+    },
+    doLogin() {
+      const cred = this.loginCred;
+      if (!cred.email || !cred.password)
+        return (this.msg = "Missing parameters");
+      this.$store.dispatch({ type: "login", userCred: cred });
     }
     // async addUser() {
     //   await this.$store.dispatch("addUser", { user: this.user });
