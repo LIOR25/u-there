@@ -6,9 +6,7 @@
       <li>
         <button @click="doLogout" v-if="isLoggedUser">Logout</button>
       </li>
-      <li>
-        <a href="#contact">Contact</a>
-      </li>
+     
       <li>
         <router-link to="/signin" v-if="!isLoggedUser">Sign in</router-link>
       </li>
