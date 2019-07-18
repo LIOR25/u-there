@@ -14,9 +14,6 @@ async function query(filterBy = {}) {
     if (filterBy.txt) {
         criteria.name = filterBy.txt
     }
- 
-
-
     const collection = await dbService.getCollection('city')
     try {
         const cities = await collection.find(criteria).toArray();
