@@ -18,7 +18,8 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style scoped lang="scss">
+// @/styles/views/_home-page.scss
 body {
   margin: 0;
   box-sizing: border-box;
