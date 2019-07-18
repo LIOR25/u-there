@@ -3,10 +3,10 @@
     <header class="home-header">
       <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
 
-      <MainSearch class="welcome"  msg="Welcome to uThere" />
+      <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
-<h2>welcome you are in {{cityName}}</h2>
+    <h2>welcome you are in {{cityName}} thu</h2>
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>
@@ -34,26 +34,24 @@ export default {
       error: "",
       lat: "",
       lng: "",
-      cityName: ''
+      cityName: ""
     };
   },
 
   methods: {
-  
     async showPosition(position) {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
       // console.log("geo", this.lat, this.lng);
 
-     const cityName = await this.$store.dispatch({
+      const cityName = await this.$store.dispatch({
         type: "getCityByCord",
         lat: this.lat,
         lng: this.lng
       });
 
-this.cityName = cityName
-      console.log('type',cityName);
-      
+      this.cityName = cityName;
+      console.log("type", cityName);
     }
   },
 
@@ -75,13 +73,11 @@ this.cityName = cityName
 
     // geolocation.getPosition();
 
-  
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
-      } else {
-        this.error = "Geolocation is not supported.";
-      }
-    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      this.error = "Geolocation is not supported.";
+    }
   }
 };
 </script>
