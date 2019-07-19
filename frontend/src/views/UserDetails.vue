@@ -11,7 +11,8 @@
 
       <modal ref="modal"></modal>
 
-      <button @click="openModal">Contact me</button>
+      <button v-if=" loggedUser && loggedUser._id === user._id">Edit</button>
+      <button @click="openModal" v-else>Contact me</button>
     </div>
 
     <div class="detailsMain">
@@ -58,6 +59,11 @@ export default {
         languages: []
       }
     };
+  },
+  computed: {
+    loggedUser() {
+      return this.$store.getters.loggedUser;
+    }
   },
   created() {
     const userId = this.$route.params.userId;
