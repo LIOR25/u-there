@@ -10,7 +10,10 @@ import AppNav from "@/components/AppNav.vue"
 export default {
   components: {
     AppNav
-  }  
+  },
+  // created() {
+  //   // this.store.dispatch('checkLoggedInUser')
+  // }  
 }
 </script>
 

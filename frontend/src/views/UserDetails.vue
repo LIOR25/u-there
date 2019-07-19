@@ -81,102 +81,102 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-.flex {
-  display: flex;
-}
+<style lang="scss" scoped src="@/styles/views/_UserDetails.scss">
+// .flex {
+//   display: flex;
+// }
 
-.mainContainer {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 155px;
+// .mainContainer {
+//   display: flex;
+//   justify-content: space-evenly;
+//   padding-top: 155px;
 
-  //  @include wrapper(400px);
-  //     border-right: 1px solid $box-shadow-gray;
-  //     border-left: 1px solid $box-shadow-gray;
-  //     min-height: calc(100vh - 70px);
-}
+//   //  @include wrapper(400px);
+//   //     border-right: 1px solid $box-shadow-gray;
+//   //     border-left: 1px solid $box-shadow-gray;
+//   //     min-height: calc(100vh - 70px);
+// }
 
-.detailsList {
-  // flex-direction: column;
+// .detailsList {
+//   // flex-direction: column;
 
-  //     border: 1px solid #2a6171;
-  //         border-radius: 7px;
-  //   box-shadow: 3px 3px 12px -1px #afa7a7;
+//   //     border: 1px solid #2a6171;
+//   //         border-radius: 7px;
+//   //   box-shadow: 3px 3px 12px -1px #afa7a7;
 
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+//   flex-direction: column;
+//   align-items: center;
+//   text-align: center;
 
-  border: 1px solid #2a6171;
-  border-radius: 7px;
-  box-shadow: 3px 3px 12px -1px #afa7a7;
-  object-fit: contain;
-  cursor: pointer;
-  min-height: 270px;
-  // background-color: rgb(100, 173, 81);
-  border-radius: 4px;
-  flex-basis: 200px;
-  flex-grow: 1;
-  margin: 17px 7px;
-  max-width: 400px;
-  max-height: 600px;
-  box-shadow: 0 0 2px #969696;
-  /* position: relative; */
-  margin-bottom: 200px;
-}
-button {
-  cursor: pointer;
-  font-size: 1rem;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0 2rem;
-  border-radius: 2.5rem;
-  border: none;
-  background: lightskyblue;
-  color: #fff;
-  font-weight: 600;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: background 0.14s ease;
-  transition: background 0.14s ease;
-  height: 3rem;
-  min-height: 3rem;
-  overflow: hidden;
-}
+//   border: 1px solid #2a6171;
+//   border-radius: 7px;
+//   box-shadow: 3px 3px 12px -1px #afa7a7;
+//   object-fit: contain;
+//   cursor: pointer;
+//   min-height: 270px;
+//   // background-color: rgb(100, 173, 81);
+//   border-radius: 4px;
+//   flex-basis: 200px;
+//   flex-grow: 1;
+//   margin: 17px 7px;
+//   max-width: 400px;
+//   max-height: 600px;
+//   box-shadow: 0 0 2px #969696;
+//   /* position: relative; */
+//   margin-bottom: 200px;
+// }
+// button {
+//   cursor: pointer;
+//   font-size: 1rem;
+//   line-height: 1rem;
+//   margin: 0;
+//   padding: 0 2rem;
+//   border-radius: 2.5rem;
+//   border: none;
+//   background: lightskyblue;
+//   color: #fff;
+//   font-weight: 600;
+//   -webkit-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+//   -webkit-transition: background 0.14s ease;
+//   transition: background 0.14s ease;
+//   height: 3rem;
+//   min-height: 3rem;
+//   overflow: hidden;
+// }
 
-.detailsMain {
-  //  flex-direction: column;
+// .detailsMain {
+//   //  flex-direction: column;
 
-  //   border: 1px solid #2a6171;
-  //       border-radius: 7px;
-  // box-shadow: 3px 3px 12px -1px #afa7a7;
+//   //   border: 1px solid #2a6171;
+//   //       border-radius: 7px;
+//   // box-shadow: 3px 3px 12px -1px #afa7a7;
 
-  flex-direction: column;
+//   flex-direction: column;
 
-  border: 1px solid #2a6171;
-  border-radius: 7px;
-  box-shadow: 3px 3px 12px -1px #afa7a7;
-  /* width: 23%; */
-  object-fit: contain;
-  cursor: pointer;
-  min-height: 270px;
-  // background-color: rgb(100, 173, 81);
-  border-radius: 4px;
-  flex-basis: 200px;
-  flex-grow: 1;
-  margin: 17px 7px;
-  max-width: 400px;
-  max-height: 600px;
-  box-shadow: 0 0 2px #969696;
-  /* position: relative; */
-  margin-bottom: 200px;
-}
+//   border: 1px solid #2a6171;
+//   border-radius: 7px;
+//   box-shadow: 3px 3px 12px -1px #afa7a7;
+//   /* width: 23%; */
+//   object-fit: contain;
+//   cursor: pointer;
+//   min-height: 270px;
+//   // background-color: rgb(100, 173, 81);
+//   border-radius: 4px;
+//   flex-basis: 200px;
+//   flex-grow: 1;
+//   margin: 17px 7px;
+//   max-width: 400px;
+//   max-height: 600px;
+//   box-shadow: 0 0 2px #969696;
+//   /* position: relative; */
+//   margin-bottom: 200px;
+// }
 
-.userSmallImg {
-  width: 50px;
-  height: 50px;
-}
+// .userSmallImg {
+//   width: 50px;
+//   height: 50px;
+// }
 </style>

@@ -3,7 +3,7 @@ import UserService from '../services/user.service.js';
 export default {
   state: {
     users: [],
-    loggedUser: null
+    loggedUser: UserService.getLoggedUser()
 
     // filterBy: {
     //     name: "",
@@ -45,6 +45,8 @@ export default {
     },
     updateLoggedInUser(state, { loggedInUser }) {
       state.loggedUser = loggedInUser;
+
+      UserService.setLoggedUserSessionStorage(loggedInUser);
     },
     updateLoggedInUserId(state, { loggedInUser }) {
       state.loggedInUserId = loggedInUser._id;

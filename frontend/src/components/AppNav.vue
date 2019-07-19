@@ -10,7 +10,9 @@
       <li>
         <router-link to="/signin" v-if="!isLoggedUser">Sign in</router-link>
       </li>
-
+        <!-- <li>
+        <router-link :to="`/inbox/${loggedUser._id}/chats`" v-if="isLoggedUser">Inbox</router-link>
+      </li> -->
       <li>
         <router-link to="/user/edit/u1" v-if="isLoggedUser">User Profile</router-link>
 
@@ -20,7 +22,7 @@
         <router-link to="/">Home</router-link>
       </li>
       <li>
-        <h4 v-if="isLoggedUser">Wellcome {{isLoggedUser.firstName}}</h4>
+        <h4 v-if="isLoggedUser">Welcome {{isLoggedUser.firstName}}</h4>
       </li>
 
       <!-- <li>

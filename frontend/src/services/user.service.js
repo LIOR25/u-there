@@ -11,8 +11,10 @@ export default {
 
   login,
   logout,
-  signup
+  signup,
   // getUsers
+  getLoggedUser,
+  setLoggedUserSessionStorage
 };
 
 // const BASE_URL = 'user/';
@@ -48,6 +50,8 @@ export default {
 
 //   return userToAdd;
 // }
+
+var loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
 
 async function update() {}
 // from yaron
@@ -110,6 +114,13 @@ function logout() {
   HttpService.ajax('api/auth/logout', 'post').then(res => console.log(res));
 }
 
+function getLoggedUser() {
+  return loggedUser;
+}
+
+function setLoggedUserSessionStorage(loggedUser) {
+  sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+}
 // function getUsers() {
 //   HttpService.ajax('api/user')
 //     .then(res => console.log(res))
