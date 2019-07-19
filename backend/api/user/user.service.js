@@ -5,6 +5,7 @@ module.exports = {
   query,
   getById,
   getByEmail,
+  // getActivitiesByCity,
   // remove,
   // update,
   add
@@ -21,6 +22,10 @@ async function query(filterBy = {}) {
 
   if (filterBy.cityName) {
     criteria.currCity = filterBy.cityName;
+  }
+
+  if (filterBy.activityName) {
+    criteria.activities = { $in: [filterBy.activityName] }
   }
 
   const collection = await dbService.getCollection('user');
@@ -43,6 +48,20 @@ async function getById(userId) {
     throw err;
   }
 }
+
+// async function getActivitiesByCity(city){
+//   console.log('city from 53 ',city)
+//   const collection = await dbService.getCollection('user');
+//   try {
+//     //db.getCollection('user').find({currCity:"Ramat Gan"})
+//     const users = await collection.find({ "currCity": city }).toArray();
+//     console.log(users)
+//     return users;
+//   } catch (err) {
+//     console.log(`ERROR: while finding citycitycitycity ${city}`);
+//     throw err;
+//   }
+// }
 
 // async function getById(toyId) {
 //     const collection = await dbService.getCollection('toy');

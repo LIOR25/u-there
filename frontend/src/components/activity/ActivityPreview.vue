@@ -12,12 +12,12 @@
 <script>
 export default {
   name: "TheActivityPreview",
-  props: ["activity"],
+  props: ["activity", "cityName"],
   methods: {
     goToActivity() {
       this.$router.push({
         path: `/activity/${this.activity.name}`,
-        // query: { activities: "Drink coffee with a friend,Walk,Run" }
+        query: { cityName : this.cityName}
         // query: { fromSearchBox: "0" }
       });
     }

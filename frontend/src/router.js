@@ -11,6 +11,11 @@ import UserDetails from './views/UserDetails.vue';
 import EditUser from './views/EditUser.vue';
 import LoginOrSign from './views/LoginOrSign.vue';
 
+import ActivityView from './views/ActivityView.vue';
+
+
+
+
 Vue.use(Router);
 
 export default new Router({
@@ -37,6 +42,11 @@ export default new Router({
       path: '/city/:cityName',
       name: 'city-view',
       component: CityView
+    },
+    {
+      path: '/activity/:activityName',
+      name: 'activity-view',
+      component: ActivityView
     },
     {
       path: '/user/edit/:userId?',

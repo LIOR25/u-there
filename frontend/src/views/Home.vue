@@ -9,7 +9,7 @@
 <h2>welcome you are in {{cityName}}</h2>
 
  <div class="activities">
-     <ActivityList></ActivityList>
+     <ActivityList :cityName="cityName"></ActivityList>
     </div>
 
     <div class="users">
@@ -58,7 +58,8 @@ export default {
       });
 
 this.cityName = cityName
-      console.log('type',cityName);
+      // console.log('type',cityName);
+      // this.$store.dispatch({type:"loadActivitiesByCity", city: this.cityName});
       
     }
   },
@@ -78,8 +79,9 @@ this.cityName = cityName
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
     this.$store.dispatch("loadCities");
     this.$store.dispatch("loadUsers");
+  
     this.$store.dispatch("loadActivities");
-
+// 
     // console.log(this.$store.state);
 
     // geolocation.getPosition();
@@ -90,6 +92,8 @@ this.cityName = cityName
       } else {
         this.error = "Geolocation is not supported.";
       }
+
+       
     
   }
 };

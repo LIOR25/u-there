@@ -7,7 +7,7 @@ export default {
     },
     getters: {
         activities(state) {
-            console.log('state.activities',state.activities);
+            // console.log('state.activities',state.activities);
             
             return state.activities;
         }
@@ -20,9 +20,19 @@ export default {
     actions: {
         async loadActivities(context) {
             let activities = await ActivityService.query()
-            console.log('activitystore',activities);
+            // console.log('activitystore',activities);
             
             context.commit({ type: 'setActivities', activities })
+        },
+
+
+
+        
+        async loadActivityByCity(context, { filterBy }) {
+            let activities = await ActivityService.query(filterBy);
+            // console.log(users);
+
+            context.commit({ type: 'setActivities', activities });
         },
         // async loadCitiesByFilters(context, { filterBy }) {
         //     let cities = await CityService.query(filterBy);
