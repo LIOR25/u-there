@@ -36,12 +36,16 @@
         <p>rating: {{user.reviews[0].rating}}</p>
       </div>
     </div>
+  <ReviewAdd  @saveReview="saveReview" :userId="user"></ReviewAdd>
   </div>
+
+
 </template>
 
 
 <script>
 import modal from "../components/user/Modal.vue";
+import ReviewAdd from '../components/review/ReviewAdd.vue';
 
 export default {
   name: "userDetails",
@@ -68,14 +72,20 @@ export default {
         );
       else this.$router.push("/user");
     });
+    console.log(this.user);
+    
   },
   methods: {
     openModal() {
       this.$refs.modal.show();
-    }
+    },
+  saveReview(){}
+
+
   },
   components: {
-    modal
+    modal,
+    ReviewAdd
   }
 };
 </script>
@@ -179,4 +189,8 @@ export default {
 //   width: 50px;
 //   height: 50px;
 // }
+
+
+
+
 </style>
