@@ -1,6 +1,6 @@
 const express = require('express');
 // TODO MIDDLEWARE
-const { getUser, getUsers, deleteUser } = require('./user.controller')
+const { getUser, getUsers, deleteUser} = require('./user.controller')
 const router = express.Router();
 
 

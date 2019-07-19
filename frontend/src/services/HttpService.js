@@ -6,7 +6,8 @@ var axios = Axios.create({
   withCredentials: true
 });
 
-async function ajax(endpoint, method = 'get', data = null, params = null) {
+async function ajax(endpoint, method = 'get', data = null, params ) {
+  console.log('ppp', endpoint, method, data, params)
   //   if (data) var { params } = data;
   //   console.log(' in ajax', params);
 

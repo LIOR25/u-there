@@ -3,10 +3,11 @@ import HttpService from './HttpService';
 export default {
   query,
   getById,
-  // add,
+  // add, 
   update,
   // getById,
   // update
+  queryActivities,
 
   login,
   logout,
@@ -64,6 +65,14 @@ async function query(filterBy = {}) {
   console.log(filterBy);
 
   const users = await HttpService.ajax('api/user', 'get', null, filterBy);
+  return users;
+}
+
+
+async function queryActivities(city) {
+  console.log('eze mashho ',city);
+
+  const users = await HttpService.ajax('api/user/activities', 'get', null, city);
   return users;
 }
 

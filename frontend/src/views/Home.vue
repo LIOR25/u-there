@@ -6,7 +6,12 @@
       <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
-    <h2>welcome you are in {{cityName}} thu</h2>
+<h2>welcome you are in {{cityName}}</h2>
+
+ <div class="activities">
+     <ActivityList :cityName="cityName"></ActivityList>
+    </div>
+
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>
@@ -23,6 +28,7 @@ import AppNav from "@/components/AppNav.vue";
 import MainSearch from "@/components/MainSearch.vue";
 import CityList from "@/components/city/CityList.vue";
 import UserList from "@/components/user/UserList.vue";
+import ActivityList from "@/components/activity/ActivityList.vue";
 
 // import geolocation from '@/services/geolocation.service.js'
 
@@ -50,15 +56,18 @@ export default {
         lng: this.lng
       });
 
-      this.cityName = cityName;
-      console.log("type", cityName);
+this.cityName = cityName
+      // console.log('type',cityName);
+      // this.$store.dispatch({type:"loadActivitiesByCity", city: this.cityName});
+      
     }
   },
 
   components: {
     CityList,
     UserList,
-    MainSearch
+    MainSearch,
+    ActivityList
   },
   computed: {
     allUsers() {
@@ -69,15 +78,22 @@ export default {
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
     this.$store.dispatch("loadCities");
     this.$store.dispatch("loadUsers");
+  
+    this.$store.dispatch("loadActivities");
+// 
     // console.log(this.$store.state);
 
     // geolocation.getPosition();
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
-    } else {
-      this.error = "Geolocation is not supported.";
-    }
+  
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      } else {
+        this.error = "Geolocation is not supported.";
+      }
+
+       
+    
   }
 };
 </script>
