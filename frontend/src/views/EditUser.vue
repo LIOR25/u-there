@@ -32,6 +32,12 @@
           <input type="text" v-model="user.languages" required />
         </div>
 
+        <div>
+          <label>Profile picture:</label>
+          <input @change="uploadImg($event)" type="file" />
+        </div>
+        <!-- <upload-image :profilePic="user.profilePic" @setProfilePic="setProfilePic"/> -->
+
         <!-- <button>{{btnText}}</button> -->
         <button class="btnUpdateUser">Update</button>
       </form>
@@ -42,6 +48,7 @@
 
 <script>
 import UserService from "../services/user.service.js";
+import CloudinaaryService from "../services/CloudinaryService.js";
 
 export default {
   name: "EditUser",
@@ -52,7 +59,8 @@ export default {
         email: "",
         firstName: "",
         lastName: "",
-        currCity: ""
+        currCity: "",
+        newImg: ""
       }
     };
   },
@@ -81,9 +89,11 @@ export default {
         type: "updateUser",
         user: this.user
       });
-      console.log(updatedUser);
-
       this.$router.push(`/user/${this.user._id}`);
+    },
+    async uploadImg(event) {
+      const file = await CloudinaaryService.uploadImg(event);
+      this.user.newImg = file.url;
     }
   },
   computed: {

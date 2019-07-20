@@ -116,6 +116,8 @@ export default {
     // },
     async updateUser(context, { user }) {
       const updatedUser = await UserService.update(user);
+      console.log('store',user.newImg);
+      
       // console.log(updatedUser);
       // this.loadUsers;
       // console.log(context.state);

@@ -97,16 +97,10 @@ export default {
       this.user = await UserService.getById(userId);
       console.log("this.user", this.user);
     }
-
-
   },
   components: {
     modal,
     ReviewAdd
-  
-  },
-  components: {
-    modal
   },
   watch: {
     "$route.params.userId": function() {

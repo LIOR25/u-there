@@ -81,8 +81,6 @@ async function getByEmail(email) {
   const collection = await dbService.getCollection('user');
   try {
     const user = await collection.findOne({ email });
-    console.log(user);
-
     return user;
   } catch (err) {
     console.log(`ERROR: while finding user ${email}`);
@@ -115,7 +113,8 @@ async function update(user) {
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
-          currCity: user.currCity
+          currCity: user.currCity,
+          img_url: user.newImg
         }
       }
     );
