@@ -11,7 +11,9 @@
 
       <modal ref="modal"></modal>
 
-      <button @click="openModal">Contact me</button>
+      <!-- <button :to="`/user/edit/${user._id}`" v-if="loggedUser && loggedUser._id === user._id">Edit</button> -->
+      <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
+      <button @click="openModal" v-else>Contact me</button>
     </div>
 
     <div class="detailsMain">
@@ -47,6 +49,7 @@
 import modal from "../components/user/Modal.vue";
 import ReviewAdd from '../components/review/ReviewAdd.vue';
 
+import UserService from "../services/user.service.js";
 export default {
   name: "userDetails",
   data() {
@@ -63,6 +66,11 @@ export default {
       }
     };
   },
+  computed: {
+    loggedUser() {
+      return this.$store.getters.loggedUser;
+    }
+  },
   created() {
     const userId = this.$route.params.userId;
     this.$store.dispatch({ type: "loadUsers" }).then(() => {
@@ -74,18 +82,36 @@ export default {
     });
     console.log(this.user);
     
+    this.loadUser();
   },
   methods: {
     openModal() {
       this.$refs.modal.show();
     },
-  saveReview(){}
+  saveReview(){},
+    goToEditUser() {
+      this.$router.push(`/user/edit/${this.user._id}`);
+    },
+    async loadUser() {
+      const userId = this.$route.params.userId;
+      this.user = await UserService.getById(userId);
+      console.log("this.user", this.user);
+    }
 
 
   },
   components: {
     modal,
     ReviewAdd
+  
+  },
+  components: {
+    modal
+  },
+  watch: {
+    "$route.params.userId": function() {
+      this.loadUser();
+    }
   }
 };
 </script>

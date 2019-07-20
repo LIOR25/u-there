@@ -1,6 +1,12 @@
 <template>
   <section class="activity-list">
-    <ActivityPreview v-for="(activity, idx) in activities" :key="idx" :activity="activity" :cityName="cityName"></ActivityPreview>
+    wefwefwefwe
+    <ActivityPreview
+      v-for="(activity, idx) in activities"
+      :key="idx"
+      :activity="activity"
+      :cityName="cityName"
+    ></ActivityPreview>
   </section>
 </template>
 
@@ -11,14 +17,13 @@ export default {
   name: "TheActivityList",
   props: ["cityName"],
   components: {
-  ActivityPreview
+    ActivityPreview
   },
-  created(){
-    
-   this.$store.dispatch({
+  created() {
+    this.$store.dispatch({
       type: "loadActivityByCity",
       filterBy: {
-        cityName: this.cityName,
+        cityName: this.cityName
       }
     });
   },

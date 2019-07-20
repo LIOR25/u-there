@@ -79,7 +79,7 @@ export default {
 
     //   context.commit({ type: 'setActivities', activities });
     // },
-    
+
     // async  loadActivitiesByCity(context, { filterBy }) {
     //   let users = await UserService.query(filterBy);
     //   // console.log(users);
@@ -94,16 +94,13 @@ export default {
       context.commit({ type: 'setUsers', users });
     },
 
-
-
-   
     // async  loadActivityByUsers(context, { filterBy }) {
     //   let users = await UserService.queryBy(filterBy);
     //   // console.log(users);
 
     //   context.commit({ type: 'setUsers', users });
     // },
-   
+
     // async addUser(context, { user }) {
     //   let addedUser = await UserService.add(user);
     //   context.commit({ type: 'addUser', addedUser });
@@ -117,11 +114,12 @@ export default {
     //     // context.commit({ type: 'updateLoggedInUser', addedUser });
     //   });
     // },
-    updateUser(context, { user }) {
-      return UserService.update(user).then(updatedUser => {
-        context.commit({ type: 'updateUser', updatedUser });
-        return updatedUser;
-      });
+    async updateUser(context, { user }) {
+      const updatedUser = await UserService.update(user);
+      // console.log(updatedUser);
+      // this.loadUsers;
+      // console.log(context.state);
+      return updatedUser;
     },
     async login(context, { userCred }) {
       const loggedInUser = await UserService.login(userCred);

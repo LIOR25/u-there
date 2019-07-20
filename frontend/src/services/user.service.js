@@ -3,7 +3,7 @@ import HttpService from './HttpService';
 export default {
   query,
   getById,
-  // add, 
+  // add,
   update,
   // getById,
   // update
@@ -53,7 +53,17 @@ export default {
 
 var loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
 
-async function update() {}
+async function update(user) {
+  console.log('user log in update userservice front: ', user);
+
+  const updatedUser = await HttpService.ajax(
+    `api/user/${user._id}`,
+    'put',
+    user
+  );
+  return updatedUser;
+}
+
 // from yaron
 // query: `${BASE_URL}${_getQueryString(filterBy)}`
 
@@ -68,16 +78,20 @@ async function query(filterBy = {}) {
   return users;
 }
 
-
 async function queryActivities(city) {
-  console.log('eze mashho ',city);
+  console.log('eze mashho ', city);
 
-  const users = await HttpService.ajax('api/user/activities', 'get', null, city);
+  const users = await HttpService.ajax(
+    'api/user/activities',
+    'get',
+    null,
+    city
+  );
   return users;
 }
 
 async function getById(userId) {
-  const user = await HttpService.ajax(`api/user/${userId}`);
+  const user = await HttpService.ajax(`api/user/${userId}`, 'get');
   return user;
 }
 
