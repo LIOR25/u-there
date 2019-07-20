@@ -3,14 +3,20 @@
     <header class="home-header">
       <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
 
-      <MainSearch class="welcome"  msg="Welcome to uThere" />
+      <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
 <h2 class="location">More users from {{cityName}}</h2>
+
+ Activities
+ <div class="activities">
+     <ActivityList :cityName="cityName"></ActivityList>
+    </div>
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>
 
+cities
     <div class="cities">
       <CityList></CityList>
     </div>
@@ -23,6 +29,7 @@ import AppNav from "@/components/AppNav.vue";
 import MainSearch from "@/components/MainSearch.vue";
 import CityList from "@/components/city/CityList.vue";
 import UserList from "@/components/user/UserList.vue";
+import ActivityList from "@/components/activity/ActivityList.vue";
 
 // import geolocation from '@/services/geolocation.service.js'
 
@@ -34,33 +41,33 @@ export default {
       error: "",
       lat: "",
       lng: "",
-      cityName: ''
+      cityName: ""
     };
   },
 
   methods: {
-  
     async showPosition(position) {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
       // console.log("geo", this.lat, this.lng);
 
-     const cityName = await this.$store.dispatch({
+      const cityName = await this.$store.dispatch({
         type: "getCityByCord",
         lat: this.lat,
         lng: this.lng
       });
 
-this.cityName = cityName
-      console.log('type',cityName);
-      
+      this.cityName = cityName;
+      // console.log('type',cityName);
+      // this.$store.dispatch({type:"loadActivitiesByCity", city: this.cityName});
     }
   },
 
   components: {
     CityList,
     UserList,
-    MainSearch
+    MainSearch,
+    ActivityList
   },
   computed: {
     allUsers() {
@@ -71,17 +78,18 @@ this.cityName = cityName
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
     this.$store.dispatch("loadCities");
     this.$store.dispatch("loadUsers");
+
+    this.$store.dispatch("loadActivities");
+    //
     // console.log(this.$store.state);
 
     // geolocation.getPosition();
 
-  
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
-      } else {
-        this.error = "Geolocation is not supported.";
-      }
-    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      this.error = "Geolocation is not supported.";
+    }
   }
 };
 </script>

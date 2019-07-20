@@ -9,17 +9,14 @@ module.exports = {
 
 
 async function query(filterBy = {}) {
-
     const criteria = {};
-    if (filterBy.txt) {
-        criteria.name = filterBy.txt
-    }
- 
-
-
+    // if (filterBy.txt) {
+    //     criteria.name = filterBy.txt
+    // }
     const collection = await dbService.getCollection('city')
     try {
-        const cities = await collection.find(criteria).toArray();
+        // const cities = await collection.find(criteria).toArray();
+        const cities = await collection.find().limit(4).toArray();
         return cities
     } catch (err) {
         console.log('ERROR: cannot find cities')
