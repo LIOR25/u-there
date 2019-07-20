@@ -11,7 +11,7 @@
       >vue-cli documentation</a>.-->
     </p>
     <div class="searchBlock">
-      <form class="searchBlockTop" @submit.prevent="load">
+      <!-- <form class="searchBlockTop" @submit.prevent="load">
         <div class="searchBlockContainer">
           <div class="SearchInputContainer">
             <input
@@ -29,7 +29,25 @@
           </div>
         </div>
         <button class="button">Search</button>
-      </form>
+      </form> -->
+
+
+
+            <form @submit.prevent="load">
+             <input
+              v-model="filterBy.cityName"
+              class="SearchInput"
+              type="text"
+              placeholder="Where are you going?"
+            />
+             <input
+              v-model="filterBy.activity"
+              class="SearchInput"
+              type="text"
+              placeholder="What would you like to do?"
+            />
+        <button class="button">Search</button>
+          </form>
     </div>
   </div>
 </template>

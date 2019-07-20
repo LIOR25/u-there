@@ -3,9 +3,9 @@
     <UserPreview v-for="user in usersToShow" :key="user._id" :user="user"></UserPreview>
     <!-- <router-link title="See all users" class="show-all" tag="div" to="/search?q="> --> 
  
-    <router-link title="See all users" class="show-all" tag="div"  :to="'/user/'">
+    <!-- <router-link title="See all users" class="show-all" tag="div"  :to="'/user/'">
         Show all
-      </router-link>
+      </router-link> -->
  
  
   </section>
