@@ -1,7 +1,7 @@
 <template>
   <div class="MainSearch">
     <h1>{{ msg }}</h1>
-    <p>
+    <p class="subheader">
       Meet people who love the some activities as you all over the world!
       <!-- <br />check out the
       <a
@@ -20,15 +20,16 @@
               type="text"
               placeholder="Where are you going?"
             />
+            <button class="button">Search</button>
+          </div>
             <input
               v-model="filterBy.activity"
               class="SearchInput"
               type="text"
-              placeholder="What would you like to do?"
+              placeholder="Add an activity!"
             />
-          </div>
         </div>
-        <button class="button">Search</button>
+        
       </form>
     </div>
   </div>

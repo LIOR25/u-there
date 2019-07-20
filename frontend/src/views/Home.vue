@@ -6,12 +6,12 @@
       <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
-<h2 class="location">More users from {{cityName}}</h2>
 
  Activities
  <div class="activities">
      <ActivityList :cityName="cityName"></ActivityList>
     </div>
+<h2 class="location">More users from {{cityName}}</h2>
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>
