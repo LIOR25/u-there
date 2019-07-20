@@ -7,7 +7,7 @@ module.exports = {
   getByEmail,
   // getActivitiesByCity,
   // remove,
-  // update,
+  update,
   add
 };
 
@@ -25,7 +25,7 @@ async function query(filterBy = {}) {
   }
 
   if (filterBy.activityName) {
-    criteria.activities = { $in: [filterBy.activityName] }
+    criteria.activities = { $in: [filterBy.activityName] };
   }
 
   const collection = await dbService.getCollection('user');
@@ -98,6 +98,29 @@ async function add(user) {
     return user;
   } catch (err) {
     console.log(`ERROR: cannot insert user`);
+    throw err;
+  }
+}
+
+async function update(user) {
+  console.log('before mongo', user);
+
+  const collection = await dbService.getCollection('user');
+  try {
+    await collection.updateOne(
+      { _id: ObjectId(user._id) },
+      {
+        $set: {
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          currCity: user.currCity
+        }
+      }
+    );
+    return user;
+  } catch (err) {
+    console.log(`ERROR: cannot update user`);
     throw err;
   }
 }

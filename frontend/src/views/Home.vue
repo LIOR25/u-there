@@ -6,10 +6,10 @@
       <MainSearch class="welcome" msg="Welcome to uThere" />
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
-<h2>welcome you are in {{cityName}}</h2>
+    <h2>welcome you are in {{cityName}}</h2>
 
- <div class="activities">
-     <ActivityList :cityName="cityName"></ActivityList>
+    <div class="activities">
+      <ActivityList :cityName="cityName"></ActivityList>
     </div>
 
     <div class="users">
@@ -56,10 +56,9 @@ export default {
         lng: this.lng
       });
 
-this.cityName = cityName
+      this.cityName = cityName;
       // console.log('type',cityName);
       // this.$store.dispatch({type:"loadActivitiesByCity", city: this.cityName});
-      
     }
   },
 
@@ -78,22 +77,18 @@ this.cityName = cityName
     // this.$store.getters.cities.length || this.$store.dispatch("loadCities");
     this.$store.dispatch("loadCities");
     this.$store.dispatch("loadUsers");
-  
+
     this.$store.dispatch("loadActivities");
-// 
+    //
     // console.log(this.$store.state);
 
     // geolocation.getPosition();
 
-  
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
-      } else {
-        this.error = "Geolocation is not supported.";
-      }
-
-       
-    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      this.error = "Geolocation is not supported.";
+    }
   }
 };
 </script>
