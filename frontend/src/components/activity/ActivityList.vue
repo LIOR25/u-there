@@ -27,6 +27,9 @@ export default {
       // console.log('activitylist',this.$store.getters.activities);
       
       return this.$store.getters.activities;
+        // return this.$store.getters.activities.filter(activity => {
+        //   return 
+        // });
 
     }
   }
