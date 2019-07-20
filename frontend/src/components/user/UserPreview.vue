@@ -34,7 +34,7 @@ export default {
   /* width: 23%; */
   object-fit: contain;
   cursor: pointer;
-  min-height: 270px;
+  /* min-height: 270px; */
   background-color: rgb(100, 173, 81);
   border-radius: 4px;
   flex-basis: 200px;

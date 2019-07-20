@@ -8,15 +8,15 @@
     <!-- <button @click="myFunction()">Click Me</button> -->
 <h2>welcome you are in {{cityName}}</h2>
 
-
+ Activities
  <div class="activities">
      <ActivityList :cityName="cityName"></ActivityList>
     </div>
-
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>
 
+cities
     <div class="cities">
       <CityList></CityList>
     </div>

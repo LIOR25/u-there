@@ -5,7 +5,7 @@
       <h1>
         <span>{{activityName}}</span> 
       </h1>
-              <UserList :usersToShow="activityUsers"></UserList>
+              <UserList :usersToShow="activityUsers" ></UserList>
 
 <!-- 
       <div class="default-activities" v-if="!activity">
@@ -49,29 +49,11 @@ export default {
   },
   computed: {
     activityUsers() {
-      console.log("I am in hereeeeeeeee");
-      console.log('herokuuuu', this.$store.getters.users);
+      // console.log("I am in hereeeeeeeee");
+      // console.log('herokuuuu', this.$store.getters.users);
       return this.$store.getters.users
     },
-    // coffeeUsers() {
-    //   console.log(this.$store.getters.users);
-    //   return this.filterUsersByActivity("Drink coffee with a friend");
-    // },
-    // walkUsers() {
-    //   return this.filterUsersByActivity("Walk");
-    // },
-    // runUsers() {
-    //   return this.filterUsersByActivity("Run");
-    // },
-    // activityUsers() {
-    //   return this.filterUsersByActivity(this.activity);
-    // },
-    // diveUsers() {
-    //   return this.filterUsersByActivity("Dive");
-    // },
-    // flyUsers() {
-    //   return this.filterUsersByActivity("Fly");
-    // },
+  
   
   },
   methods: {
@@ -86,7 +68,7 @@ export default {
 
     this.cityName = this.$route.query.cityName;
 
-
+  
     // this.activityByCity = this.$route.query.activityByCity;
 
 

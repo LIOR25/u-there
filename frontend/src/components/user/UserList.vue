@@ -1,6 +1,13 @@
 <template>
   <section class="user-list">
     <UserPreview v-for="user in usersToShow" :key="user._id" :user="user"></UserPreview>
+    <!-- <router-link title="See all users" class="show-all" tag="div" to="/search?q="> --> 
+ 
+    <router-link title="See all users" class="show-all" tag="div"  :to="'/user/'">
+        Show all
+      </router-link>
+ 
+ 
   </section>
 </template>
 
@@ -24,7 +31,7 @@ export default {
 <style scoped>
 .user-list {
   max-width: 1000px;
-  min-height: 790px;
+  /* min-height: 790px; */
   padding: 34px 0;
   margin: 0 auto;
   /* background-color: gray; */

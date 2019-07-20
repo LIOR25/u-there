@@ -9,8 +9,7 @@ const activityService = require('./activity.service')
 
 
 const getActivities = async (req, res) => {
-    console.log('req params in get activities', req.query);
-
+    // console.log('req params in get activities', req.query);
     const activities = await activityService.query(req.query);
     res.send(activities);
 };
