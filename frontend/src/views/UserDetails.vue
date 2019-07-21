@@ -14,7 +14,7 @@
           <button @click="openModal" v-else>Contact me</button>
         </div>
       </div>
-      <modal ref="modal"></modal>
+      <modal :user="user" :loggedUser="loggedUser" ref="modal"></modal>
     </div>
 
     <div class="detailsMain">
@@ -68,7 +68,7 @@ export default {
   computed: {
     loggedUser() {
       return this.$store.getters.loggedUser;
-    }
+    },
   },
   created() {
     this.loadUser();

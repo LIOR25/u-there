@@ -4,12 +4,15 @@
       <div class="overlay"></div>
       <div class="modal_content">
         <h2>Your message</h2>
-        <form action="/action_page.php">
+        <form @submit.prevent="sendMsg">
+          <!-- this.usersIds -->
          choose when to meet: <input type="date" name="bday">
-       <input type="submit">
+         <!-- :newMsg="setType('dateReq')" -->
+       <!-- <input type="submit"> -->
+        <textarea rows="4" v-model="newMsg.txt" cols="40"></textarea>
+        <!-- :newMsg="setType(isDate)" -->
+        <button type="submit" class="send">Send</button>
       </form>
-        <textarea rows="4" cols="50"></textarea>
-        <button class="send" @click="send">Send</button>
         <button @click="hide" title="Close" class="close_modal">
           <i class="fas fa-times"></i>
         </button>
@@ -20,10 +23,23 @@
 
 <script>
 export default {
+  created() {
+    this.$store.dispatch("getLoggedUserId");
+    this.$store.dispatch('loadUserChatRooms')
+  },
   name: "modal",
+  props: ['user', 'loggedUser'],
   data() {
     return {
-      showModal: false
+      showModal: false,
+      newMsg: {
+        txt: '',
+        type: 'txt',
+        sentAt: '',
+        addedBy: this.loggedUser._id,
+        isRead: false
+      },
+      usersIds: [this.user._id, this.loggedUser._id]
     };
   },
   components: {},
@@ -31,12 +47,26 @@ export default {
     toggleAboutModal() {
       this.isModal = !this.isModal;
     },
-
     show() {
       this.showModal = true;
     },
     hide() {
       this.showModal = false;
+    },
+    sendMsg() {
+      this.newMsg.sentAt = Date.now();
+      let addedMsg = {...this.newMsg}
+      let chatDetails = {
+        addedMsg,
+        usersIds: [this.user._id, this.loggedUser._id]
+      }
+      this.$store.dispatch('createChatRoom', {chatDetails}) 
+    },
+    // setType(val) {
+    //   // this.newMsg.type = val;
+    // },
+    isDate() {
+
     }
   },
   computed: {}

@@ -15,11 +15,12 @@ module.exports = {
 async function query(userId) {
     // filterBy = {}
     var criteria = {};
-    userId = '5d2dc044ad1118a7f8aed365';
     if (userId) {
         // var temp = [userId]
         criteria.usersIds = { $in: [userId] }
     }
+    // console.log(criteria);
+    
     const collection = await dbService.getCollection('chatroom');
     try {
         // db.getCollection('chatroom').find({usersIds: {$in:['5d2dc044ad1118a7f8aed366']}})
@@ -65,8 +66,9 @@ async function add(chatroom) {
 async function addMsg(newMsg) {
     const msg = newMsg.msg
     const collection = await dbService.getCollection('chatroom');
-    try {
-        collection.update({ _id: newMsg.chatroomId }, { $push: { msgs: msg } })
+    
+    try { 
+        return await collection.updateOne({"_id":ObjectId(newMsg.chatroomId) }, { $push: { "msgs": msg } })
     } catch (err) {
         throw err;
     }
