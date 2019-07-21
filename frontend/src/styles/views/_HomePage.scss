@@ -1,4 +1,4 @@
-@import "../setup/variables";
+@import "../basics/font";
 
 .home-header {
     // background-position: top;
@@ -24,7 +24,7 @@
 }
 
 .welcome {
-  font-family: $primary-font-family;
+  // font-family: $primary-font-family;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,5 +40,5 @@
 .location {
   display: flex;
   justify-content: center;
-  font-family: $primary-font-family;
+  // font-family: $primary-font-family;
 }

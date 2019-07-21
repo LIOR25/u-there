@@ -18,3 +18,26 @@
 $font-open-sans: 'Open Sans', sans-serif;
 $font-open-sans-bold: 'Open Sans Bold', sans-serif;
 $font-open-sans-light: 'Open Sans Light', sans-serif;
+
+$primary-font-family: 'Raleway', 'sans-serif';
+
+
+
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-Bold.ttf');
+    font-weight: bold
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-ExtraBold.ttf');
+    font-weight: bolder;
+}
+
