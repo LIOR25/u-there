@@ -8,7 +8,8 @@ module.exports = {
   // getActivitiesByCity,
   // remove,
   update,
-  add
+  add,
+  addReview
 };
 
 async function query(filterBy = {}) {
@@ -121,6 +122,27 @@ async function update(user) {
     return user;
   } catch (err) {
     console.log(`ERROR: cannot update user`);
+    throw err;
+  }
+}
+
+async function addReview(theReview) {
+  console.log('before mongo addreview the review obj', theReview);
+
+  const collection = await dbService.getCollection('user');
+  try {
+    await collection.updateOne(
+      { _id: ObjectId(theReview.userToReviewId) },
+      {
+        $push: {
+          reviews: theReview.review
+        }
+      }
+    );
+
+    return theReview.review;
+  } catch (err) {
+    console.log(`ERROR: cannot add review to user`);
     throw err;
   }
 }
