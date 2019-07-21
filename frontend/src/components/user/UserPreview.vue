@@ -2,14 +2,12 @@
   <section class="user-preview" @click="goToDetails" v-if="user">
     <img :src="user.img_url" />
 
-      <div class="meet-count">{{user.meetCount}}</div>
     <div class="info-panel">
-            <!-- <p>ID: {{user._id}}</p> -->
-
       <p class="name">{{user.firstName}} <span class="city">{{user.currCity}}</span></p>
       <p>Rank: {{user.rank}}</p>
       <p>Activities: {{user.activities[0]}}</p>
       <p>Replies {{user.replies}}</p>
+      <div class="meet-count">meetings: {{user.meetCount}}</div>
 
     </div>
   </section>

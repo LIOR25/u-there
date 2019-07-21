@@ -107,7 +107,9 @@ export default {
 .main-container {
   padding-top: 50px;
 }
-
+h1{
+  padding-top: inherit
+}
 h2 {
   text-align: center;
 }

@@ -6,15 +6,13 @@
 
 .user-details {
   // padding-top: 150px;
-
-  @include wrapper(400px);
-  @include flex(row, center, center);
+  @include flex(row, center);
 
   // border-right: 1px solid $box-shadow-gray;
   // border-left: 1px solid $box-shadow-gray;
   min-height: calc(100vh - 70px);
 
-  button {
+   button {
     width: 100px;
     height: 50px;
     background: none;
@@ -22,12 +20,14 @@
     font-size: 1.5em;
     color: $clr5;
   }
+ 
   .top-fold {
     border: 1px solid $box-shadow-gray;
     //   border-bottom: 1px solid $box-shadow-gray;
-    padding: 50px 30px 10px 30px;
-    @include flex(column, center, center);
+    padding: 0 30px 10px 30px;
+    @include flex(column);
         @include button();
+
 
     .user-img {
       @include userImg(130px, 130px);
@@ -35,9 +35,10 @@
       background-repeat: no-repeat;
       border: 3px solid #fff;
       margin: 20px;
+      object-fit: cover;
     }
     .user-details-content {
-      @include flex(column, flex-start, center);
+      @include flex(column, flex-start);
       .user-info {
         text-align: center;
         @include flex(column);
@@ -47,7 +48,7 @@
           font-size: 1.4em;
           margin-bottom: 5px;
         }
-        h3 {
+        div {
           font-size: 1em;
           margin-bottom: 5px;
           font-family: $font-open-sans;
@@ -57,16 +58,23 @@
   }
   .detailsMain {
             @include button();
-
+background-color: #c7c5c5;
     border: 1px solid $box-shadow-gray;
-    padding: 50px 30px 10px 30px;
-    @include flex(column, center, center);
+    padding: 0 30px 10px 30px;
+    @include flex(column);
+    // background-color: #dcdada;
     p {
-      font-size: 1em;
-      font-weight: bold;
+      font-size: 14px;
+      // font-weight: bold;
       font-family: $font-open-sans;
+      color: black;
       // margin: 50px 10px;
     }
+    h2{
+            color: black;
+
+    }
+  
   }
 
   // @media (min-width: 550px) {
