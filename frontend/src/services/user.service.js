@@ -14,7 +14,9 @@ export default {
   signup,
   // getUsers
   getLoggedUser,
-  setLoggedUserSessionStorage
+  setLoggedUserSessionStorage,
+
+  addReview
 };
 
 // const BASE_URL = 'user/';
@@ -135,6 +137,18 @@ function getLoggedUser() {
 function setLoggedUserSessionStorage(loggedUser) {
   sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 }
+
+async function addReview(theReview) {
+  console.log('thereview obj in addreview userservice front: ', theReview);
+
+  const addedReview = await HttpService.ajax(
+    `api/user/addreview/${theReview.userToReviewId}`,
+    'put',
+    theReview
+  );
+  return addedReview;
+}
+
 // function getUsers() {
 //   HttpService.ajax('api/user')
 //     .then(res => console.log(res))

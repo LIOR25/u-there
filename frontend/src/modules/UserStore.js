@@ -116,8 +116,8 @@ export default {
     // },
     async updateUser(context, { user }) {
       const updatedUser = await UserService.update(user);
-      console.log('store',user.newImg);
-      
+      console.log('store', user.newImg);
+
       // console.log(updatedUser);
       // this.loadUsers;
       // console.log(context.state);
@@ -154,6 +154,15 @@ export default {
       UserService.logout();
 
       context.commit({ type: 'updateLoggedInUser', loggedInUser: null });
+    },
+    async addReview(context, { theReview }) {
+      const addedReview = await UserService.addReview(theReview);
+      console.log('addedreview', addedReview);
+
+      // console.log(updatedUser);
+      // this.loadUsers;
+      // console.log(context.state);
+      return updatedUser;
     }
   }
 };

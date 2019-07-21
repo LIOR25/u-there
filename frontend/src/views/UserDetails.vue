@@ -4,12 +4,12 @@
     <div class="top-fold">
       <img :src="user. img_url" alt class="user-img" />
       <div class="user-details-content">
-      <h1>{{user.firstName + " " + user.lastName}}</h1>
-      <h3>from: {{user.currCity}}</h3>
-      <h3>like to: {{user.activities[0]}}</h3>
-      <h3>languages: {{user.languages[0]}}</h3>
-      <!-- <h3>{{user._id}}</h3> -->
-</div>
+        <h1>{{user.firstName + " " + user.lastName}}</h1>
+        <h3>from: {{user.currCity}}</h3>
+        <h3>like to: {{user.activities[0]}}</h3>
+        <h3>languages: {{user.languages[0]}}</h3>
+        <!-- <h3>{{user._id}}</h3> -->
+      </div>
       <modal ref="modal"></modal>
 
       <!-- <button :to="`/user/edit/${user._id}`" v-if="loggedUser && loggedUser._id === user._id">Edit</button> -->
@@ -39,7 +39,7 @@
         <p>rating: {{user.reviews[0].rating}}</p>
       </div>
     </div>
-    <ReviewAdd @saveReview="saveReview" :userId="user"></ReviewAdd>
+    <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id"></ReviewAdd>
   </div>
 </template>
 
@@ -77,7 +77,14 @@ export default {
     openModal() {
       this.$refs.modal.show();
     },
-    saveReview() {},
+    async saveReview($event) {
+      console.log($event);
+      const addedReview = await this.$store.dispatch({
+        type: "addReview",
+        theReview: $event
+      });
+      console.log("added review after add:", addedReview);
+    },
     goToEditUser() {
       this.$router.push(`/user/edit/${this.user._id}`);
     },
