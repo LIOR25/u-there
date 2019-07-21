@@ -1,7 +1,5 @@
 
 
-
-
 // .mainContainer{
 //     // @include wrapper(400px);
 //     // border-right: 1px solid $box-shadow-gray;
@@ -47,7 +45,7 @@
     object-fit: contain;
     cursor: pointer;
     min-height: 270px;
-    // background-color: rgb(100, 173, 81);
+    background-color: rgb(100, 173, 81);
     border-radius: 4px;
     flex-basis: 200px;
     flex-grow: 1;
@@ -67,6 +65,8 @@
     border-radius: 2.5rem;
     border: none;
     background: rgb(34, 219, 9);
+        // background:$clr5;
+
     color: #fff;
     font-weight: 600;
     -webkit-user-select: none;

@@ -1,0 +1,30 @@
+html {
+    font-family: 'Open Sans';
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    cursor: pointer;
+}
+
+a:visited {
+    color:inherit;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+li button{
+        cursor: pointer;
+
+}

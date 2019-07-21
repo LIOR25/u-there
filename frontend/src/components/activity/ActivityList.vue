@@ -1,6 +1,5 @@
 <template>
   <section class="activity-list">
-    wefwefwefwe
     <ActivityPreview
       v-for="(activity, idx) in activities"
       :key="idx"
