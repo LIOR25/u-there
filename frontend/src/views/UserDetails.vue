@@ -39,16 +39,14 @@
         <p>rating: {{user.reviews[0].rating}}</p>
       </div>
     </div>
-  <ReviewAdd  @saveReview="saveReview" :userId="user"></ReviewAdd>
+    <ReviewAdd @saveReview="saveReview" :userId="user"></ReviewAdd>
   </div>
-
-
 </template>
 
 
 <script>
 import modal from "../components/user/Modal.vue";
-import ReviewAdd from '../components/review/ReviewAdd.vue';
+import ReviewAdd from "../components/review/ReviewAdd.vue";
 
 import UserService from "../services/user.service.js";
 export default {
@@ -73,23 +71,13 @@ export default {
     }
   },
   created() {
-    const userId = this.$route.params.userId;
-    this.$store.dispatch({ type: "loadUsers" }).then(() => {
-      if (userId)
-        this.user = JSON.parse(
-          JSON.stringify(this.$store.getters.userById(userId))
-        );
-      else this.$router.push("/user");
-    });
-    console.log(this.user);
-    
     this.loadUser();
   },
   methods: {
     openModal() {
       this.$refs.modal.show();
     },
-  saveReview(){},
+    saveReview() {},
     goToEditUser() {
       this.$router.push(`/user/edit/${this.user._id}`);
     },
@@ -210,8 +198,4 @@ export default {
 //   width: 50px;
 //   height: 50px;
 // }
-
-
-
-
 </style>

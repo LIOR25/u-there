@@ -2,15 +2,14 @@
   <section class="user-preview" @click="goToDetails" v-if="user">
     <img :src="user.img_url" />
 
+      <div class="meet-count">{{user.meetCount}}</div>
     <div class="info-panel">
             <!-- <p>ID: {{user._id}}</p> -->
 
-      <p>Name: {{user.firstName}}</p>
-      <p>City: {{user.currCity}}</p>
+      <p class="name">{{user.firstName}} <span class="city">{{user.currCity}}</span></p>
       <p>Rank: {{user.rank}}</p>
-      <p>Meet Count: {{user.meetCount}}</p>
       <p>Activities: {{user.activities[0]}}</p>
-      <p>Replies: {{user.replies}}</p>
+      <p>Replies {{user.replies}}</p>
 
     </div>
   </section>
@@ -29,81 +28,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.user-preview {
-  /* width: 23%; */
-  object-fit: contain;
-  cursor: pointer;
-  /* min-height: 270px; */
-  background-color: rgb(100, 173, 81);
-  border-radius: 4px;
-  flex-basis: 200px;
-  flex-grow: 1;
-  margin: 17px 7px;
-  max-width: 200px;
-  max-height: 200px;
-  box-shadow: 0 0 2px #969696;
-  /* position: relative; */
-  margin-bottom: 200px;
-}
+<style scoped lang="scss" src="@/styles/components/_UserPreview.scss">
 
-.user-preview:hover {
-  box-shadow: 0 0 8px #969696;
-}
-
-p {
-  margin: 5px 0;
-}
-
-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-}
-
-.info-panel {
-  padding: 10px;
-  text-align: left;
-  position: relative;
-  /* bottom: 50px; */
-  bottom: 20px;
-
-  /* ehud changed */
-
-  color: #333;
-  font-weight: 500;
-  font-weight: 700;
-  font-size: 21px;
-
-
- 
-
-
-}
-
-/* .info-panel .name {
-  color: #333;
-  font-weight: 500;
-  font-weight: 700;
-  font-size: 21px;
-} */
-
-.expand {
-  animation: expand 1s;
-}
-
-@keyframes expand {
-  to {
-    /* left: 50%; */
-    transform: scale(1.5);
-    opacity: 0.5;
-  }
-}
-
-@media (max-width: 670px) {
-  .user-preview {
-    flex-basis: 45%;
-  }
-}
 </style>
