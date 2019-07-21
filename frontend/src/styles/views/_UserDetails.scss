@@ -2,32 +2,30 @@
 @import '../setup/variables';
 @import '../basics/font';
 
-
-
 .user-details {
   // padding-top: 150px;
   @include flex(row, center);
 
   // border-right: 1px solid $box-shadow-gray;
   // border-left: 1px solid $box-shadow-gray;
-  min-height: calc(100vh - 70px);
+  // min-height: calc(100vh - 70px);
 
-   button {
+  button {
     width: 100px;
     height: 50px;
     background: none;
     border: none;
     font-size: 1.5em;
     color: $clr5;
+    margin: 0 auto;
   }
- 
+
   .top-fold {
     border: 1px solid $box-shadow-gray;
     //   border-bottom: 1px solid $box-shadow-gray;
-    padding: 0 30px 10px 30px;
+    padding: 0 30px 0 30px;
     @include flex(column);
-        @include button();
-
+    @include button();
 
     .user-img {
       @include userImg(130px, 130px);
@@ -57,8 +55,8 @@
     }
   }
   .detailsMain {
-            @include button();
-background-color: #c7c5c5;
+    @include button();
+    background-color: #c7c5c5;
     border: 1px solid $box-shadow-gray;
     padding: 0 30px 10px 30px;
     @include flex(column);
@@ -70,11 +68,46 @@ background-color: #c7c5c5;
       color: black;
       // margin: 50px 10px;
     }
-    h2{
-            color: black;
+    h2 {
+      color: black;
+    }
+
+    .review-add {
+      @include flex(column, center);
+      align-items: baseline;
+      // background-color: aqua;
+      border: 1px solid $box-shadow-gray;
+      text-align: center;
+      margin: 8px;
+      padding: 18px;
+
+      h2 {
+        color: black !important;
+      }
+// not working
+
+      input {
+        // width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+// not working
+
+      .button {
+        background-color: aqua;
+      }
+    }
+// not working
+    .form-content-container{
+            @include flex(row, center);
+                    background-color: aqua;
+
 
     }
-  
   }
 
   // @media (min-width: 550px) {
@@ -84,23 +117,6 @@ background-color: #c7c5c5;
   //     }
   // }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // .mainContainer{
 //     @include wrapper(400px);
