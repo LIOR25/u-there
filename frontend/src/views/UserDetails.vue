@@ -1,20 +1,20 @@
 <template>
-  <div class="user-details">
+  <div class="user-details container">
     <!-- <h1>This is userDetails page</h1> -->
     <div class="top-fold">
       <img :src="user. img_url" alt class="user-img" />
       <div class="user-details-content">
-        <h1>{{user.firstName + " " + user.lastName}}</h1>
-        <h3>from: {{user.currCity}}</h3>
-        <h3>like to: {{user.activities[0]}}</h3>
-        <h3>languages: {{user.languages[0]}}</h3>
-        <!-- <h3>{{user._id}}</h3> -->
-      </div>
-      <modal ref="modal"></modal>
+        <div class="user-info">
+          <h1>{{user.firstName + " " + user.lastName}}</h1>
+          <div>from: {{user.currCity}}</div>
+          <div>like to: {{user.activities[0]}}</div>
+          <div>languages: {{user.languages[0]}}</div>
 
-      <!-- <button :to="`/user/edit/${user._id}`" v-if="loggedUser && loggedUser._id === user._id">Edit</button> -->
       <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
       <button @click="openModal" v-else>Contact me</button>
+        </div>
+      </div>
+      <modal ref="modal"></modal>
     </div>
 
     <div class="detailsMain">

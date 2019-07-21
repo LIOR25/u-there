@@ -7,16 +7,19 @@
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
 
- Activities
+ <h2>Activities</h2>
  <div class="activities">
      <ActivityList :cityName="cityName"></ActivityList>
     </div>
-<h2 class="location">More users from {{cityName}}</h2>
+<!-- <h2 class="location">More users from {{cityName}}</h2> -->
+<h2 >Ready To Meet You </h2>
+
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>
 
-cities
+
+ <h2>cities</h2>
     <div class="cities">
       <CityList></CityList>
     </div>
