@@ -1,18 +1,16 @@
 <template>
   <section>
     <ul>
-        <li
-          v-for="(chatWithUser, idx) in pairingChatUsers"
-          :chat="chatWithUser.chat"
-          :userWith="chatWithUser.userWith"
-          :key="idx"
-        >
-          <chat-preview
-            :chat="chatWithUser.chat"
-            :userWith="chatWithUser.userWith"
-          ></chat-preview>
-            <router-link class="link" :to="`/inbox/:userId/${chatWithUser.chat._id}`">Read</router-link>
-        </li>
+      <li
+        v-for="(chatWithUser, idx) in pairingChatUsers"
+        :chat="chatWithUser.chat"
+        :userWith="chatWithUser.userWith"
+        :key="idx"
+        @click="openChat(chatWithUser.chat._id)"
+      >
+        <chat-preview :chat="chatWithUser.chat" :userWith="chatWithUser.userWith"></chat-preview>
+        <!-- <router-link class="link" :to="`/inbox/${userId}/${chatWithUser.chat._id}`">Read</router-link> -->
+      </li>
     </ul>
   </section>
 </template>
@@ -22,14 +20,17 @@ import ChatPreview from "./ChatPreview.vue";
 // import Chat from "./Chat.vue";
 export default {
   data() {
-    return {
-
-    };
+    return {};
   },
   methods: {
-
+    openChat(chatId) {
+      this.$router.push(`/inbox/${this.userId}/${chatId}`);
+    }
   },
   computed: {
+    userId() {
+      return this.$store.getters.loggedUser._id;
+    },
     userChats() {
       return this.$store.getters.userChats;
     },
@@ -46,19 +47,21 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("loadUserChatRooms");
-    // this.$store.dispatch('')
+    // this.$store.getters.loggedUser;
+    this.$store.dispatch("getLoggedUserId");
     // console.log(this.$store.state);
+    this.$store.dispatch("loadUserChatRooms");
   },
   components: {
-    ChatPreview,
+    ChatPreview
     // Chat
   }
 };
 </script>
 
 <style>
-ul, li {
+ul,
+li {
   list-style-type: none;
 }
 .link {

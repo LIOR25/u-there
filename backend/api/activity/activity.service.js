@@ -16,7 +16,7 @@ async function query(filterBy = {}) {
         // const activities = await collection.find(criteria).toArray();
         const activities = await collection.find().limit(4).toArray();
 
-        console.log('activities from servback', activities);
+        // console.log('activities from servback', activities);
     
 
         return activities

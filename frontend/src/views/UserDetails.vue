@@ -10,11 +10,11 @@
           <div>like to: {{user.activities[0]}}</div>
           <div>languages: {{user.languages[0]}}</div>
 
-      <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
-      <button @click="openModal" v-else>Contact me</button>
+          <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
+          <button @click="openModal" v-else>Contact me</button>
         </div>
       </div>
-      <modal ref="modal"></modal>
+      <modal :user="user" :loggedUser="loggedUser" ref="modal"></modal>
     </div>
 
     <div class="detailsMain">
@@ -32,11 +32,11 @@
       <div v-if="user.reviews.length">
         <p>Reviews:</p>
         <!-- <p>{{user.reviews}}</p> -->
-        <p>{{user.reviews[0].title}}</p>
-        <p>{{user.reviews[0].txt}}</p>
-        <p>addedBy :{{user.reviews[0].addedBy}}</p>
-        <p>createdAt :{{user.reviews[0].createdAt}}</p>
-        <p>rating: {{user.reviews[0].rating}}</p>
+        <p>Title: {{user.reviews[0].title}}</p>
+        <p>Comment: {{user.reviews[0].txt}}</p>
+        <p>Added By :{{user.reviews[0].addedBy}}</p>
+        <!-- <p>createdAt :{{user.reviews[0].createdAt}}</p> -->
+        <p>Rating: {{user.reviews[0].rating}}</p>
       </div>
     <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id"></ReviewAdd>
     </div>
@@ -68,7 +68,7 @@ export default {
   computed: {
     loggedUser() {
       return this.$store.getters.loggedUser;
-    }
+    },
   },
   created() {
     this.loadUser();
@@ -78,12 +78,12 @@ export default {
       this.$refs.modal.show();
     },
     async saveReview($event) {
-      console.log($event);
       const addedReview = await this.$store.dispatch({
         type: "addReview",
         theReview: $event
       });
       console.log("added review after add:", addedReview);
+      this.loadUser();
     },
     goToEditUser() {
       this.$router.push(`/user/edit/${this.user._id}`);

@@ -162,7 +162,7 @@ export default {
       // console.log(updatedUser);
       // this.loadUsers;
       // console.log(context.state);
-      return updatedUser;
+      return addedReview;
     }
   }
 };
