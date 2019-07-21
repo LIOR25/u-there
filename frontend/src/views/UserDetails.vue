@@ -10,7 +10,7 @@
       <h3>languages: {{user.languages[0]}}</h3>
       <!-- <h3>{{user._id}}</h3> -->
 </div>
-      <modal ref="modal"></modal>
+      <modal :user="user" :loggedUser="loggedUser" ref="modal"></modal>
 
       <!-- <button :to="`/user/edit/${user._id}`" v-if="loggedUser && loggedUser._id === user._id">Edit</button> -->
       <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
@@ -68,7 +68,7 @@ export default {
   computed: {
     loggedUser() {
       return this.$store.getters.loggedUser;
-    }
+    },
   },
   created() {
     this.loadUser();

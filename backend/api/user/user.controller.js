@@ -9,9 +9,9 @@ const getUsers = async (req, res) => {
 
 async function getUser(req, res) {
   const userId = req.params.userId;
-  console.log('getUser userId:', userId);
+  // console.log('getUser userId:', userId);
   const user = await userService.getById(userId);
-  console.log('user in get user user controller', user);
+  // console.log('user in get user user controller', user);
   res.send(user);
 }
 

@@ -4,7 +4,14 @@
       <li v-for="msg in chatRoom.msgs" :key="msg._id">{{msg.txt}}</li>
     </ul>
     <form class="send" @submit.prevent="addMsg(newMsg)">
-      <input v-model="newMsg.txt" :newMsg="setType('txt')" type="text" placeholder="Write something..." name id />
+      <input
+        v-model="newMsg.txt"
+        :newMsg="setType('txt')"
+        type="text"
+        placeholder="Write something..."
+        name
+        id
+      />
       <button type="submit">Send</button>
     </form>
   </section>
@@ -18,7 +25,7 @@ export default {
       chatPrms: null,
       newMsg: {
         _id: null,
-        addedBy: null, //will always be logged in user
+        addedBy: this.loggedInUserId, //will always be logged in user
         txt: null,
         type: null,
         sentAt: null,
@@ -29,8 +36,8 @@ export default {
   },
   methods: {
     addMsg(newMsg) {
-      newMsg.sentAt = Date.now()
-      let addedMsg = {...newMsg}      
+      newMsg.sentAt = Date.now();
+      let addedMsg = { ...newMsg };
       this.$store.dispatch("addMsg", { addedMsg });
       newMsg.txt = null;
     },
@@ -45,15 +52,15 @@ export default {
     chatWith() {
       return this.$store.getters.chatWith;
     },
-    // loggedInUser() {
-    //   return this.$store.getters.loggedInUser;
-    // }
+    loggedInUserId() {
+      return this.$store.getters.loggedInUserId;
+    }
   },
   created() {
     this.$route.params.chatRoomId;
     this.chatPrms = this.$route.params.chatRoomId;
+    this.$store.dispatch("getLoggedUserId");
     this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms });
-    // this.$store.dispatch("loadLoggedInUser");
   }
 };
 </script>

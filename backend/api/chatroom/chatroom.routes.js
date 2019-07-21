@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', getChatrooms)
 router.get('/:id', getChatroom)
 router.post('/', addChatroom)
-router.put('/:id', addMsg)
+router.put('/', addMsg)
 // router.delete('/:id', deleteUser)
 
 module.exports = router;
