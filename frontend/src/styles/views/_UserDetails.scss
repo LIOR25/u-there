@@ -13,6 +13,7 @@
   // border-right: 1px solid $box-shadow-gray;
   // border-left: 1px solid $box-shadow-gray;
   min-height: calc(100vh - 70px);
+
   button {
     width: 100px;
     height: 50px;
@@ -26,6 +27,8 @@
     //   border-bottom: 1px solid $box-shadow-gray;
     padding: 50px 30px 10px 30px;
     @include flex(column, center, center);
+        @include button();
+
     .user-img {
       @include userImg(130px, 130px);
       box-shadow: 0 0 1px 1px #333;
@@ -53,6 +56,8 @@
     }
   }
   .detailsMain {
+            @include button();
+
     border: 1px solid $box-shadow-gray;
     padding: 50px 30px 10px 30px;
     @include flex(column, center, center);
