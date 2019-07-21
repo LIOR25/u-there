@@ -1,6 +1,6 @@
 <template>
-  <section class="review-add">
-    <h1>Add Review</h1>
+  <section class="review-add container">
+    <h2>Add Review</h2>
     <form @submit.prevent="emitSaveReview">
       <div class="form-content-container">
         Title:
@@ -24,14 +24,11 @@
           required
         ></textarea>
         <!-- <button :disabled="invalid">Save</button> -->
-        <button>Save</button>
+        <button class="add-review">Save</button>
       </div>
     </form>
 
-    <hr />
-    <pre>
-                {{theReview.review}}
-            </pre>
+  <!-- {{theReview.review}} -->
   </section>
 </template>
 

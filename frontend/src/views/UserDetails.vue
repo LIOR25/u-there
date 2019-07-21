@@ -38,8 +38,8 @@
         <p>createdAt :{{user.reviews[0].createdAt}}</p>
         <p>rating: {{user.reviews[0].rating}}</p>
       </div>
-    </div>
     <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id"></ReviewAdd>
+    </div>
   </div>
 </template>
 
