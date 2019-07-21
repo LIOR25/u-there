@@ -99,6 +99,8 @@ img.logo {
   flex-direction: row;
   justify-content: space-between;
   z-index: 4;
+  // background-color: #209cee4f;
+  padding-bottom: 10px;
 }
 
 ul {

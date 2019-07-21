@@ -10,7 +10,7 @@
     // background: @include filter-gradient(#d8d0ef, #c1bfea, vertical);
     // background: @include background-image(linear-gradient(top, rgba(216,208,239,1) 0%, rgba(216,208,239,1) 1%, rgba(193,191,234,1) 81%, rgba(235,233,249,1) 100%));
     height: calc(100vh - 110px);
-    background-image: linear-gradient(top, rgb(75, 37, 97) 0%, rgba(41, 39, 68, 0.301) 25%, hsla(243, 51%, 83%, 0) 81%, rgba(75, 37, 97, 0.192) 90%, rgb(255, 255, 255) 95%, rgba(255, 255, 255, 1) 100%),
+    background-image: linear-gradient(top, #209cee00 0%, rgba(41, 39, 68, 0.301) 25%, hsla(243, 51%, 83%, 0) 81%, rgba(75, 37, 97, 0.192) 90%, #209cee4f 95%, #209cee4f 100%),
       url("../../assets/swing.jpg");
     // background-color: black;
     background-size: cover;
