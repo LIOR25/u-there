@@ -42,10 +42,10 @@ export default {
 
 <style scoped>
 .activity-list {
-  max-width: 1000px;
+  /* max-width: 1000px; */
   /* min-height: 790px; */
   padding: 34px 0;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   /* background-color: gray; */
   display: flex;
   flex-wrap: wrap;
