@@ -1,64 +1,70 @@
 <template>
   <section class="review-add">
-     <h1>Add Review</h1>            
-            <form @submit.prevent="emitSaveReview">
-            <div class="form-content-container">    
-            Full Name: <input ref="fullName" autofocus type="text" v-model="review.fullName" />
-            Rate: <select v-model="review.selected">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-            Read At: <input type="date" v-model="review.datePicked" />
-               Comment: <textarea v-model.trim="review.comment" placeholder="add multiple lines"></textarea>
-                <!-- <button :disabled="invalid">Save</button> -->
-                <button>Save</button>
-                </div>
-            </form>
-            
+    <h1>Add Review</h1>
+    <form @submit.prevent="emitSaveReview">
+      <div class="form-content-container">
+        Title:
+        <input ref="title" type="text" v-model="theReview.review.title" required />
+        Added By:
+        <input type="text" v-model="theReview.review.addedBy" required />
+        Rating:
+        <select v-model="theReview.review.rating" required>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <!-- Created At:
+        <input type="date" v-model="theReview.review.createdAt" />-->
+        Comment:
+        <textarea
+          v-model.trim="theReview.review.comment"
+          placeholder="add multiple lines"
+          required
+        ></textarea>
+        <!-- <button :disabled="invalid">Save</button> -->
+        <button>Save</button>
+      </div>
+    </form>
 
-            <hr />
-            <pre>
-                {{review}}
-            </pre>  
-</section>
+    <hr />
+    <pre>
+                {{theReview.review}}
+            </pre>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'review-add',
-  prop:["userId"],
+  name: "review-add",
+  props: ["userId"],
   data() {
     return {
+      theReview: {
         review: {
-        fullName: 'Your Name',
-        selected: '1',
-        datePicked: Date.now(),
-        comment: ''
+          title: "",
+          addedBy: "Your Name",
+          rating: "0",
+          createdAt: Date.now(),
+          comment: ""
+        },
+        userToReviewId: ""
       }
-     
-    }
+    };
   },
-mounted() {
-    console.log(this.$refs.fullName);
-
-    this.$refs.fullName.focus();
+  mounted() {
+    this.$refs.title.focus();
   },
 
   created() {
-      console.log('userid',this.userId);
-      
+    this.theReview.userToReviewId = this.userId;
   },
-  computed: {
-  
-  },
+  computed: {},
   methods: {
-   emitSaveReview() {
-      this.$emit('saveReview', this.review);
+    emitSaveReview() {
+      this.$emit("saveReview", this.theReview);
     }
   }
-  
-}
+};
 </script>

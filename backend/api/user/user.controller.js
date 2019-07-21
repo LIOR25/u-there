@@ -9,15 +9,11 @@ const getUsers = async (req, res) => {
 
 async function getUser(req, res) {
   const userId = req.params.userId;
-  console.log('getUser userId:', userId);
   const user = await userService.getById(userId);
-  console.log('user in get user user controller', user);
   res.send(user);
 }
 
 async function updateUser(req, res) {
-  console.log('updateduser func user controller req.body ', req.body);
-
   const user = await userService.update(req.body);
   res.send(user);
 }
@@ -34,10 +30,18 @@ async function deleteUser(req, res) {
 //   res.send(activities);
 // }
 
+async function addReview(req, res) {
+  console.log('addReview func user controller req.body ', req.body);
+
+  // const user = await userService.update(req.body);
+  // res.send(user);
+}
+
 module.exports = {
   getUser,
   getUsers,
   updateUser,
-  deleteUser
+  deleteUser,
+  addReview
   // getActivities
 };

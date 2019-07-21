@@ -39,7 +39,7 @@
         <p>rating: {{user.reviews[0].rating}}</p>
       </div>
     </div>
-    <!-- <ReviewAdd @saveReview="saveReview" :userId="user"></ReviewAdd> -->
+    <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id"></ReviewAdd>
   </div>
 </template>
 
@@ -77,7 +77,14 @@ export default {
     openModal() {
       this.$refs.modal.show();
     },
-    saveReview() {},
+    async saveReview($event) {
+      console.log($event);
+      const addedReview = await this.$store.dispatch({
+        type: "addReview",
+        theReview: $event
+      });
+      console.log("added review after add:", addedReview);
+    },
     goToEditUser() {
       this.$router.push(`/user/edit/${this.user._id}`);
     },
