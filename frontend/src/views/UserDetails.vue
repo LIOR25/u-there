@@ -1,14 +1,15 @@
 <template>
-  <div class="mainContainer">
+  <div class="user-details">
     <!-- <h1>This is userDetails page</h1> -->
-    <div class="detailsList">
+    <div class="top-fold">
+      <img :src="user. img_url" alt class="user-img" />
+      <div class="user-details-content">
       <h1>{{user.firstName + " " + user.lastName}}</h1>
-      <img :src="user. img_url" alt class="userSmallImg" />
       <h3>from: {{user.currCity}}</h3>
       <h3>like to: {{user.activities[0]}}</h3>
       <h3>languages: {{user.languages[0]}}</h3>
       <!-- <h3>{{user._id}}</h3> -->
-
+</div>
       <modal ref="modal"></modal>
 
       <!-- <button :to="`/user/edit/${user._id}`" v-if="loggedUser && loggedUser._id === user._id">Edit</button> -->
