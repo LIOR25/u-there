@@ -1,11 +1,13 @@
+@import '../styles/setup/variables';
+
 html {
     font-family: 'Open Sans';
 }
 
-img {
-    width: 100%;
-    height: auto;
-}
+// img {
+//     width: 100%;
+//     height: auto;
+// }
 
 * {
     box-sizing: border-box;
@@ -28,3 +30,10 @@ li button{
         cursor: pointer;
 
 }
+
+
+body{
+    // background-color: $clr5;
+    padding-top: 62px;
+}
+

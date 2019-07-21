@@ -3,22 +3,20 @@
 
 
 .user-preview {
-    /* width: 23%; */
-    object-fit: contain;
+  font-size: 14px;
+    // object-fit: contain;
     cursor: pointer;
-    min-height: 270px;
-    background-color: $primaryClr;
+    // min-height: 270px;
+    // background-color: $primaryClr;
     border-radius: 4px;
-    flex-basis: 210px;
+    // flex-basis: 210px;
     flex-grow: 1;
-    // margin: 17px 7px;
     max-width: 210px;
-    max-height: 200px;
-    font-family: $primary-font-family;
+    max-height: 304px;
+    font-family: $font-open-sans;
     box-shadow: 0 0 2px #969696;
-    /* position: relative; */
     margin-bottom: 200px;
-    color: white;
+    // color: white;
 }
 
 .user-preview:hover {
@@ -30,15 +28,15 @@ p {
     font-weight: normal;
 }
 
-.meet-count{
-    position: relative;
-    top: -170px;
-    left: 160px;
-    background: purple;
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 50px;
-}
+// .meet-count{
+//     position: relative;
+//     top: -170px;
+//     left: 160px;
+//     background: purple;
+//     display: inline-block;
+//     padding: 10px 14px;
+//     border-radius: 50px;
+// }
 
 .name {
     font-size: 1.2rem;
@@ -64,7 +62,8 @@ img {
     text-align: left;
     position: relative;
     /* bottom: 50px; */
-    bottom: 20px;
+    bottom: 22px;
+      font-size: 15px;
   
     /* ehud changed */
   

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="main-container">
+    <div class="main-container container">
 
       <h1>
         <span>{{activityName}}</span> 
@@ -107,7 +107,9 @@ export default {
 .main-container {
   padding-top: 50px;
 }
-
+h1{
+  padding-top: inherit
+}
 h2 {
   text-align: center;
 }

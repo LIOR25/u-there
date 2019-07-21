@@ -36,7 +36,7 @@ export default {
   flex-basis: 200px;
   flex-grow: 1;
   margin: 17px 7px;
-  max-width: 200px;
+  /* max-width: 200px; */
   max-height: 200px;
   box-shadow: 0 0 2px #969696;
   /* position: relative; */
