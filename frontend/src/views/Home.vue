@@ -7,20 +7,19 @@
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
 
- <h2>Activities</h2>
- <div class="activities">
-     <ActivityList :cityName="cityName"></ActivityList>
+    <div class="activities container">
+      <h2>Activities</h2>
+      <ActivityList :cityName="cityName"></ActivityList>
     </div>
-<!-- <h2 class="location">More users from {{cityName}}</h2> -->
-<h2 >Ready To Meet You </h2>
+    <!-- <h2 class="location">More users from {{cityName}}</h2> -->
 
-    <div class="users">
+    <div class="users container">
+      <h2>Ready To Meet You</h2>
       <UserList :usersToShow="allUsers"></UserList>
     </div>
 
-
- <h2>cities</h2>
-    <div class="cities">
+    <div class="cities container">
+    <h2>cities</h2>
       <CityList></CityList>
     </div>
   </div>
@@ -99,5 +98,4 @@ export default {
 
 
 <style lang="scss" scoped src="@/styles/views/_HomePage.scss">
-
 </style>

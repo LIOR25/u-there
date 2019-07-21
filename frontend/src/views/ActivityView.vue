@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="main-container">
+    <div class="main-container container">
 
       <h1>
         <span>{{activityName}}</span> 
