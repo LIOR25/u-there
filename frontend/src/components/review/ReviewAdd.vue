@@ -29,9 +29,6 @@
     </form>
 
     <hr />
-    <pre>
-                {{theReview.review}}
-            </pre>
   </section>
 </template>
 

@@ -10,8 +10,8 @@
           <div>like to: {{user.activities[0]}}</div>
           <div>languages: {{user.languages[0]}}</div>
 
-      <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
-      <button @click="openModal" v-else>Contact me</button>
+          <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
+          <button @click="openModal" v-else>Contact me</button>
         </div>
       </div>
       <modal ref="modal"></modal>
