@@ -19,7 +19,7 @@
         <input type="date" v-model="theReview.review.createdAt" />-->
         Comment:
         <textarea
-          v-model.trim="theReview.review.comment"
+          v-model.trim="theReview.review.txt"
           placeholder="add multiple lines"
           required
         ></textarea>
@@ -47,7 +47,7 @@ export default {
           addedBy: "Your Name",
           rating: "0",
           createdAt: Date.now(),
-          comment: ""
+          txt: ""
         },
         userToReviewId: ""
       }
