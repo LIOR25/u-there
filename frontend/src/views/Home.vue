@@ -11,7 +11,7 @@
  <div class="activities">
      <ActivityList :cityName="cityName"></ActivityList>
     </div>
-<h2 class="location">More users from {{cityName}}</h2>
+<!-- <h2 class="location">More users from {{cityName}}</h2> -->
     <div class="users">
       <UserList :usersToShow="allUsers"></UserList>
     </div>

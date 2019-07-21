@@ -1,181 +1,90 @@
-@import "../setup/mixins";
-@import "../setup/variables";
-@import "../basics/font";
+@import '../setup/mixins';
+@import '../setup/variables';
+@import '../basics/font';
 
 
 
 .user-details {
-    @include wrapper(400px);
-    border-right: 1px solid $box-shadow-gray;
-    border-left: 1px solid $box-shadow-gray;
-    min-height: calc(100vh - 70px);
-    .top-fold {
-        border-bottom: 1px solid $box-shadow-gray;
-        padding: 20px 30px 10px 30px;
-        @include flex(column, center, center);
-        .user-img {
-            @include userImg(230px, 230px);
-            box-shadow: 0 0 1px 1px #333;
-            background-repeat: no-repeat;
-            border: 3px solid #fff;
-            margin: 20px;
-        }
-        .user-details-content {
-            @include flex(column, flex-start, center);
-            .user-info {
-                text-align: center;
-                @include flex(column);
-                h2 {
-                    font-weight: bold;
-                    font-family: $font-open-sans;
-                    font-size: 1.4em;
-                    margin-bottom: 5px;
-                }
-                h3 {
-                    font-size: 1em;
-                    margin-bottom: 5px;
-                    font-family: $font-open-sans;
-                }
-            }
-            .btns-like-msg {
-                @include flex(row, center, center);
-                button {
-                    width: 50px;
-                    height: 50px;
-                    background: none;
-                    border: none;
-                    font-size: 1.5em;
-                }
-                i {
-                    font-size: 1em;
-                    color: #373866;
-                }
-                .likes-count {
-                    @include flex(row, flex-start, center);
-                    font-size: .9em; 
-                    i {
-                        color: #d04343;
-                    }
-                    span {
-                        position: relative;
-                        left: -13px;
-                        top: -1px;
-                    }
-                }
-            }
-        }
-    }
-    .user-trips {
-        h3 {
-            font-size: 1.225em;
-            font-weight: bold;
-            font-family: $font-open-sans;
-            margin: 50px 10px;
-        }
-        .user-trip-preview {
-            background-color: #fbfbfb;
-            box-shadow: 0 0 1px 1px $box-shadow-gray;
-            padding: 20px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            .preview-container {
-                @include flex(row, space-between, center);
-                h4 {
-                    font-family: $font-open-sans;
-                    font-weight: 600;
-                    font-size: 1.125em;
-                    margin-bottom: 5px;
-                }
-                button {
-                    width: 50px;
-                    height: 50px;
-                    background: none;
-                    border: none;
-                    font-size: 1.5em;
-                    i {
-                        color: $clr1;
-                        transition: .3s ease;
-                    }
-                }
-            }
-            .expand-container {
-                @include flex(row);
-                .member-list {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    grid-template-rows: 1fr repeat(min-content);
-                    h3 {
-                        grid-row: 1;
-                    }
-                    .user-item {
-                        grid-row-start: 2;
-                        padding: 10px 10px 10px 30px;
-                        @include flex(column, center, center);
-                        .user-img {
-                            @include userImg(50px, 50px);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .member-in, .pending-in {
-        margin-bottom: 30px;
-        padding: 20px;
-        h3 {
-            font-family: $font-open-sans;
-            font-weight: 600;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-       .member-list, .pending-list {
-        margin: 0 auto;
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(auto-fill, 220px);
-        grid-gap: 30px;
-        .trip-preview {
-            cursor: pointer;
-            width: 100%;
-            * {
-                margin-bottom: 5px;
-            }
-            .profile-img{
-                width: 100%;
-                height: 170px;
-                object-fit: cover;
-            }
-            p:nth-of-type(1) {
-                font-family: $font-open-sans-bold;
-                font-size: .9em;
-                color: $clr3;
-                text-transform: uppercase;
-            }
-            p:nth-of-type(2) {
-                font-family: $font-open-sans-bold;
-                font-size: 1.1em;
-            }
-            p:nth-of-type(3) {
-                font-family: $font-open-sans-light;
-                font-size: .9em;
-            }
-            .members-txt {
-                grid-column: span 15;
-                font-size: .8em;
-            }
-        }
-       }
-        
-    }
+  // padding-top: 150px;
 
-    @media (min-width: 550px) {
-        @include wrapper(500px);
-        .top-fold {
-            @include flex(row, center, center);
-        }
+  @include wrapper(400px);
+  @include flex(row, center, center);
+
+  // border-right: 1px solid $box-shadow-gray;
+  // border-left: 1px solid $box-shadow-gray;
+  min-height: calc(100vh - 70px);
+  button {
+    width: 100px;
+    height: 50px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: $clr5;
+  }
+  .top-fold {
+    border: 1px solid $box-shadow-gray;
+    //   border-bottom: 1px solid $box-shadow-gray;
+    padding: 50px 30px 10px 30px;
+    @include flex(column, center, center);
+    .user-img {
+      @include userImg(130px, 130px);
+      box-shadow: 0 0 1px 1px #333;
+      background-repeat: no-repeat;
+      border: 3px solid #fff;
+      margin: 20px;
     }
-  
+    .user-details-content {
+      @include flex(column, flex-start, center);
+      .user-info {
+        text-align: center;
+        @include flex(column);
+        h1 {
+          font-weight: bold;
+          font-family: $font-open-sans;
+          font-size: 1.4em;
+          margin-bottom: 5px;
+        }
+        h3 {
+          font-size: 1em;
+          margin-bottom: 5px;
+          font-family: $font-open-sans;
+        }
+      }
+    }
+  }
+  .detailsMain {
+    border: 1px solid $box-shadow-gray;
+    padding: 50px 30px 10px 30px;
+    @include flex(column, center, center);
+    p {
+      font-size: 1em;
+      font-weight: bold;
+      font-family: $font-open-sans;
+      // margin: 50px 10px;
+    }
+  }
+
+  // @media (min-width: 550px) {
+  //     @include wrapper(500px);
+  //     .top-fold {
+  //         @include flex(row, center, center);
+  //     }
+  // }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -186,42 +95,38 @@
 //     // border-left: 1px solid $box-shadow-gray;
 //     min-height: calc(100vh - 70px);
 
-
 //     display: flex;
 //     justify-content: space-evenly;
 //     padding-top: 155px;
 
 // }
 
-
-
-
 // .flex {
 //     display: flex;
 //   }
-  
+
 //   .mainContainer {
 //     display: flex;
 //     justify-content: space-evenly;
 //     padding-top: 155px;
-  
+
 //     //  @include wrapper(400px);
 //     //     border-right: 1px solid $box-shadow-gray;
 //     //     border-left: 1px solid $box-shadow-gray;
 //     //     min-height: calc(100vh - 70px);
 //   }
-  
+
 //   .detailsList {
 //     // flex-direction: column;
-  
+
 //     //     border: 1px solid #2a6171;
 //     //         border-radius: 7px;
 //     //   box-shadow: 3px 3px 12px -1px #afa7a7;
-  
+
 //     flex-direction: column;
 //     align-items: center;
 //     text-align: center;
-  
+
 //     border: 1px solid #2a6171;
 //     border-radius: 7px;
 //     box-shadow: 3px 3px 12px -1px #afa7a7;
@@ -262,38 +167,31 @@
 //     min-height: 3rem;
 //     overflow: hidden;
 //   }
-  
-//   .detailsMain {
-//     //  flex-direction: column;
-  
-//     //   border: 1px solid #2a6171;
-//     //       border-radius: 7px;
-//     // box-shadow: 3px 3px 12px -1px #afa7a7;
-  
-//     flex-direction: column;
-  
-//     border: 1px solid #2a6171;
-//     border-radius: 7px;
-//     box-shadow: 3px 3px 12px -1px #afa7a7;
-//     /* width: 23%; */
-//     object-fit: contain;
-//     cursor: pointer;
-//     min-height: 270px;
-//     // background-color: rgb(100, 173, 81);
-//     border-radius: 4px;
-//     flex-basis: 200px;
-//     flex-grow: 1;
-//     margin: 17px 7px;
-//     max-width: 400px;
-//     max-height: 600px;
-//     box-shadow: 0 0 2px #969696;
-//     /* position: relative; */
-//     margin-bottom: 200px;
-//   }
-  
-//   .userSmallImg {
-//     width: 50px;
-//     height: 50px;
-//   }
 
+// .detailsMain {
+//   //  flex-direction: column;
 
+//   //   border: 1px solid #2a6171;
+//   //       border-radius: 7px;
+//   // box-shadow: 3px 3px 12px -1px #afa7a7;
+
+//   flex-direction: column;
+
+//   border: 1px solid #2a6171;
+//   border-radius: 7px;
+//   box-shadow: 3px 3px 12px -1px #afa7a7;
+//   /* width: 23%; */
+//   object-fit: contain;
+//   cursor: pointer;
+//   min-height: 270px;
+//   // background-color: rgb(100, 173, 81);
+//   border-radius: 4px;
+//   flex-basis: 200px;
+//   flex-grow: 1;
+//   margin: 17px 7px;
+//   max-width: 400px;
+//   max-height: 600px;
+//   box-shadow: 0 0 2px #969696;
+//   /* position: relative; */
+//   margin-bottom: 200px;
+// }
