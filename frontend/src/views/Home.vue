@@ -7,6 +7,8 @@
     </header>
     <!-- <button @click="myFunction()">Click Me</button> -->
 
+    <h2>welcome you are in {{cityName}}</h2>
+
     <div class="activities container">
       <h2>Activities</h2>
       <ActivityList :cityName="cityName"></ActivityList>
@@ -19,7 +21,7 @@
     </div>
 
     <div class="cities container">
-    <h2>cities</h2>
+      <h2>cities</h2>
       <CityList></CityList>
     </div>
   </div>
