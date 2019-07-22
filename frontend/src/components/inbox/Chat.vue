@@ -1,7 +1,7 @@
 <template>
   <section class="chat">
     <li>
-      <router-link exact to="/inbox/:userId/chats">Back to Messages</router-link>
+      <router-link exact :to="`/inbox/${loggedInUserId}/chats`">Back to Messages</router-link>
     </li>
     <ul>
       <li v-for="msg in chatRoom.msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li>
