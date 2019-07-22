@@ -1,6 +1,6 @@
 <template>
   <section>
-    <ul>
+    <ul class="msg-prevs">
       <li
         v-for="(chatWithUser, idx) in pairingChatUsers"
         :chat="chatWithUser.chat"
@@ -60,11 +60,20 @@ export default {
 </script>
 
 <style>
-ul,
-li {
+ul, li{
   list-style-type: none;
+  padding-inline-start: 0;
 }
+
 .link {
   text-decoration: none;
 }
+
+.msg-prevs {
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 25px;
+
+}
+
 </style>

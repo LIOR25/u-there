@@ -20,7 +20,9 @@ export default {
 <style>
 .chat-img {
     height: 30px;
-    border-radius: 50%
+    border-radius: 50%;
+    width: 30px;
+    object-fit: cover;
 }
 
 </style>

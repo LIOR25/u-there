@@ -9,9 +9,7 @@ export default {
 
 var chatRooms;
 
-async function query(userId) {
-   console.log(userId);
-   
+async function query(userId) {   
     if (!userId) {
         chatRooms = await defaultChatRooms;
         return chatRooms;

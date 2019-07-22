@@ -1,11 +1,10 @@
 <template>
   <section class="wrapper">
-    <div class="side-bar">
+    <!-- <div class="side-bar">
       <p>I'm the side bar</p>
       <inbox-nav></inbox-nav>
-    </div>
+    </div>-->
     <div class="msg-container">
-      <p>I'm the container for msgs</p>
       <router-view></router-view>
     </div>
   </section>
@@ -25,10 +24,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .wrapper {
+  // text-align: center;
   padding-top: 60px;
-  display: grid;
-  grid-template-columns: 20% 80%;
+  /* display: grid;
+  grid-template-columns: 20% 80%; */
+  // width: 50vw;
+  padding-left: 500px;
 }
 </style>
