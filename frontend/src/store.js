@@ -7,6 +7,7 @@ import CityStore from './modules/CityStore.js';
 import UserStore from './modules/UserStore.js';
 import ChatStore from './modules/ChatStore.js';
 import ActivityStore from './modules/ActivityStore.js'
+import SocketStore from './modules/SocketStore.js'
 
 export default new Vuex.Store({
   state: {},
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     CityStore,
     UserStore,
     ChatStore,
-    ActivityStore
+    ActivityStore,
+    SocketStore
   }
 });

@@ -31,9 +31,9 @@ export default {
         chatWith(state) {
             return state.chatWith;
         },
-        msgs(state) {
-            return state.chatRoom.msgs
-        },
+        // msgs(state) {
+        //     return state.chatRoom.msgs
+        // },
         loggedInUserId(state) {
             return state.loggedInUserId;
         }
@@ -107,7 +107,7 @@ export default {
             console.log(context.state.chatRoom._id);
             
             chatRoomsService.addMsg(addedMsg, context.state.chatRoom._id).then(newMsg => {
-                context.commit({type: "addMsg", addedMsg})                
+                context.commit({type: "addMsg", addedMsg})              
                 return newMsg;
             })
         },
