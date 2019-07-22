@@ -40,6 +40,7 @@ export default {
       let addedMsg = { ...newMsg };
       this.$store.dispatch("addMsg", { addedMsg });
       newMsg.txt = null;
+      this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms });
     },
     setType(val) {
       this.newMsg.type = val;
