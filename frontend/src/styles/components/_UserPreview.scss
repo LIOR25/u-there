@@ -6,16 +6,18 @@
   font-size: 14px;
     // object-fit: contain;
     cursor: pointer;
+    max-width: 230px;
+    min-width: 230px;
     // min-height: 270px;
     // background-color: $primaryClr;
     border-radius: 4px;
     // flex-basis: 210px;
     flex-grow: 1;
-    max-width: 210px;
-    max-height: 304px;
+    // max-width: 210px;
+    // max-height: 304px;
     font-family: $font-open-sans;
     box-shadow: 0 0 2px #969696;
-    margin-bottom: 200px;
+    // margin-bottom: 200px;
     // color: white;
 }
 
