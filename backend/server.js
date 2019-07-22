@@ -17,7 +17,7 @@ const activityRoutes = require('./api/activity/activity.routes')
 
 
 const logger = require('./services/logger.service')
-
+const socketService = require('./services/socket.service')
 
 app.use(cookieParser())
 app.use(bodyParser.json());
@@ -46,6 +46,8 @@ app.use('/api/city', cityRoutes)
 app.use('/api/activity', activityRoutes)
 
 app.use('/api/chatroom', chatRoutes)
+
+socketService.setup(http);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')));

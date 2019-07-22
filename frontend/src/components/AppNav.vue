@@ -18,16 +18,21 @@
 
         
       </li>-->
+      
       <li>
         <router-link to="/">Home</router-link>
       </li>
-      <li>
+      <li v-if="isLoggedUser">
+        <router-link :to="`/inbox/${isLoggedUser._id}/chats`">
+        Inbox
+        </router-link>
+      </li>
+      <li>Welcome 
         <router-link
           :to="`/user/${isLoggedUser._id}`"
           v-if="isLoggedUser"
-        >Welcome {{isLoggedUser.firstName}}</router-link>
+        >{{isLoggedUser.firstName}}</router-link>
       </li>
-
       <!-- <li>
         <router-link to="/inbox/:userId/chats">Inbox</router-link>
       </li>-->
@@ -71,7 +76,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="@/styles/components/_AppNav.scss">>
+<style lang="scss" scoped src="@/styles/components/_AppNav.scss">
 
 
 </style>

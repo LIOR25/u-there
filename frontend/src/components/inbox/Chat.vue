@@ -1,9 +1,12 @@
 <template>
-  <section>
+  <section class="chat">
+    <li>
+      <router-link exact to="/inbox/:userId/chats">Back to Messages</router-link>
+    </li>
     <ul>
-      <li v-for="msg in chatRoom.msgs" :key="msg._id">{{msg.txt}}</li>
+      <li v-for="msg in chatRoom.msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li>
     </ul>
-    <form class="send" @submit.prevent="addMsg(newMsg)">
+    <form class="sendMsg" @submit.prevent="addMsg(newMsg)">
       <input
         v-model="newMsg.txt"
         :newMsg="setType('txt')"
@@ -25,24 +28,29 @@ export default {
       chatPrms: null,
       newMsg: {
         _id: null,
-        addedBy: this.loggedInUserId, //will always be logged in user
+        addedBy: null, //will always be logged in user
         txt: null,
         type: null,
         sentAt: null,
         isRead: false
       }
-      // loggedInUserId: '5d2dc3b3ad1118a7f8aed36c'
     };
   },
   methods: {
+    testing() {},
     addMsg(newMsg) {
       newMsg.sentAt = Date.now();
+      newMsg.addedBy = this.loggedInUserId;
       let addedMsg = { ...newMsg };
       this.$store.dispatch("addMsg", { addedMsg });
       newMsg.txt = null;
+      this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms });
     },
     setType(val) {
       this.newMsg.type = val;
+    },
+    whoSent(who) {
+      return who === this.loggedInUserId ? "byMe" : "byOther";
     }
   },
   computed: {
@@ -66,9 +74,23 @@ export default {
 </script>
 
 <style>
-.send {
-  /* position: absolute; */
-  bottom: 0;
-  /* width: 100%; */
+.sendMsg {
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+}
+
+.byMe {
+  text-align: right;
+}
+
+.byMe,
+.byOther {
+  font-size: 25px;
+}
+
+.chat {
+  padding-right: 200px;
+  width: 600px;
 }
 </style>
