@@ -1,7 +1,7 @@
 <template>
-<div v-if="userWith&&chat">
+<div class="prev" v-if="userWith&&chat">
     <img class="chat-img" :src="`${userWith.img_url}`" alt="user-img">
-    {{userWith.firstName}} {{userWith.lastName}}
+    <div class="prev-txt">{{userWith.firstName}} {{userWith.lastName}}</div>
 </div>
 </template>
 
@@ -19,10 +19,20 @@ export default {
 
 <style>
 .chat-img {
-    height: 30px;
+    height: 60px;
     border-radius: 50%;
-    width: 30px;
+    width: 60px;
     object-fit: cover;
+}
+.prev {
+    display: flex;
+    flex-basis: row;
+    margin-bottom: 5px;
+}
+
+.prev-txt {
+    padding-left: 10px;
+    line-height: 2.5;
 }
 
 </style>
