@@ -53,14 +53,15 @@ export default {
     hide() {
       this.showModal = false;
     },
-    sendMsg() {
+   async sendMsg() {
       this.newMsg.sentAt = Date.now();
       let addedMsg = {...this.newMsg}
       let chatDetails = {
         addedMsg,
         usersIds: [this.user._id, this.loggedUser._id]
       }
-      this.$store.dispatch('createChatRoom', {chatDetails}) 
+     await this.$store.dispatch('createChatRoom', {chatDetails}) 
+      this.hide()
     },
     // setType(val) {
     //   // this.newMsg.type = val;
