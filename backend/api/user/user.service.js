@@ -31,8 +31,11 @@ async function query(filterBy = {}) {
 
   const collection = await dbService.getCollection('user');
   try {
-    const users = await collection.find(criteria).toArray();
-    // const users = await collection.find().limit(4).toArray();
+    const users = await collection
+      .find(criteria)
+      .limit(4)
+      .toArray();
+
     return users;
   } catch (err) {
     console.log('ERROR: cannot find users');
