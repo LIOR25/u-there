@@ -72,7 +72,7 @@ export default {
             const loggedInUser = await userService.getLoggedUser()            
             const loggedUserId = loggedInUser._id
             context.commit({type: 'setLoggedInUser', loggedUserId})
-            const userChats = await chatRoomsService.query(loggedUserId)
+            const userChats = await chatRoomsService.query()
             context.commit({ type: 'setUserChats', userChats });
             var usersExceptMeIds = userChats.map(chat => chat.usersIds.filter(id => loggedUserId !== id));           
             var usersExceptMe = [];
