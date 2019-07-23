@@ -64,7 +64,7 @@ export default {
     },
     actions: {
         async getLoggedUserId(context) {
-            const loggedInUser = context.state.loggedUser;        
+            const loggedInUser = await userService.getLoggedUser();         
             const loggedUserId = loggedInUser._id;
             context.commit({type: 'setLoggedInUser', loggedUserId});
         },
