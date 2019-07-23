@@ -33,7 +33,7 @@ async function query(filterBy = {}) {
   try {
     const users = await collection
       .find(criteria)
-      .limit(4)
+      .limit(8)
       .toArray();
 
     return users;
