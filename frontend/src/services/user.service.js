@@ -136,7 +136,12 @@ async function getLoggedUser() {
 }
 
 function setLoggedUserSessionStorage(loggedUser) {
-  sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+  console.log(loggedUser);
+  if (loggedUser) sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+  else {
+    sessionStorage.removeItem('loggedUser');
+    // logout();
+  }
 }
 
 async function addReview(theReview) {
