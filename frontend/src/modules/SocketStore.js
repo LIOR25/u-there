@@ -16,7 +16,7 @@ export default {
     },
     actions: {
         chatJoin({commit}) {
-            socket.emit('chat join', 'Y')
+            socket.emit('chat join', /*user, chatroomId  */)
             socket.on('chat newMsg', msg=>commit({type: 'addMsg', msg }));
         },
         sendMsg(context, {txt}) {
