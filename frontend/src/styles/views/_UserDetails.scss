@@ -10,15 +10,31 @@
   // border-left: 1px solid $box-shadow-gray;
   // min-height: calc(100vh - 70px);
 
+  //Ehud commented:
+  // button {
+  //   width: 100px;
+  //   height: 50px;
+  //   background: none;
+  //   border: none;
+  //   font-size: 1.5em;
+  //   color: $clr5;
+  //   margin: 0 auto;
+  // }
+  //Ehud commented
+
+  //Ehud added:
   button {
-    width: 100px;
-    height: 50px;
-    background: none;
-    border: none;
-    font-size: 1.5em;
+    width: 150px;
+    height: 100px;
+    border-radius: 30px;
+    // background: none;
+    // border: none;
+    font-size: 2.5em;
     color: $clr5;
-    margin: 0 auto;
+    margin: 20px auto;
+    padding: 5px;
   }
+  //Ehud added
 
   .top-fold {
     border: 1px solid $box-shadow-gray;
@@ -26,7 +42,7 @@
     padding: 0 30px 0 30px;
     @include flex(column);
     @include button();
-
+    background-color: rgb(90, 117, 128);
     .user-img {
       @include userImg(130px, 130px);
       box-shadow: 0 0 1px 1px #333;
@@ -56,7 +72,7 @@
   }
   .detailsMain {
     @include button();
-    background-color: #c7c5c5;
+    background-color: rgb(140, 168, 204);
     border: 1px solid $box-shadow-gray;
     padding: 0 30px 10px 30px;
     @include flex(column);
@@ -84,7 +100,7 @@
       h2 {
         color: black !important;
       }
-// not working
+      // not working
 
       input {
         // width: 100%;
@@ -95,18 +111,16 @@
         border-radius: 4px;
         box-sizing: border-box;
       }
-// not working
+      // not working
 
       .button {
         background-color: aqua;
       }
     }
-// not working
-    .form-content-container{
-            @include flex(row, center);
-                    background-color: aqua;
-
-
+    // not working
+    .form-content-container {
+      @include flex(row, center);
+      background-color: aqua;
     }
   }
 
