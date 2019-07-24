@@ -1,22 +1,20 @@
 <template>
   <div class="home">
     <header class="home-header">
-      <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
-
-      <MainSearch class="welcome" msg="Welcome to uThere" />
+      <h1>Meet People with Similar Interests</h1>
+      <h3> All Over The World!</h3>
+      <MainSearch class="search-bar" msg="" />
     </header>
-    <!-- <button @click="myFunction()">Click Me</button> -->
 
-    <h2>welcome you are in {{cityName}}</h2>
+    <!-- <h2>welcome you are in {{cityName}}</h2> -->
 
     <div class="activities container">
-      <h2>Activities</h2>
+      <h2>Nearby Activities</h2>
       <ActivityList :cityName="cityName"></ActivityList>
     </div>
-    <!-- <h2 class="location">More users from {{cityName}}</h2> -->
 
     <div class="users container">
-      <h2>Ready To Meet You</h2>
+      <!-- <h2>Ready To Meet You</h2> -->
       <UserList :usersToShow="allUsers"></UserList>
     </div>
 
