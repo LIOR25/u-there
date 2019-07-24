@@ -7,8 +7,8 @@
         <div class="user-info">
           <h1>{{user.firstName + " " + user.lastName}}</h1>
           <div>from: {{user.currCity}}</div>
-          <div>like to: {{user.activities[0]}}</div>
-          <div>languages: {{user.languages[0]}}</div>
+          <!-- <div>like to: {{user.activities[0]}}</div> -->
+          <!-- <div>languages: {{user.languages[0]}}</div> -->
 
           <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
           <button @click="openModal" v-else>Contact me</button>
@@ -28,17 +28,25 @@
         consectetur libero inventore at rem,
         ad harum corporis.
       </p>
+      <p>I love to</p>
+      <div>like to: {{user.activities[0]}}</div>
+      <div>languages: {{user.languages[0]}}</div>
+
       <p>what we can do together:</p>
-      <div v-if="user.reviews.length">
+      <button @click="temp=!temp">Add Review</button>
+      <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id && temp"></ReviewAdd>
+
+      <!-- <div v-if="user.reviews.length">
         <p>Reviews:</p>
-        <!-- <p>{{user.reviews}}</p> -->
+        <p>{{user.reviews}}</p>
         <p>Title: {{user.reviews[0].title}}</p>
         <p>Comment: {{user.reviews[0].txt}}</p>
         <p>Added By :{{user.reviews[0].addedBy}}</p>
-        <!-- <p>createdAt :{{user.reviews[0].createdAt}}</p> -->
+        <p>createdAt :{{user.reviews[0].createdAt}}</p>
         <p>Rating: {{user.reviews[0].rating}}</p>
-      </div>
-    <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id"></ReviewAdd>
+      </div>-->
+
+      <ReviewList :reviewsToShow="user.reviews" v-if="user.reviews.length"></ReviewList>
     </div>
   </div>
 </template>
@@ -47,6 +55,7 @@
 <script>
 import modal from "../components/user/Modal.vue";
 import ReviewAdd from "../components/review/ReviewAdd.vue";
+import ReviewList from "../components/review/ReviewList.vue";
 
 import UserService from "../services/user.service.js";
 export default {
@@ -62,16 +71,18 @@ export default {
         img_url: "",
         currCity: "",
         languages: []
-      }
+      },
+      temp: false
     };
   },
   computed: {
     loggedUser() {
       return this.$store.getters.loggedUser;
-    },
+    }
   },
   created() {
     this.loadUser();
+    console.log(this.user.reviews);
   },
   methods: {
     openModal() {
@@ -96,7 +107,8 @@ export default {
   },
   components: {
     modal,
-    ReviewAdd
+    ReviewAdd,
+    ReviewList
   },
   watch: {
     "$route.params.userId": function() {

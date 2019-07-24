@@ -48,19 +48,13 @@ export default {
     return {
       loginCred: {},
       signupCred: {}
-      // msg: ""
     };
   },
-  // computed: {
-  //   msgs() {
-  //     return this.$store.getters.msgs;
-  //   }
-  // },
+
   methods: {
     async doLogin() {
       const cred = this.loginCred;
-      if (!cred.email || !cred.password)
-        return (this.msg = "Missing parameters");
+      if (!cred.email || !cred.password) return false;
       const loggedUser = await this.$store.dispatch({
         type: "login",
         userCred: cred
