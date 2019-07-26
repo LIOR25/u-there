@@ -7,8 +7,8 @@
         <div class="user-info">
           <h1>{{user.firstName + " " + user.lastName}}</h1>
           <div>from: {{user.currCity}}</div>
-          <div>like to: {{user.activities[0]}}</div>
-          <div>languages: {{user.languages[0]}}</div>
+          <!-- <div>like to: {{user.activities[0]}}</div> -->
+          <!-- <div>languages: {{user.languages[0]}}</div> -->
 
           <button @click="goToEditUser" v-if="loggedUser && loggedUser._id === user._id">Edit</button>
           <button @click="openModal" v-else>Contact me</button>
@@ -28,8 +28,13 @@
         consectetur libero inventore at rem,
         ad harum corporis.
       </p>
+      <p>I love to</p>
+      <div>like to: {{user.activities[0]}}</div>
+      <div>languages: {{user.languages[0]}}</div>
+
       <p>what we can do together:</p>
-      <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id"></ReviewAdd>
+      <button @click="temp=!temp">Add Review</button>
+      <ReviewAdd @saveReview="saveReview" :userId="user._id" v-if="user._id && temp"></ReviewAdd>
 
       <!-- <div v-if="user.reviews.length">
         <p>Reviews:</p>
@@ -66,7 +71,8 @@ export default {
         img_url: "",
         currCity: "",
         languages: []
-      }
+      },
+      temp: false
     };
   },
   computed: {

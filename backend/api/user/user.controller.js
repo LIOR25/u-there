@@ -32,6 +32,7 @@ async function deleteUser(req, res) {
 
 async function addReview(req, res) {
   console.log('addReview func user controller req.body ', req.body);
+  console.log('rew session user user ctrl backend', req.session);
 
   const addedReview = await userService.addReview(req.body);
   res.send(addedReview);

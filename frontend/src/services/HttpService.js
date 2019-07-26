@@ -6,12 +6,7 @@ var axios = Axios.create({
   withCredentials: true
 });
 
-async function ajax(endpoint, method = 'get', data = null, params ) {
-  // console.log('http req:', endpoint, method, data, params)
-
-  //   if (data) var { params } = data;
-  //   console.log(' in ajax', params);
-
+async function ajax(endpoint, method = 'get', data = null, params) {
   const res = await axios({
     url: `${BASE_URL}${endpoint}`,
     method,
