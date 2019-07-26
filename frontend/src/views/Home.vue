@@ -1,22 +1,23 @@
 <template>
   <div class="home">
     <header class="home-header">
-      <!-- <img alt="Vue logo" src="../assets/cover.png"> -->
-
-      <MainSearch class="welcome" msg="Welcome to uThere" />
+      <h1>Meet People with Similar Interests</h1>
+      <h3>All Over The World!</h3>
+      <MainSearch class="search-bar" msg />
     </header>
-    <!-- <button @click="myFunction()">Click Me</button> -->
 
-    <h2>welcome you are in {{cityName}}</h2>
+    <!-- <h2>welcome you are in {{cityName}}</h2> -->
 
     <div class="activities container">
-      <h2>Activities</h2>
+      <h2>Nearby Activities</h2>
       <ActivityList :cityName="cityName"></ActivityList>
     </div>
-    <!-- <h2 class="location">More users from {{cityName}}</h2> -->
 
     <div class="users container">
-      <h2>Ready To Meet You</h2>
+            <h2>Near you</h2>
+
+      <!-- <h2>Nearby users</h2> -->
+      <!-- <h2>Ready To Meet You</h2> -->
       <UserList :usersToShow="allUsers"></UserList>
     </div>
 
@@ -24,6 +25,13 @@
       <h2>cities</h2>
       <CityList></CityList>
     </div>
+
+
+      <div class="users container">
+            <h2>Top Reted Activities</h2>
+      <ActivityList :cityName="cityName"></ActivityList>
+    </div>
+
   </div>
 </template>
 
@@ -51,9 +59,12 @@ export default {
 
   methods: {
     async showPosition(position) {
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
+      // this.lat = position.coords.latitude;
+      // this.lng = position.coords.longitude;
       // console.log("geo", this.lat, this.lng);
+
+         this.lat = 32.109333;
+      this.lng =  34.855499;
 
       const cityName = await this.$store.dispatch({
         type: "getCityByCord",

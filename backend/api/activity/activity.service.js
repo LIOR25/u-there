@@ -13,11 +13,8 @@ async function query(filterBy = {}) {
   // }
   const collection = await dbService.getCollection('activity');
   try {
-    // const activities = await collection.find(criteria).toArray();
-    const activities = await collection
-      .find()
-      .limit(8)
-      .toArray();
+    const activities = await collection.find(criteria).toArray();
+    // const activities = await collection.find().limit(4).toArray();
 
     // console.log('activities from servback', activities);
 

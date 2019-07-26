@@ -1,9 +1,18 @@
 <template>
   <div class="MainSearch">
     <h1>{{ msg }}</h1>
-    <p class="subheader">Meet people who love the some activities as you all over the world!</p>
+    <p class="subheader">
+      <!-- Meet people who love the same activities as you all over the world! -->
+
+      <!-- <br />check out the
+      <a
+        href="https://cli.vuejs.org"
+        target="_blank"
+        rel="noopener"
+      >vue-cli documentation</a>.-->
+    </p>
     <div class="searchBlock">
-      <form @submit.prevent="load">
+      <!-- <form @submit.prevent="load">
         <input
           v-model="filterBy.cityName"
           class="SearchInput"
@@ -16,6 +25,23 @@
           type="text"
           placeholder="What would you like to do?"
         />
+        <button class="button">Search</button>
+      </form>-->
+
+      -->
+      <form @submit.prevent="load" class="form">
+        <input
+          v-model="filterBy.cityName"
+          class="SearchInput"
+          type="text"
+          placeholder="Where would you like to hangout?"
+        />
+        <!-- <input
+              v-model="filterBy.activity"
+              class="SearchInput"
+              type="text"
+              placeholder="What would you like to do?"
+        />-->
         <button class="button">Search</button>
       </form>
     </div>

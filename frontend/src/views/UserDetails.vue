@@ -20,13 +20,7 @@
     <div class="detailsMain">
       <h2>Hi There! Nice to meet you</h2>
       <p>
-        Lorem ipsum dolor sit amet
-        consectetur, adipisicing elit.
-        Illum similique quos veritatis
-        consequuntur molestias recusandae assumenda odit
-        sapiente officia eius id esse,
-        consectetur libero inventore at rem,
-        ad harum corporis.
+      Looking for people to Party with me in Tel Aviv.
       </p>
       <p>I love to</p>
       <div>like to: {{user.activities[0]}}</div>
