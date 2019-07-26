@@ -130,12 +130,18 @@ function logout() {
   HttpService.ajax('api/auth/logout', 'post').then(res => console.log(res));
 }
 
-function getLoggedUser() {
-  return loggedUser;
+async function getLoggedUser() {
+  if (loggedUser) return loggedUser;
+  else return await HttpService.ajax('/api/auth/getLoggedUser', 'get')
 }
 
 function setLoggedUserSessionStorage(loggedUser) {
-  sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+  console.log(loggedUser);
+  if (loggedUser) sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+  else {
+    sessionStorage.removeItem('loggedUser');
+    // logout();
+  }
 }
 
 async function addReview(theReview) {

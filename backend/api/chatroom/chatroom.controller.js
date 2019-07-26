@@ -1,10 +1,8 @@
 const chatroomService = require('./chatroom.service')
 
 const getChatrooms = async (req, res) => {
-    const userId = req.body.userId;
-    console.log(userId);
-    
-    const chatrooms = await chatroomService.query(userId)
+    const user = req.session.user;
+    const chatrooms = await chatroomService.query(user._id)
     if (chatrooms) {
         return res.json(chatrooms);
     } else {

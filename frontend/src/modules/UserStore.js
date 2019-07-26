@@ -3,7 +3,7 @@ import UserService from '../services/user.service.js';
 export default {
   state: {
     users: [],
-    loggedUser: UserService.getLoggedUser()
+    loggedUser: null
 
     // filterBy: {
     //     name: "",
@@ -154,6 +154,16 @@ export default {
       UserService.logout();
 
       context.commit({ type: 'updateLoggedInUser', loggedInUser: null });
+    },
+    async checkLoggedUser(context) {
+      const loggedInUser = await UserService.getLoggedUser();
+      if (loggedInUser) {
+        context.commit({type: 'updateLoggedInUser', loggedInUser})
+        return loggedInUser;
+      } else {
+        context.commit({ type: 'updateLoggedInUser', loggedInUser: null });
+        return loggedInUser;
+      }
     },
     async addReview(context, { theReview }) {
       const addedReview = await UserService.addReview(theReview);

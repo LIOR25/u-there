@@ -9,15 +9,12 @@ export default {
 
 var chatRooms;
 
-async function query(userId) {   
-    if (!userId) {
-        chatRooms = await defaultChatRooms;
-        return chatRooms;
-    } else {
-        const allChatRooms = await HttpService.ajax('api/chatroom', 'get', null, userId)
-        chatRooms = allChatRooms.filter(chatRoom => chatRoom.usersIds.includes(userId))
-        return chatRooms;
-    }
+async function query() {
+
+    const chatRooms = await HttpService.ajax('api/chatroom', 'get')
+    // chatRooms = allChatRooms.filter(chatRoom => chatRoom.usersIds.includes(userId))
+    return chatRooms;
+
 }
 
 /*
@@ -30,44 +27,44 @@ async function query(filterBy = {}) {
 
 */
 
-async function getById(chatId) {    
+async function getById(chatId) {
     const chatRoom = await HttpService.ajax(`api/chatroom/${chatId}`, 'get');
     return chatRoom;
 }
 
 async function addMsg(addedMsg, chatId) {
-   addedMsg._id = makeId();
-   // let updatedChatroom = await getById(chatId);
-   // updatedChatroom.msgs.push(addedMsg);
-   // return updatedChatroom;
-   const newMsg = {
-      msg: addedMsg,
-      chatroomId: chatId
-   }
-   return await HttpService.ajax(`api/chatroom`,'put', newMsg)
+    addedMsg._id = makeId();
+    // let updatedChatroom = await getById(chatId);
+    // updatedChatroom.msgs.push(addedMsg);
+    // return updatedChatroom;
+    const newMsg = {
+        msg: addedMsg,
+        chatroomId: chatId
+    }
+    return await HttpService.ajax(`api/chatroom`, 'put', newMsg)
 }
 
-function makeId(length=5) {
-   var text = '';
-   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+function makeId(length = 5) {
+    var text = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-   for (var i = 0; i < length; i++)
-       text += possible.charAt(Math.floor(Math.random() * possible.length));
+    for (var i = 0; i < length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-   return text;
+    return text;
 }
 
 async function add(usersIds, msg) {
-   msg._id = makeId()
-   var newChat = {
-      usersIds: usersIds,
-      msgs: [msg]
-   }
-   console.log(newChat);
-   
-   // chatRooms.push(newChat)
-   const updatedChatroom = await HttpService.ajax('api/chatroom', 'post', newChat);
-   return updatedChatroom;
+    msg._id = makeId()
+    var newChat = {
+        usersIds: usersIds,
+        msgs: [msg]
+    }
+    console.log(newChat);
+
+    // chatRooms.push(newChat)
+    const updatedChatroom = await HttpService.ajax('api/chatroom', 'post', newChat);
+    return updatedChatroom;
 }
 
 // const defaultChatRooms = [
@@ -179,10 +176,10 @@ async function add(usersIds, msg) {
 // ]
 
 function _getQueryString(filterBy) {
-   var queryStrings = Object.entries(filterBy).map(entry => {
-       return `${entry[0]}=${entry[1]}&`;
-   })
+    var queryStrings = Object.entries(filterBy).map(entry => {
+        return `${entry[0]}=${entry[1]}&`;
+    })
 
-   queryStrings.unshift('?');
-   return queryStrings.join('');
+    queryStrings.unshift('?');
+    return queryStrings.join('');
 }

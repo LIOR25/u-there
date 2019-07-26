@@ -11,9 +11,9 @@ export default {
   components: {
     AppNav
   },
-  // created() {
-  //   // this.store.dispatch('checkLoggedInUser')
-  // }  
+  created() {
+    this.$store.dispatch('checkLoggedUser')
+  }  
 }
 </script>
 
