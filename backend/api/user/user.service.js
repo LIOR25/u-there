@@ -31,6 +31,8 @@ async function query(filterBy = {}) {
 
   const collection = await dbService.getCollection('user');
   try {
+    // const users = await collection.find(criteria).toArray();
+    // const users = await collection.find().limit(4).toArray();
     const users = await collection
       .find(criteria)
       .limit(8)
@@ -78,6 +80,7 @@ async function getById(userId) {
 //         throw err;
 //     }
 // }
+
 
 async function getByEmail(email) {
   console.log('email', email);
@@ -142,10 +145,11 @@ async function addReview(theReview) {
         }
       }
     );
-
+    
     return theReview.review;
   } catch (err) {
     console.log(`ERROR: cannot add review to user`);
     throw err;
   }
 }
+
