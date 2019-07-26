@@ -22,7 +22,8 @@ async function query(filterBy = {}) {
   // }
 
   if (filterBy.cityName) {
-    criteria.currCity = filterBy.cityName;
+    // criteria.currCity = filterBy.cityName;
+    criteria.currCity = { $regex: filterBy.cityName, $options: 'i' };
   }
 
   if (filterBy.activityName) {
@@ -30,10 +31,11 @@ async function query(filterBy = {}) {
   }
 
   const collection = await dbService.getCollection('user');
+  console.log('criteria', criteria);
   try {
     const users = await collection
       .find(criteria)
-      .limit(8)
+      .limit(10)
       .toArray();
 
     return users;

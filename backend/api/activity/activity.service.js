@@ -7,29 +7,26 @@ module.exports = {
 };
 
 async function query(filterBy = {}) {
-    const criteria = {};
-    // if (filterBy.txt) {
-    //     criteria.name = filterBy.txt
-    // }
-    const collection = await dbService.getCollection('activity')
-    try {
-        // const activities = await collection.find(criteria).toArray();
-        const activities = await collection.find().limit(4).toArray();
+  const criteria = {};
+  // if (filterBy.txt) {
+  //     criteria.name = filterBy.txt
+  // }
+  const collection = await dbService.getCollection('activity');
+  try {
+    // const activities = await collection.find(criteria).toArray();
+    const activities = await collection
+      .find()
+      .limit(8)
+      .toArray();
 
-        // console.log('activities from servback', activities);
-    
+    // console.log('activities from servback', activities);
 
-        return activities
-    } catch (err) {
-        console.log('ERROR: cannot find activities')
-        throw err;
-    }
+    return activities;
+  } catch (err) {
+    console.log('ERROR: cannot find activities');
+    throw err;
+  }
 }
-
-
-
-
-
 
 /*
 async function query(filterBy = {}) {

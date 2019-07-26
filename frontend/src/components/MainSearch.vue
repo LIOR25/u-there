@@ -1,54 +1,23 @@
 <template>
   <div class="MainSearch">
     <h1>{{ msg }}</h1>
-    <p class="subheader">
-      Meet people who love the some activities as you all over the world!
-      <!-- <br />check out the
-      <a
-        href="https://cli.vuejs.org"
-        target="_blank"
-        rel="noopener"
-      >vue-cli documentation</a>.-->
-    </p>
+    <p class="subheader">Meet people who love the some activities as you all over the world!</p>
     <div class="searchBlock">
-      <!-- <form class="searchBlockTop" @submit.prevent="load">
-        <div class="searchBlockContainer">
-          <div class="SearchInputContainer">
-            <input
-              v-model="filterBy.cityName"
-              class="SearchInput"
-              type="text"
-              placeholder="Where are you going?"
-            />
-            <button class="button">Search</button>
-          </div>
-            <input
-              v-model="filterBy.activity"
-              class="SearchInput"
-              type="text"
-              placeholder="Add an activity!"
-            />
-        </div>
+      <form @submit.prevent="load">
+        <input
+          v-model="filterBy.cityName"
+          class="SearchInput"
+          type="text"
+          placeholder="Where are you going?"
+        />
+        <input
+          v-model="filterBy.activity"
+          class="SearchInput"
+          type="text"
+          placeholder="What would you like to do?"
+        />
         <button class="button">Search</button>
-      </form> -->
-
-
-
-            <form @submit.prevent="load">
-             <input
-              v-model="filterBy.cityName"
-              class="SearchInput"
-              type="text"
-              placeholder="Where are you going?"
-            />
-             <input
-              v-model="filterBy.activity"
-              class="SearchInput"
-              type="text"
-              placeholder="What would you like to do?"
-            />
-        <button class="button">Search</button>
-          </form>
+      </form>
     </div>
   </div>
 </template>
@@ -67,20 +36,9 @@ export default {
       }
     };
   },
-  created() {
-    // debugger
-  },
+  created() {},
   methods: {
     load() {
-      // console.log('im here' ,this.filterBy.cityName);
-      //   this.$store.dispatch({
-      //   type: "loadCitiesByFilters",
-      //     filterBy: { cityName: this.filterBy.cityName }
-
-      // });
-
-      // this.$router.push(`/city/${this.filterBy.cityName}`);
-
       this.$router.push({
         path: `/city/${this.filterBy.cityName}`,
         query: { fromSearchBox: "1", activity: this.filterBy.activity }
@@ -91,5 +49,4 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss" src="@/styles/components/_MainSearch.scss">
-
 </style>
