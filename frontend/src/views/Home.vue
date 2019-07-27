@@ -14,11 +14,11 @@
     </div>
 
     <div class="users container">
-            <h2>Near you</h2>
+      <h2>Near you</h2>
 
       <!-- <h2>Nearby users</h2> -->
       <!-- <h2>Ready To Meet You</h2> -->
-      <UserList :usersToShow="cityUsers" ></UserList>
+      <UserList :usersToShow="cityUsers"></UserList>
     </div>
 
     <div class="cities container">
@@ -26,21 +26,18 @@
       <CityList></CityList>
     </div>
 
-
-      <div class="Activities container">
-            <h2>Top Rated Activities</h2>
+    <div class="topActivities container">
+      <h2>Top Rated Activities</h2>
       <ActivityList :cityName="cityName" :isTopRated="true"></ActivityList>
     </div>
 
-
-    <div class="users-container">
-            <h2>More people to meet</h2>
+    <div class="moreUsers container">
+      <h2>More people to meet</h2>
 
       <!-- <h2>Nearby users</h2> -->
       <!-- <h2>Ready To Meet You</h2> -->
-      <UserList :usersToShow="allUsers" ></UserList>
+      <UserList :usersToShow="allUsers"></UserList>
     </div>
-
   </div>
 </template>
 
@@ -72,8 +69,8 @@ export default {
       // this.lng = position.coords.longitude;
       // console.log("geo", this.lat, this.lng);
 
-         this.lat = 32.109333;
-      this.lng =  34.855499;
+      this.lat = 32.109333;
+      this.lng = 34.855499;
 
       const cityName = await this.$store.dispatch({
         type: "getCityByCord",
@@ -97,11 +94,10 @@ export default {
     allUsers() {
       return this.$store.getters.users;
     },
-    cityUsers(){
-         return this.$store.getters.users.filter(user => {
-        return user.currCity === 'Tel Aviv' || user.currCity === 'tel aviv';
-      });   
-    
+    cityUsers() {
+      return this.$store.getters.users.filter(user => {
+        return user.currCity === "Tel Aviv" || user.currCity === "tel aviv";
+      });
     }
   },
   created() {

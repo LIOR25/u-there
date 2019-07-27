@@ -28,7 +28,7 @@
         <button class="button">Search</button>
       </form>-->
 
-      -->
+
       <form @submit.prevent="load" class="form">
         <input
           v-model="filterBy.cityName"
