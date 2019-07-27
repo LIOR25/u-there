@@ -20,9 +20,10 @@
     <div class="detailsMain">
       <h2>Hi There! Nice to meet you</h2>
       <p>
-      Looking for people to Party with me in Tel Aviv.
+      <!-- Looking for people to Party with me in Tel Aviv. -->
+      {{user.details}}
       </p>
-      <p>I love to</p>
+      <!-- <p>I love to</p> -->
       <div>like to: {{user.activities[0]}}</div>
       <div>languages: {{user.languages[0]}}</div>
 
