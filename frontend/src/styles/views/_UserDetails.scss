@@ -20,20 +20,39 @@
   //   color: $clr5;
   //   margin: 0 auto;
   // }
+
+button{
+     font-family: $font-open-sans;
+         /* color: #fff; */
+    /* background-color: #8bc34a; */
+    width: 113px;
+    border: none;
+    font-size: 1em;
+    padding: 10px 15px;
+    border-radius: 2px;
+    -webkit-transition: .3s;
+    transition: .3s;
+    height: 43px;
+     color:whitesmoke;
+    margin: 20px auto;
+    padding: 5px;
+    background-color: $clr5;
+
+  }
   //Ehud commented
 
   //Ehud added:
-  button {
-    width: 150px;
-    height: 100px;
-    border-radius: 30px;
-    // background: none;
-    // border: none;
-    font-size: 2.5em;
-    color: $clr5;
-    margin: 20px auto;
-    padding: 5px;
-  }
+
+  // button {
+  //   width: 150px;
+  //   height: 100px;
+  //   border-radius: 30px;
+  //   font-size: 2.5em;
+  //   color: $clr5;
+  //   margin: 20px auto;
+  //   padding: 5px;
+  // }
+
   //Ehud added
 
   .top-fold {
@@ -78,7 +97,9 @@
     @include flex(column);
     // background-color: #dcdada;
     p {
-      font-size: 14px;
+      // font-size: 14px;
+          font-size: 1.1em;
+
       // font-weight: bold;
       font-family: $font-open-sans;
       color: black;
@@ -86,6 +107,12 @@
     }
     h2 {
       color: black;
+    }
+
+    div{
+      margin-bottom: 8px;
+            color: black;
+
     }
 
     .review-add {
@@ -110,6 +137,7 @@
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+        background-color: aqua;
       }
       // not working
 
@@ -122,6 +150,20 @@
       @include flex(row, center);
       background-color: aqua;
     }
+  }
+
+  .form-content-container{
+          @include flex(row, center);
+ input {
+        // width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: aqua;
+      }
   }
 
   // @media (min-width: 550px) {

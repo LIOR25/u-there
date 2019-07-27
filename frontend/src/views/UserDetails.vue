@@ -6,7 +6,7 @@
       <div class="user-details-content">
         <div class="user-info">
           <h1>{{user.firstName + " " + user.lastName}}</h1>
-          <div>from: {{user.currCity}}</div>
+          <div>Now in {{user.currCity}}</div>
           <!-- <div>like to: {{user.activities[0]}}</div> -->
           <!-- <div>languages: {{user.languages[0]}}</div> -->
 
@@ -26,6 +26,9 @@
       <!-- <p>I love to</p> -->
       <div>like to: {{user.activities[0]}}</div>
       <div>languages: {{user.languages[0]}}</div>
+         <i class="fas fa-calendar-alt"></i>
+
+  
 
       <p>what we can do together:</p>
       <button @click="temp=!temp">Add Review</button>
