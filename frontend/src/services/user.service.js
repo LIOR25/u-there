@@ -15,8 +15,6 @@ export default {
   addReview
 };
 
-var loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
-
 async function update(user) {
   console.log('user log in update userservice front: ', user);
 
@@ -64,16 +62,13 @@ function logout() {
 }
 
 async function getLoggedUser() {
-  if (loggedUser) return loggedUser;
-  else {
-    loggedUser = await HttpService.ajax('/api/auth/getLoggedUser', 'get')
+    const loggedUser = await HttpService.ajax('api/auth/loggedUser');
     if (loggedUser) return loggedUser;
-    else return;
-  }
+    else return {};
 }
 
 function setLoggedUserSessionStorage(loggedUser) {
-  console.log(loggedUser);
+  // console.log(loggedUser);
   if (loggedUser)
     sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   else {

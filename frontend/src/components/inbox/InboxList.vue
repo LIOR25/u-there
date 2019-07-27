@@ -47,10 +47,12 @@ export default {
     }
   },
   created() {
+    
     // this.$store.getters.loggedUser;
     this.$store.dispatch("getLoggedUserId");
     // console.log(this.$store.state);
-    this.$store.dispatch("loadUserChatRooms");
+    this.$store.dispatch("loadUserChatRooms")
+
   },
   components: {
     ChatPreview

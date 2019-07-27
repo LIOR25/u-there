@@ -4,7 +4,7 @@
       <router-link exact :to="`/inbox/${loggedInUserId}/chats`">Back to Messages</router-link>
     </li>
     <ul>
-      <li v-for="msg in chatRoom.msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li>
+      <li v-for="msg in msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li>
       <!-- <li v-for="msg in chatRoom.msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li> -->
     </ul>
     <form class="sendMsg" @submit.prevent="addMsg(newMsg)">
@@ -23,6 +23,8 @@
 
 <script>
 // todo: li :class="whoSent"
+import io from 'socket.io-client';
+import socket from '../../services/Socket.service.js'
 export default {
   data() {
     return {
@@ -34,8 +36,10 @@ export default {
         type: null,
         sentAt: null,
         isRead: false
-      }
-    };
+      },
+      // msgs: [],
+      // socket: null
+    }
   },
   methods: {
     testing() {},
@@ -45,7 +49,7 @@ export default {
       let addedMsg = { ...newMsg };
       this.$store.dispatch("addMsg", { addedMsg });
       newMsg.txt = null;
-      this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms });
+      // this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms });
     },
     setType(val) {
       this.newMsg.type = val;
@@ -55,6 +59,9 @@ export default {
     }
   },
   computed: {
+    msgs() {
+      return this.$store.getters.msgs;
+    },
     chatRoom() {
       return this.$store.getters.chatRoom;
     },
@@ -63,13 +70,33 @@ export default {
     },
     loggedInUserId() {
       return this.$store.getters.loggedInUserId;
-    }
+    },
+    // lastMsg() {
+    //   if (this.$store.getters.newMsg !== null) this.msgs.push(newMsg);
+    //   this.$store.dispatch({type: 'clearNewMsg'});
+    // }
   },
-  created() {    
+  created() {
     this.$route.params.chatRoomId;
     this.chatPrms = this.$route.params.chatRoomId;
     this.$store.dispatch("getLoggedUserId");
-    this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms });
+    this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms })
+    // .then( () => {      
+    //   // this.chatRoom.msgs.forEach(msg => {
+    //   //   this.msgs.push(msg);
+    //   // })
+    // })
+
+    
+    // this.socketService = socketService.socket;
+    // console.log(socketService.socket);
+    
+    // socket.on('chat newMsg', (msg) => {
+    //   console.log('got here, sending');
+      
+    //   this.msgs.push(msg);
+    // })
+    
   }
 };
 </script>

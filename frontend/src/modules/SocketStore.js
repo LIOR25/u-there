@@ -15,13 +15,13 @@ export default {
         // }
     },
     actions: {
-        chatJoin({commit}) {
-            socket.emit('chat join', /*user, chatroomId  */)
-            socket.on('chat newMsg', msg=>commit({type: 'addMsg', msg }));
-        },
-        sendMsg(context, {txt}) {
-            socket.emit('chat msg', txt)
-        },
+        // chatJoin({commit}) {
+        //     socket.emit('chat join', /*user, chatroomId  */)
+        //     socket.on('chat newMsg', msg=>commit({type: 'addMsg', msg }));
+        // },
+        // sendMsg(context, {txt}) {
+        //     socket.emit('chat msg', txt)
+        // },
         
     }
 }

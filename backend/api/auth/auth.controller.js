@@ -6,6 +6,8 @@ async function login(req, res) {
   try {
     const user = await authService.login(email, password);
     req.session.user = user;
+    // console.log('got user in session', user);
+    
     res.json(user);
   } catch (err) {
     res.status(401).send({ error: err });
@@ -13,9 +15,13 @@ async function login(req, res) {
 }
 
 async function getLoggedUser(req, res) {
+  // console.log('auth', req.session.user)
   try {
     const user = req.session.user;
-    return res.json(user);
+    if (user) return res.send(user);
+    // console.log('no user connected');
+    
+    return res.send();
   } catch(err) {
     res.status(401).send({ error: err})
   }

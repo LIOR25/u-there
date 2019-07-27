@@ -10,7 +10,8 @@ export default {
         chatsWith: [],
         chatRoom: {},
         chatWith: {},
-        msgs: []
+        msgs: [],
+        newMsg: null
         // loggedInUser: {} // temp for chats
         //filterBy:
     },
@@ -33,11 +34,14 @@ export default {
         chatWith(state) {
             return state.chatWith;
         },
-        // msgs(state) {
-        //     return state.chatRoom.msgs
-        // },
+        msgs(state) {
+            return state.chatRoom.msgs
+        },
         loggedInUserId(state) {
             return state.loggedInUserId;
+        },
+        newMsg(state) {
+            return state.newMsg;
         }
     },
     mutations: {
@@ -63,6 +67,10 @@ export default {
         },
         setLoggedInUser(state, { loggedUserId }) {
             state.loggedInUserId = loggedUserId;
+        },
+
+        clearNew(state) {
+            state.newMsg = null;
         }
     },
     actions: {
@@ -83,17 +91,10 @@ export default {
                 const user = await userService.getById(id[0])
                 usersExceptMe.push(user);
             })            
-            context.commit({ type: 'setUserChatsWith', usersExceptMe })            
+            context.commit({ type: 'setUserChatsWith', usersExceptMe })
+            return usersExceptMe;            
         },
-        // loadLoggedInUser(context) {
-        //     const loggedUserId = context.state.loggedInUserId
-        //     const loggedInUser = {}
-        //     userService.getById(loggedUserId).then(user => {
-        //         loggedInUser = user;
-        //         context.commit({ type: 'setLoggedInUser', loggedInUser })
-        //     })
-        // }, //temp for chats please delete and replace it to the user store!!!
-        loadChat(context, { chatRoomId }) {
+        async loadChat(context, { chatRoomId }) {
             const loggedUserId = context.state.loggedInUserId;
             chatRoomsService.query(loggedUserId).then(userChats =>
                 chatRoomsService.getById(chatRoomId).then(chatRoom => {
@@ -105,14 +106,23 @@ export default {
                     })
                     context.commit({ type: 'changeChatWith', otherPerson });
                     // console.log('state msgs if defined:', context.state.msgs);
-                    
+                    // console.log(context.getters.loggedUser, context.state.chatRoom._id,)
+                   socket.emit('chat join', {user: context.getters.loggedUser, chatId: context.state.chatRoom._id})
+                   socket.on('chat newMsg', addedMsg => {
+                    //    console.log(addedMsg);
+                       context.commit({type: 'addMsg', addedMsg });
+                       
+                    })
                 }))
         },
         addMsg(context, { addedMsg }) {
-            console.log(context.state.chatRoom._id);
+            // console.log(context.getters.chatRoom._id);
             
             chatRoomsService.addMsg(addedMsg, context.state.chatRoom._id).then(newMsg => {
-                context.commit({type: "addMsg", addedMsg})              
+                context.commit({type: "addMsg", addedMsg})
+                // console.log(context.state.chatRoom._id);
+                
+                socket.emit('chat msg', {msg: addedMsg, chatId: context.state.chatRoom._id})              
                 return newMsg;
             })
         },
@@ -133,7 +143,11 @@ export default {
             
             chatRoomsService.add(chatDetails.usersIds, chatDetails.addedMsg).then(addedChatRoom => {
                 context.commit({type: 'addChat', addedChatRoom})
+                socket.emit('chat msg', chatDetails.addedMsg, addedChatRoom._id)
             })
         },
+        clearNewMsg(context) {
+            context.commit({type: 'clearNew'});
+        }
     }
 }
