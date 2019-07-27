@@ -35,3 +35,6 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss" src="@/styles/components/_ReviewPreview.scss">
+</style>
