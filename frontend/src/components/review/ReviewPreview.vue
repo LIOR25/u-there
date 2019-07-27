@@ -23,7 +23,8 @@ export default {
         width: "150px",
         height: "150px",
         "border-radius": "50%",
-        background: `url(${this.review.addedBy.img_url}) no-repeat center center`
+        "background-image": `url(${this.review.addedBy.img_url})`,
+        "background-size": "cover"
       }
     };
   },

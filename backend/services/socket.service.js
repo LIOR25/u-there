@@ -9,23 +9,23 @@ function setup(http) {
     io = socketIO(http);
     io.on('connection', function (socket) {
         console.log('a user connected');
-        var room;
+        // var room;
         // activeUsersCount++;
 
-        // socket.on('disconnect', () => {
-        //     console.log('user disconnected');
-        //     activeUsersCount--;
-        // });
+        socket.on('disconnect', () => {
+            console.log('user disconnected');
+            // activeUsersCount--;
+        });
 
-        // socket.on('chat join', (user) => {
-        //     room = roomService.placeInRoom(user)
-        //     console.log('Placed', user, 'in room:', room);
-        //     socket.join(room.id);
-        // });
+        socket.on('chat join', (user, chatroomId) => {
+            // room = roomService.placeInRoom(user)
+            console.log('Placed', user, 'in room:', chatroomId);
+            socket.join(chatroomId);
+        });
 
-        socket.on('chat msg', (msg) => {
+        socket.on('chat msg', (msg, chatroomId) => {
             console.log('message: ' + msg);
-            io.to(room.id).emit('chat newMsg', msg);
+            io.to(chatroomId).emit('chat newMsg', msg);
         });
     });
 

@@ -5,6 +5,7 @@
     </li>
     <ul>
       <li v-for="msg in chatRoom.msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li>
+      <!-- <li v-for="msg in chatRoom.msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li> -->
     </ul>
     <form class="sendMsg" @submit.prevent="addMsg(newMsg)">
       <input
@@ -64,7 +65,7 @@ export default {
       return this.$store.getters.loggedInUserId;
     }
   },
-  created() {
+  created() {    
     this.$route.params.chatRoomId;
     this.chatPrms = this.$route.params.chatRoomId;
     this.$store.dispatch("getLoggedUserId");

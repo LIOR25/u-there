@@ -14,7 +14,7 @@ async function login(req, res) {
 
 async function getLoggedUser(req, res) {
   try {
-    const user = req.session.user
+    const user = req.session.user;
     return res.json(user);
   } catch(err) {
     res.status(401).send({ error: err})

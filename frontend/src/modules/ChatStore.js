@@ -1,5 +1,7 @@
 import chatRoomsService from '../services/chatRooms.service.js'
 import userService from '../services/user.service.js'
+import socket from '../services/Socket.service.js'
+
 
 export default {
     state: {
@@ -47,6 +49,7 @@ export default {
         },
         changeChatRoom(state, { chatRoom }) {
             state.chatRoom = chatRoom;
+            state.msgs = chatRoom.msgs;
         },
         changeChatWith(state, { otherPerson }) {
             state.chatWith = otherPerson
@@ -101,6 +104,8 @@ export default {
                         return otherPerson = user;
                     })
                     context.commit({ type: 'changeChatWith', otherPerson });
+                    // console.log('state msgs if defined:', context.state.msgs);
+                    
                 }))
         },
         addMsg(context, { addedMsg }) {
@@ -114,16 +119,16 @@ export default {
         createChatRoom(context, {chatDetails}) {
             // console.log(chatDetails);
             // console.log(context.state.userChats);
-            let flag = false;
+            let chatExists = false;
             context.state.userChats.forEach(chat => {
                 if (chat.usersIds.includes(chatDetails.usersIds[0] || chatDetails.usersIds[1])) {
                     console.log('chat already exists');
-                    flag = true;
+                    chatExists = true;
                     return;
                 }
 
             })
-            if (flag) return;
+            if (chatExists) return;
             console.log('chat doesnt exist');
             
             chatRoomsService.add(chatDetails.usersIds, chatDetails.addedMsg).then(addedChatRoom => {
