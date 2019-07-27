@@ -28,7 +28,7 @@
 
 
       <div class="users container">
-            <h2>Top Reted Activities</h2>
+            <h2>Top Rated Activities</h2>
       <ActivityList :cityName="cityName"></ActivityList>
     </div>
 

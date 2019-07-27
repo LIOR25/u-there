@@ -2,17 +2,17 @@ import socket from '../services/Socket.service.js'
 
 export default {
     state: {
-        msgs: []
+        // msgs: []
     },
     getters: {
-        msgs(state) {
-            return state.msgs; 
-        }
+        // msgs(state) {
+        //     return state.msgs; 
+        // }
     },
     mutations: {
-        addMsg(state, {msg}) {
-            state.msgs.push(msg);
-        }
+        // addMsg(state, {msg}) {
+        //     state.msgs.push(msg);
+        // }
     },
     actions: {
         chatJoin({commit}) {
