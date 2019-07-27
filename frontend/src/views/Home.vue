@@ -10,7 +10,7 @@
 
     <div class="activities container">
       <h2>Nearby Activities</h2>
-      <ActivityList :cityName="cityName"></ActivityList>
+      <ActivityList :cityName="cityName" :isTopRated="false"></ActivityList>
     </div>
 
     <div class="users container">
@@ -29,7 +29,7 @@
 
       <div class="users container">
             <h2>Top Reted Activities</h2>
-      <ActivityList :cityName="cityName"></ActivityList>
+      <ActivityList :cityName="cityName" :isTopRated="true"></ActivityList>
     </div>
 
   </div>

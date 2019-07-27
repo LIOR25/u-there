@@ -29,6 +29,8 @@ export default {
       context.commit({ type: 'setActivities', activities });
     }
 
+    
+
     //HERE
     /*
     async loadActivityByCity(context, { filterBy }) {

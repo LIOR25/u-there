@@ -14,7 +14,7 @@ import ActivityPreview from "@/components/activity/ActivityPreview.vue";
 
 export default {
   name: "TheActivityList",
-  props: ["cityName"],
+  props: ["cityName", "isTopRated"],
   components: {
     ActivityPreview
   },
@@ -28,13 +28,19 @@ export default {
   },
   computed: {
     activities() {
-      // console.log('activitylist',this.$store.getters.activities);
-      
-      return this.$store.getters.activities;
-        // return this.$store.getters.activities.filter(activity => {
-        //   return 
-        // });
+      // return this.$store.getters.activities;
+        
+                if(this.isTopRated){
+      return this.$store.getters.activities.filter(activity => {
+        return activity.isTopRated
+      });
+                }else{
+       return this.$store.getters.activities.filter(activity => {
+        return !activity.isTopRated
 
+                })
+                }
+                
     }
   }
 };
