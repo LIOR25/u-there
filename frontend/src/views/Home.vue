@@ -2,8 +2,8 @@
   <div class="home">
     <header class="home-header">
       <h1>Meet People with Similar Interests</h1>
-      <h3> All Over The World!</h3>
-      <MainSearch class="search-bar" msg="" />
+      <h3>All Over The World!</h3>
+      <MainSearch class="search-bar" msg />
     </header>
 
     <!-- <h2>welcome you are in {{cityName}}</h2> -->
@@ -14,6 +14,9 @@
     </div>
 
     <div class="users container">
+            <h2>Near you</h2>
+
+      <!-- <h2>Nearby users</h2> -->
       <!-- <h2>Ready To Meet You</h2> -->
       <UserList :usersToShow="allUsers"></UserList>
     </div>
@@ -22,6 +25,13 @@
       <h2>cities</h2>
       <CityList></CityList>
     </div>
+
+
+      <div class="users container">
+            <h2>Top Reted Activities</h2>
+      <ActivityList :cityName="cityName"></ActivityList>
+    </div>
+
   </div>
 </template>
 
@@ -49,9 +59,12 @@ export default {
 
   methods: {
     async showPosition(position) {
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
+      // this.lat = position.coords.latitude;
+      // this.lng = position.coords.longitude;
       // console.log("geo", this.lat, this.lng);
+
+         this.lat = 32.109333;
+      this.lng =  34.855499;
 
       const cityName = await this.$store.dispatch({
         type: "getCityByCord",
