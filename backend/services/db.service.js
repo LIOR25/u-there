@@ -7,16 +7,23 @@ const dbName = 'uthere_db';
 var dbConn = null;
 
 async function connect() {
-    if (dbConn) return dbConn;
+    if (dbConn) return Promise.resolve(dbConn);
     try {
         const client = await MongoClient.connect(config.dbURL, { useNewUrlParser: true });
         const db = client.db(dbName);
         dbConn = db;
-        return db;
+        client.on('close', () => {
+            console.log('MongoDB disconnected!');
+            client.close();
+            dbConn = null;
+            
+        })
+        return dbConn;
     } catch (err) {
         console.log('Cannot Connect to DB', err)
         throw err;
     }
+
 }
 
 async function getCollection(collectionName) {

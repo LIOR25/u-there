@@ -65,7 +65,11 @@ function logout() {
 
 async function getLoggedUser() {
   if (loggedUser) return loggedUser;
-  else return await HttpService.ajax('/api/auth/getLoggedUser', 'get');
+  else {
+    loggedUser = await HttpService.ajax('/api/auth/getLoggedUser', 'get')
+    if (loggedUser) return loggedUser;
+    else return;
+  }
 }
 
 function setLoggedUserSessionStorage(loggedUser) {
