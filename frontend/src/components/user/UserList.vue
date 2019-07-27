@@ -19,7 +19,7 @@ export default {
   components: {
     UserPreview
   },
-  props: ["usersToShow"]
+  props: ["usersToShow" , "currCity"]
   // computed: {
   //   users() {
   //     return this.$store.getters.users;

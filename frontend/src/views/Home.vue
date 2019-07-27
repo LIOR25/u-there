@@ -18,7 +18,7 @@
 
       <!-- <h2>Nearby users</h2> -->
       <!-- <h2>Ready To Meet You</h2> -->
-      <UserList :usersToShow="allUsers"></UserList>
+      <UserList :usersToShow="cityUsers" ></UserList>
     </div>
 
     <div class="cities container">
@@ -27,9 +27,18 @@
     </div>
 
 
-      <div class="users container">
-            <h2>Top Reted Activities</h2>
+      <div class="Activities container">
+            <h2>Top Rated Activities</h2>
       <ActivityList :cityName="cityName" :isTopRated="true"></ActivityList>
+    </div>
+
+
+    <div class="users-container">
+            <h2>More people to meet</h2>
+
+      <!-- <h2>Nearby users</h2> -->
+      <!-- <h2>Ready To Meet You</h2> -->
+      <UserList :usersToShow="allUsers" ></UserList>
     </div>
 
   </div>
@@ -87,6 +96,12 @@ export default {
   computed: {
     allUsers() {
       return this.$store.getters.users;
+    },
+    cityUsers(){
+         return this.$store.getters.users.filter(user => {
+        return user.currCity === 'Tel Aviv' || user.currCity === 'tel aviv';
+      });   
+    
     }
   },
   created() {
