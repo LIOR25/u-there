@@ -1,13 +1,12 @@
 <template>
   <section>
     <div class="main-container container">
-
       <h1>
-        <span>{{activityName}}</span> 
+        <span>{{activityName}}</span>
       </h1>
-              <UserList :usersToShow="activityUsers" ></UserList>
+      <UserList :usersToShow="activityUsers"></UserList>
 
-<!-- 
+      <!-- 
       <div class="default-activities" v-if="!activity">
         <h2>Drink coffee with friends</h2>
         <UserList :usersToShow="coffeeUsers"></UserList>
@@ -24,7 +23,7 @@
         <UserList :usersToShow="diveUsers"></UserList>
         <h2>Fly</h2>
         <UserList :usersToShow="flyUsers"></UserList>
-      </div>  -->
+      </div>-->
     </div>
   </section>
 </template>
@@ -41,20 +40,17 @@ export default {
     return {
       activityName: "",
       activity: "",
-      cityName:'',
+      cityName: ""
 
-
-    //   fromSearchBox: false
+      //   fromSearchBox: false
     };
   },
   computed: {
     activityUsers() {
       // console.log("I am in hereeeeeeeee");
       // console.log('herokuuuu', this.$store.getters.users);
-      return this.$store.getters.users
-    },
-  
-  
+      return this.$store.getters.users;
+    }
   },
   methods: {
     filterUsersByActivity(activity) {
@@ -68,16 +64,12 @@ export default {
 
     this.cityName = this.$route.query.cityName;
 
-  
     // this.activityByCity = this.$route.query.activityByCity;
-
-
 
     // this.fromSearchBox = this.$route.query.fromSearchBox === "1" ? true : false;
 
     // this.activity = this.$route.query.activity;
 
- 
     this.$store.dispatch({
       type: "loadUsersByActivity",
       filterBy: {
@@ -86,9 +78,6 @@ export default {
       }
     });
 
-
-
-    
     // this.$store.dispatch({
     //   type: "loadActivityByUsers",
     //   filterBy: {
@@ -107,8 +96,8 @@ export default {
 .main-container {
   padding-top: 50px;
 }
-h1{
-  padding-top: inherit
+h1 {
+  padding-top: inherit;
 }
 h2 {
   text-align: center;

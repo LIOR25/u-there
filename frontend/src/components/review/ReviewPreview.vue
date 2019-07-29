@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     fullName() {
-      return (this.review.addedBy.firstName + " " + this.review.addedBy.lastName);
+      return this.review.addedBy.firstName + " " + this.review.addedBy.lastName;
     }
   }
 };
