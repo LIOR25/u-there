@@ -8,35 +8,37 @@
 
     <!-- <h2>welcome you are in {{cityName}}</h2> -->
 
-    <div class="activities container">
-      <h2>Nearby Activities</h2>
-      <ActivityList :cityName="cityName" :isTopRated="false"></ActivityList>
-    </div>
+    <div class="big-container">
+      <div class="activities container">
+        <h2>Nearby Activities</h2>
+        <ActivityList :cityName="cityName" :isTopRated="false"></ActivityList>
+      </div>
 
-    <div class="users container">
-      <h2>Near you</h2>
+      <div class="users container">
+        <h2>Near you</h2>
 
-      <!-- <h2>Nearby users</h2> -->
-      <!-- <h2>Ready To Meet You</h2> -->
-      <UserList :usersToShow="cityUsers"></UserList>
-    </div>
+        <!-- <h2>Nearby users</h2> -->
+        <!-- <h2>Ready To Meet You</h2> -->
+        <UserList :usersToShow="cityUsers"></UserList>
+      </div>
 
-    <div class="cities container">
-      <h2>cities</h2>
-      <CityList></CityList>
-    </div>
+      <div class="cities container">
+        <h2>cities</h2>
+        <CityList></CityList>
+      </div>
 
-    <div class="topActivities container">
-      <h2>Top Rated Activities</h2>
-      <ActivityList :cityName="cityName" :isTopRated="true"></ActivityList>
-    </div>
+      <div class="topActivities container">
+        <h2>Top Rated Activities</h2>
+        <ActivityList :cityName="cityName" :isTopRated="true"></ActivityList>
+      </div>
 
-    <div class="moreUsers container">
-      <h2>More people to meet</h2>
+      <div class="moreUsers container">
+        <h2>More people to meet</h2>
 
-      <!-- <h2>Nearby users</h2> -->
-      <!-- <h2>Ready To Meet You</h2> -->
-      <UserList :usersToShow="allUsers"></UserList>
+        <!-- <h2>Nearby users</h2> -->
+        <!-- <h2>Ready To Meet You</h2> -->
+        <UserList :usersToShow="allUsers"></UserList>
+      </div>
     </div>
   </div>
 </template>
