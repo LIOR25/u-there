@@ -26,7 +26,6 @@ async function query(userId) {
     }
 }
 
-
 async function getById(chatroomId) {
     const collection = await dbService.getCollection('chatroom');
     try {
