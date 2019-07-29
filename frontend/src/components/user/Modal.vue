@@ -251,13 +251,14 @@ export default {
   cursor: pointer;
   font-size: 1rem;
   line-height: 1rem;
-  margin: 0;
+  margin: 0 auto;
   padding: 0 2rem;
-  border-radius: 2.5rem;
+  border-radius: 4px;
   border: none;
-  background: lightskyblue;
+  background: #209cee;
   color: #fff;
   font-weight: 600;
+  text-align: center;
   // -webkit-user-select: none;
   // -moz-user-select: none;
   // -ms-user-select: none;
@@ -290,5 +291,6 @@ export default {
 
 .vdp-datepicker {
   color: black;
+  margin-bottom: 10px;
 }
 </style>

@@ -4,7 +4,7 @@
       <!-- <div :style="profileImage"></div> -->
       <h2>Title: {{review.title}}</h2>
       <h2>Comment: {{review.txt}}</h2>
-      <h2>Added By :{{fullName}}</h2>
+      <h2>Added By: {{fullName}}</h2>
       <h2>
         <i class="fa fa-star" aria-hidden="true"></i>
         {{review.rating}}
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     fullName() {
-      return this.review.addedBy.firstName + " " + this.review.addedBy.lastName;
+      return (this.review.addedBy.firstName + " " + this.review.addedBy.lastName);
     }
   }
 };

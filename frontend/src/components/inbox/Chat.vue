@@ -59,6 +59,9 @@ export default {
     };
   },
   methods: {
+    alert() {
+      this.$swal("Meeting accepted", "Enjoy your time together", "success")
+    },
     testing() {},
     addMsg(newMsg) {
       newMsg.sentAt = Date.now();
@@ -78,6 +81,7 @@ export default {
       this.currMsg = msg;
       this.currMsg.reqDetails.responseState = "accepted";
       console.log(this.currMsg);
+      this.alert()
     }
   },
   computed: {
