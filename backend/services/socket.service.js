@@ -3,7 +3,7 @@ const socketIO = require('socket.io');
 // const roomService = require('./room-service');
 
 var io;
-var activeUsersCount = 0;
+// var activeUsersCount = 0;
 
 function setup(http) {
     io = socketIO(http);
@@ -17,21 +17,22 @@ function setup(http) {
             // activeUsersCount--;
         });
 
-        socket.on('chat join', (user, chatroomId) => {
+        socket.on('chat join', ({user, chatId}) => {
             // room = roomService.placeInRoom(user)
-            console.log('Placed', user, 'in room:', chatroomId);
-            socket.join(chatroomId);
+            console.log('Placed', user.firstName, 'in room:', chatId);
+            socket.join(chatId);
         });
 
-        socket.on('chat msg', (msg, chatroomId) => {
-            console.log('message: ' + msg);
-            io.to(chatroomId).emit('chat newMsg', msg);
+        socket.on('chat msg', ({msg, chatId}) => {
+            console.log('message: ', msg, chatId);
+            io.to(chatId).emit('chat newMsg', msg);
         });
+
+        socket.on('user left', (chatId) => {
+            console.log('user left the chat');
+            socket.leave(chatId);
+        })
     });
-
-
-
-
 }
 
 

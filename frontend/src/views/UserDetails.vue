@@ -24,8 +24,8 @@
       {{user.details}}
       </p>
       <!-- <p>I love to</p> -->
-      <div>like to: {{user.activities[0]}}</div>
-      <div>languages: {{user.languages[0]}}</div>
+      <div>Likes to: {{user.activities[0]}}</div>
+      <div>Languages: {{user.languages[0]}}</div>
          <i class="fas fa-calendar-alt"></i>
 
   

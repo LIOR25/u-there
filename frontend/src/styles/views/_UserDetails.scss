@@ -92,7 +92,7 @@ button{
   .detailsMain {
     @include button();
     background-color: rgb(140, 168, 204);
-    border: 1px solid $box-shadow-gray;
+    // border: 1px solid $box-shadow-gray;
     padding: 0 30px 10px 30px;
     @include flex(column);
     // background-color: #dcdada;
@@ -163,6 +163,7 @@ button{
         border-radius: 4px;
         box-sizing: border-box;
         background-color: aqua;
+        // margin-top: 10px;
       }
   }
 

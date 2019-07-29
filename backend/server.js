@@ -13,7 +13,7 @@ const userRoutes = require('./api/user/user.routes')
 const cityRoutes = require('./api/city/city.routes')
 const chatRoutes = require('./api/chatroom/chatroom.routes')
 const activityRoutes = require('./api/activity/activity.routes')
-
+const meetingRoutes = require('./api/meeting/meeting.routes')
 
 
 const logger = require('./services/logger.service')
@@ -44,8 +44,8 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/city', cityRoutes)
 app.use('/api/activity', activityRoutes)
-
 app.use('/api/chatroom', chatRoutes)
+app.use('/api/meeting', meetingRoutes)
 
 socketService.setup(http);
 

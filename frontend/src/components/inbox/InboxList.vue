@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="msgs-container">
     <ul class="msg-prevs">
       <li
         v-for="(chatWithUser, idx) in pairingChatUsers"
@@ -47,10 +47,12 @@ export default {
     }
   },
   created() {
+    
     // this.$store.getters.loggedUser;
     this.$store.dispatch("getLoggedUserId");
     // console.log(this.$store.state);
-    this.$store.dispatch("loadUserChatRooms");
+    this.$store.dispatch("loadUserChatRooms")
+
   },
   components: {
     ChatPreview
@@ -60,10 +62,20 @@ export default {
 </script>
 
 <style>
+
+.msgs-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+
+}
+
 ul, li{
   list-style-type: none;
   padding-inline-start: 0;
 }
+
+
+
 
 .link {
   text-decoration: none;
@@ -72,7 +84,7 @@ ul, li{
 .msg-prevs {
   display: flex;
   flex-direction: column-reverse;
-  font-size: 25px;
+  font-size: 20px;
 
 }
 

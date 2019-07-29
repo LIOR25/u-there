@@ -7,7 +7,7 @@
         {{user.firstName}}
         <span class="city">{{user.currCity}}</span>
       </p>
-      <p class="activities">Like to: {{user.activities[0]}}</p>
+      <p class="activities">Likes to: {{user.activities[0]}}</p>
       <!-- <p>Replies {{user.replies}}</p> -->
       <div class="info2">
       <p class="rank">

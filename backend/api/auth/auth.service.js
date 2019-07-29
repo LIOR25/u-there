@@ -16,6 +16,7 @@ async function login(email, password) {
 
   if (!match) return Promise.reject('Invalid email or password');
   delete user.password;
+
   return user;
 }
 

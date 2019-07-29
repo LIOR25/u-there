@@ -3,7 +3,7 @@ import UserService from '../services/user.service.js';
 export default {
   state: {
     users: [],
-    loggedUser: null
+    loggedUser: {}
   },
   getters: {
     users(state) {
@@ -80,7 +80,7 @@ export default {
     logout(context) {
       UserService.logout();
 
-      context.commit({ type: 'updateLoggedInUser', loggedInUser: null });
+      context.commit({ type: 'updateLoggedInUser', loggedInUser: {} });
     },
     async checkLoggedUser(context) {
       const loggedInUser = await UserService.getLoggedUser();
@@ -88,7 +88,7 @@ export default {
         context.commit({ type: 'updateLoggedInUser', loggedInUser });
         return loggedInUser;
       } else {
-        context.commit({ type: 'updateLoggedInUser', loggedInUser: null });
+        context.commit({ type: 'updateLoggedInUser', loggedInUser: {} });
         return loggedInUser;
       }
     },

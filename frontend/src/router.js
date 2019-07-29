@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 // import Signin from './views/Signin.vue';
 import CityView from './views/CityView.vue';
 import Inbox from './views/Inbox.vue';
+import MeetingView from './views/MeetingView.vue'
 import InboxList from './components/inbox/InboxList.vue';
 // import meetingList from './components/meetingList.vue'
 import Chat from './components/inbox/Chat.vue';
@@ -69,6 +70,11 @@ export default new Router({
         // { path: 'upcoming', component: meetingList, /*props: {filter: 'meetings'}*/}, preparation for meeting object.
         { path: ':chatRoomId', component: Chat }
       ]
+    },
+    {
+      path: '/meetings/:userId',
+      name: 'user-meetings',
+      component: MeetingView
     }
   ]
 });
