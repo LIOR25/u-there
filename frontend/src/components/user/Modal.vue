@@ -5,12 +5,7 @@
       <div class="modal_content">
         <h2 class="modal-header">Your message</h2>
         <form @submit.prevent="sendMsg">
-          <datepicker
-            :clearButton="true"
-            :inline="true"
-            :openDate="date"
-            @input="setType"
-          ></datepicker>
+          <datepicker :clearButton="true" :inline="true" :openDate="date" @input="setType"></datepicker>
           <!-- :format="customFormatter" -->
           <textarea rows="4" v-model="newMsg.txt" cols="40"></textarea>
           <!-- :newMsg="setType(isDate)" -->
@@ -85,7 +80,7 @@ export default {
       await this.$store.dispatch("createChatRoom", { chatDetails });
       this.hide();
     },
-    isDate() {},
+    isDate() {}
     // customFormatter($event) {
     //   return moment($event).format("MMMM Do YYYY");
     // }
@@ -210,13 +205,15 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 90%;
+  min-height: 650px;
   overflow: auto;
   background: #fff;
   box-sizing: border-box;
   padding: 20px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
   border-radius: 4px;
-  max-width: 520px;
+  max-width: 600px;
+  min-width: 580px;
 }
 .modal .modal_content > h2 {
   font-size: 28px;
@@ -292,5 +289,14 @@ export default {
 .vdp-datepicker {
   color: black;
   margin-bottom: 10px;
+  padding-left: 120px;
+}
+
+textarea {
+  width: 300px;
+  height: 300px;
+  font-size: 2rem;
+  outline: none;
+  margin-left: 120px;
 }
 </style>

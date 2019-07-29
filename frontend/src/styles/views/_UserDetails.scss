@@ -21,23 +21,26 @@
   //   margin: 0 auto;
   // }
 
-button{
-     font-family: $font-open-sans;
-         /* color: #fff; */
+  button {
+    font-family: $font-open-sans;
+    /* color: #fff; */
     /* background-color: #8bc34a; */
-    width: 113px;
+    // width: 113px;
     border: none;
     font-size: 1em;
     padding: 10px 15px;
     border-radius: 2px;
-    -webkit-transition: .3s;
-    transition: .3s;
-    height: 43px;
-     color:whitesmoke;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    // height: 43px;
+    color: whitesmoke;
     margin: 20px auto;
     padding: 5px;
     background-color: $clr5;
+  }
 
+  .add-review-btn {
+    margin-left: 240px;
   }
   //Ehud commented
 
@@ -98,7 +101,7 @@ button{
     // background-color: #dcdada;
     p {
       // font-size: 14px;
-          font-size: 1.1em;
+      font-size: 1.5em;
 
       // font-weight: bold;
       font-family: $font-open-sans;
@@ -109,10 +112,10 @@ button{
       color: black;
     }
 
-    div{
+    div {
       margin-bottom: 8px;
-            color: black;
-
+      color: black;
+      font-size: 1.3rem;
     }
 
     .review-add {
@@ -150,21 +153,26 @@ button{
       @include flex(row, center);
       background-color: aqua;
     }
+
+    .in-town {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
-  .form-content-container{
-          @include flex(row, center);
- input {
-        // width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        background-color: aqua;
-        // margin-top: 10px;
-      }
+  .form-content-container {
+    @include flex(row, center);
+    input {
+      // width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: aqua;
+      // margin-top: 10px;
+    }
   }
 
   // @media (min-width: 550px) {

@@ -62,3 +62,9 @@ img {
     flex-basis: 45%;
   }
 }
+
+@media (max-width: 1000px) {
+  .city-preview {
+    margin-bottom: 40px;
+  }
+}
