@@ -11,7 +11,8 @@ export default {
         chatRoom: {},
         chatWith: {},
         msgs: [],
-        newMsg: null
+        newMsg: null,
+        date: new Date()
         // loggedInUser: {} // temp for chats
         //filterBy:
     },
@@ -42,6 +43,9 @@ export default {
         },
         newMsg(state) {
             return state.newMsg;
+        },
+        date(state) {
+            return state.date;
         }
     },
     mutations: {

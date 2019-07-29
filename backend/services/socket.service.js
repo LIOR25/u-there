@@ -27,6 +27,11 @@ function setup(http) {
             console.log('message: ', msg, chatId);
             io.to(chatId).emit('chat newMsg', msg);
         });
+
+        socket.on('user left', (chatId) => {
+            console.log('user left the chat');
+            socket.leave(chatId);
+        })
     });
 }
 

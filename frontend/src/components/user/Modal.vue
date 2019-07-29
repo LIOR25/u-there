@@ -3,16 +3,19 @@
     <div id="modal" class="modal">
       <div class="overlay"></div>
       <div class="modal_content">
-        <h2>Your message</h2>
+        <h2 class="modal-header">Your message</h2>
         <form @submit.prevent="sendMsg">
-          <!-- this.usersIds -->
-         <!-- choose when to meet: <input type="date" name="bday"> -->
-         <!-- :newMsg="setType('dateReq')" -->
-       <!-- <input type="submit"> -->
-        <textarea rows="4" v-model="newMsg.txt" cols="40"></textarea>
-        <!-- :newMsg="setType(isDate)" -->
-        <button type="submit" class="send">Send</button>
-      </form>
+          <datepicker
+            :clearButton="true"
+            :inline="true"
+            :openDate="date"
+            @input="setType"
+          ></datepicker>
+          <!-- :format="customFormatter" -->
+          <textarea rows="4" v-model="newMsg.txt" cols="40"></textarea>
+          <!-- :newMsg="setType(isDate)" -->
+          <button type="submit" class="send">Send</button>
+        </form>
         <button @click="hide" title="Close" class="close_modal">
           <i class="fas fa-times"></i>
         </button>
@@ -22,28 +25,47 @@
 </template>
 
 <script>
+import Datepicker from "vuejs-datepicker";
+// import moment from 'vue-moment';
+var moment = require("moment");
 export default {
   created() {
     this.$store.dispatch("getLoggedUserId");
-    this.$store.dispatch('loadUserChatRooms')
+    this.$store.dispatch("loadUserChatRooms");
   },
   name: "modal",
-  props: ['user', 'loggedUser'],
+  props: ["user", "loggedUser"],
   data() {
     return {
       showModal: false,
       newMsg: {
-        txt: '',
-        type: 'txt',
-        sentAt: '',
+        txt: "",
+        type: "txt",
+        sentAt: "",
         addedBy: this.loggedUser._id,
         isRead: false
       },
       usersIds: [this.user._id, this.loggedUser._id]
     };
   },
-  components: {},
+  components: {
+    Datepicker
+  },
   methods: {
+    setType($event) {
+      if ($event !== null) {
+        this.newMsg.type = "dateReq";
+        this.newMsg.reqDetails = {
+          suggested: $event,
+          responseState: "pending"
+        };
+      } else {
+        this.newMsg.type = "txt";
+        this.newMsg.reqDetails = null;
+      }
+      console.log(this.newMsg.type);
+      console.log(this.newMsg.reqDetails);
+    },
     toggleAboutModal() {
       this.isModal = !this.isModal;
     },
@@ -53,31 +75,30 @@ export default {
     hide() {
       this.showModal = false;
     },
-   async sendMsg() {
+    async sendMsg() {
       this.newMsg.sentAt = Date.now();
-      let addedMsg = {...this.newMsg}
+      let addedMsg = { ...this.newMsg };
       let chatDetails = {
         addedMsg,
         usersIds: [this.user._id, this.loggedUser._id]
-      }
-     await this.$store.dispatch('createChatRoom', {chatDetails}) 
-      this.hide()
+      };
+      await this.$store.dispatch("createChatRoom", { chatDetails });
+      this.hide();
     },
-    // setType(val) {
-    //   // this.newMsg.type = val;
-    // },
-    isDate() {
-
-    }
+    isDate() {},
+    // customFormatter($event) {
+    //   return moment($event).format("MMMM Do YYYY");
+    // }
   },
-  computed: {}
+  computed: {
+    date() {
+      return this.$store.getters.date;
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-
-
-
+<style lang="scss">
 // .modal {
 //   padding-top: 120px;
 //   position: fixed;
@@ -225,7 +246,7 @@ export default {
 }
 
 .send {
-      display: block;
+  display: block;
 
   cursor: pointer;
   font-size: 1rem;
@@ -237,19 +258,37 @@ export default {
   background: lightskyblue;
   color: #fff;
   font-weight: 600;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: background 0.14s ease;
-  transition: background 0.14s ease;
+  // -webkit-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  // user-select: none;
+  // -webkit-transition: background 0.14s ease;
+  // transition: background 0.14s ease;
   height: 3rem;
   min-height: 3rem;
   overflow: hidden;
 }
 
-h2{
-      color: black;
+.modal-header {
+  color: black;
+}
 
+// .vdp-datepicker__clear-button:enabled {
+//   position: absolute;
+//   left: -15px;
+// }
+
+// [class="vdp-datepicker__clear-button"] {
+//   position: absolute;
+//   left: -15px;
+// }
+
+.vdp-datepicker__clear-button {
+  position: absolute;
+  left: -15px;
+}
+
+.vdp-datepicker {
+  color: black;
 }
 </style>
