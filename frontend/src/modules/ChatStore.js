@@ -111,9 +111,9 @@ export default {
                     context.commit({ type: 'changeChatWith', otherPerson });
                     // console.log('state msgs if defined:', context.state.msgs);
                     // console.log(context.getters.loggedUser, context.state.chatRoom._id,)
-                   socket.emit('chat join', {user: context.getters.loggedUser, chatId: context.state.chatRoom._id})
+                   socket.emit('chat join', {user: context.getters.loggedUser, chatId: context.state.chatRoom._id}) //don't get chatroomid without getter
                    socket.on('chat newMsg', addedMsg => {
-                    //    console.log(addedMsg);
+                       console.log(addedMsg);
                        context.commit({type: 'addMsg', addedMsg });
                        
                     })
@@ -126,7 +126,8 @@ export default {
                 context.commit({type: "addMsg", addedMsg})
                 // console.log(context.state.chatRoom._id);
                 
-                socket.emit('chat msg', {msg: addedMsg, chatId: context.state.chatRoom._id})              
+                socket.to(context.state.chatRoom._id).emit('chat msg', {msg: addedMsg, chatId: context.state.chatRoom._id})
+
                 return newMsg;
             })
         },
@@ -152,6 +153,9 @@ export default {
         },
         clearNewMsg(context) {
             context.commit({type: 'clearNew'});
+        },
+        leaveChat(context, {chatId}) {
+            socket.emit("user left", {user: context.getters.loggedUser, chatId: chatId});
         }
     }
 }

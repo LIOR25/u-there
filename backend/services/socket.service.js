@@ -28,9 +28,9 @@ function setup(http) {
             io.to(chatId).emit('chat newMsg', msg);
         });
 
-        socket.on('user left', (chatId) => {
-            console.log('user left the chat');
+        socket.on('user left', ({user, chatId}) => {
             socket.leave(chatId);
+            console.log('user',user.firstName, 'left the chat', chatId);
         })
     });
 }

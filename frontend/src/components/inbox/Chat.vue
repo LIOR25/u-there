@@ -6,18 +6,15 @@
     <ul>
       <li v-for="msg in msgs" :class="whoSent(msg.addedBy)" :key="msg._id" msg.isRead="true">
         <p class="msg">{{msg.txt}}</p>
-        <br>
-        <br>
-        <p v-if="msg.type === 'dateReq' ? true : false">
-          {{msg.reqDetails.suggested | moment("dddd, MMMM Do YYYY")}}
-        </p>
+        <br />
+        <br />
+        <p
+          v-if="msg.type === 'dateReq' ? true : false"
+        >{{msg.reqDetails.suggested | moment("dddd, MMMM Do YYYY")}}</p>
         <div v-if="msg.type === 'dateReq' && msg.addedBy !== loggedInUserId">
-          <button
-            @click="accept(msg)"
-          >Accept</button>
+          <button @click="accept(msg)">Accept</button>
           <button>Reschedule</button>
           <button>Decline</button>
-
         </div>
       </li>
       <!-- <li v-for="msg in chatRoom.msgs" :class="whoSent(msg.addedBy)" :key="msg._id">{{msg.txt}}</li> -->
@@ -60,7 +57,7 @@ export default {
   },
   methods: {
     alert() {
-      this.$swal("Meeting accepted", "Enjoy your time together", "success")
+      this.$swal("Meeting accepted", "Enjoy your time together", "success");
     },
     testing() {},
     addMsg(newMsg) {
@@ -81,7 +78,7 @@ export default {
       this.currMsg = msg;
       this.currMsg.reqDetails.responseState = "accepted";
       console.log(this.currMsg);
-      this.alert()
+      this.alert();
     }
   },
   computed: {
@@ -110,6 +107,12 @@ export default {
     this.chatPrms = this.$route.params.chatRoomId;
     this.$store.dispatch("getLoggedUserId");
     this.$store.dispatch("loadChat", { chatRoomId: this.chatPrms });
+    
+    // socket.removeListener("chat join");
+    // socket.on("chat newMsg", addedMsg => {
+    //   //    console.log(addedMsg);
+    //   this.$store.dispatch("addMsg", { addedMsg });
+    // });
     // .then( () => {
     //   // this.chatRoom.msgs.forEach(msg => {
     //   //   this.msgs.push(msg);
@@ -126,9 +129,13 @@ export default {
     // })
   },
   destroyed() {
-    console.log(this.chatPrms);
-    var chatId = this.chatPrms;
-    socket.emit("user left", chatId);
+    // console.log(this.chatPrms);
+    // var chatId = this.chatPrms;
+    this.$store.dispatch("leaveChat", { chatId: this.chatPrms });
+    // socket.emit("user left", chatId);
+    // socket.removeListener("chat msg");
+    // socket.removeListener("chat newMsg");
+    // socket.removeListener('chat join');
   }
 };
 </script>
@@ -147,6 +154,7 @@ export default {
 .byMe,
 .byOther {
   font-size: 18px;
+  margin-top: 8px;
   /* margin-bottom: 10px; */
 }
 
