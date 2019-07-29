@@ -5,34 +5,20 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = {
     query,
     getById,
-    // getByEmail,
-    // remove,
-    // update,
     add,
     addMsg
+    // update
 };
 
 async function query(userId) {
-    // filterBy = {}
     var criteria = {};
     if (userId) {
-        // var temp = [userId]
         criteria.usersIds = { $in: [userId] }
     }
-    // console.log(criteria);
     
     const collection = await dbService.getCollection('chatroom');
     try {
-        // db.getCollection('chatroom').find({usersIds: {$in:['5d2dc044ad1118a7f8aed366']}})
-        // console.log('criteria: ',criteria);
-
         var chatrooms = await collection.find(criteria).toArray();
-        // var chatrooms = await collection.find().toArray();
-        // var chatrooms = await collection.find({usersIds: {$in:['5d2dc044ad1118a7f8aed366']}}).toArray();
-        // console.log('###########################')
-        // console.log(chatrooms)
-        // chatrooms.sort(utilService.createSortFuncTxt(filterBy.sortBy, filterBy.sortWay));
-        // const userChatrooms = await chatrooms.filter(chatRoom => chatRoom.usersIds.includes(userId))
         return chatrooms;
     } catch (err) {
         console.log('ERROR: cannot find chatrooms')
