@@ -78,7 +78,9 @@ export default {
         lng: this.lng
       });
 
-      this.cityName = cityName;
+      // this.cityName = cityName;
+      this.cityName = "Tel Aviv";
+
       // console.log('type',cityName);
       // this.$store.dispatch({type:"loadActivitiesByCity", city: this.cityName});
     }

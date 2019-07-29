@@ -1,7 +1,7 @@
 <template>
   <section class="review-preview" v-if="review">
     <div>
-      <!-- <div :style="profileImage"></div> -->
+      <div :style="profileImage"></div>
       <h2>Title: {{review.title}}</h2>
       <h2>Comment: {{review.txt}}</h2>
       <h2>Added By: {{fullName}}</h2>
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     fullName() {
-      return (this.review.addedBy.firstName + " " + this.review.addedBy.lastName);
+      return this.review.addedBy.firstName + " " + this.review.addedBy.lastName;
     }
   }
 };

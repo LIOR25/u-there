@@ -20,15 +20,14 @@
     <div class="detailsMain">
       <h2>Hi There! Nice to meet you</h2>
       <p>
-      <!-- Looking for people to Party with me in Tel Aviv. -->
-      {{user.details}}
+        <!-- Looking for people to Party with me in Tel Aviv. -->
+        {{user.details}}
       </p>
       <!-- <p>I love to</p> -->
       <div>Likes to: {{user.activities[0]}}</div>
       <div>Languages: {{user.languages[0]}}</div>
-         <i class="fas fa-calendar-alt"></i>
-
-  
+      <i class="fas fa-calendar-alt"></i>
+      <div>{{user.inTownUntil}}</div>
 
       <p>what we can do together:</p>
       <button @click="temp=!temp">Add Review</button>
