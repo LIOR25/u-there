@@ -123,10 +123,10 @@ export default {
             // console.log(context.getters.chatRoom._id);
             
             chatRoomsService.addMsg(addedMsg, context.state.chatRoom._id).then(newMsg => {
-                context.commit({type: "addMsg", addedMsg})
-                // console.log(context.state.chatRoom._id);
+                // context.commit({type: "addMsg", addedMsg})
+                console.log(context.state.chatRoom._id);
                 
-                socket.to(context.state.chatRoom._id).emit('chat msg', {msg: addedMsg, chatId: context.state.chatRoom._id})
+                socket.emit('chat msg', {msg: addedMsg, chatId: context.state.chatRoom._id})
 
                 return newMsg;
             })
