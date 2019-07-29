@@ -141,6 +141,16 @@ export default {
 </script>
 
 <style>
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #209cee;
+}
+
 .sendMsg {
   position: absolute;
   bottom: 20px;
